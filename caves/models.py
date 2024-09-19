@@ -38,6 +38,7 @@ class Cave(models.Model):
     depth = models.FloatField(blank=False)
     area = models.FloatField(blank=False)
     volume = models.FloatField(blank=False)
+    lithology = models.CharField(max_length=40, blank=False)
     relevance_surveyed = models.IntegerField(choices=RELEV_SURVEYED, default=0)
     relevance_factor = models.IntegerField(choices=RELEVANCE, default=0)
     geomorph_unit = models.IntegerField(choices=GEOMORPH_UNIT, default=0, blank=False)
