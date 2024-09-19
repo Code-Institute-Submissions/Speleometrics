@@ -26,6 +26,7 @@ class Migration(migrations.Migration):
                 ('depth', models.FloatField()),
                 ('area', models.FloatField()),
                 ('volume', models.FloatField()),
+                ('lithology', models.CharField(max_length=40)),
                 ('relevance_surveyed', models.IntegerField(choices=[(0, 'Yes'), (1, 'No')], default=0)),
                 ('relevance_factor', models.IntegerField(choices=[(0, 'Maximum'), (1, 'High'), (2, 'Medium'), (3, 'Low')], default=0)),
                 ('geomorph_unit', models.IntegerField(choices=[(0, 'Serra da Serpentina'), (2, 'Itabira'), (3, 'Serra da Piedade'), (4, 'João Monlevade'), (5, 'Quadrilátero Oeste'), (6, 'Serra Azul'), (7, 'Morrarias de Dom Bosco'), (8, 'Serra de Ouro Preto - Antonio Pereira'), (9, 'Escarpa Oriental do Caraça'), (10, 'Serra do Gandarela')], default=0)),
