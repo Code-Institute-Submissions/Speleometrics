@@ -8,9 +8,9 @@ RELEV_SURVEYED = ((0, "Yes"), (1, "No"))
 
 
 RELEVANCE = (
-    (0, "Maximum"), 
-    (1, "High"), 
-    (2, "Medium"), 
+    (0, "Maximum"),
+    (1, "High"),
+    (2, "Medium"),
     (3, "Low")
 )
 
@@ -30,6 +30,9 @@ GEOMORPH_UNIT = (
 
 
 class Cave(models.Model):
+    """
+    Main model establishes the cave data base and its atributes as the field listed bellow 
+    """
     cave_name = models.CharField(max_length=40, unique=True, blank=False)
     latitude = models.FloatField(blank=False)
     longitude = models.FloatField(blank=False)
@@ -44,12 +47,15 @@ class Cave(models.Model):
     geomorph_unit = models.IntegerField(choices=GEOMORPH_UNIT, default=0, blank=False)
     description = models.TextField(blank=True)  # Optional description field
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, 
+        User, on_delete=models.CASCADE,
         related_name="cave_reg"
     )
 
     class Meta:
+        """
+        Orders caves alphabetically by their name atribute
+        """
         ordering = ["cave_name"]
-    
+
     def __str__(self):
         return f"{self.cave_name} registered by {self.author}"
