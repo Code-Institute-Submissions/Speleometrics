@@ -17,10 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 # Test
-from caves.views import my_test
 
 urlpatterns = [
+    path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('caves/', my_test, name='caves'),
+    path("", include("caves.urls"), name="caves-urls")
 ]

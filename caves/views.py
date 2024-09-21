@@ -1,8 +1,10 @@
 from django.shortcuts import render
-# Test
-from django.http import HttpResponse
+from django.views import generic
+from .models import Cave
 
 # Create your views here.
 
-def my_test(request):
-   return HttpResponse("Test")
+class CaveList(generic.ListView):
+   queryset = Cave.objects.all()
+   template_name = "cave/index.html"
+   paginate_by = 100
