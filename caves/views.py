@@ -5,6 +5,9 @@ from .models import Cave
 # Create your views here.
 
 class CaveList(generic.ListView):
-   queryset = Cave.objects.all()
-   template_name = "cave/index.html"
-   paginate_by = 100
+    """
+    Retuns all caves in a paginated view
+    """
+    queryset = Cave.objects.all()
+    template_name = "cave/index.html"
+    paginate_by = 100
