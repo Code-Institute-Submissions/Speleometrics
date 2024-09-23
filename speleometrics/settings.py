@@ -30,7 +30,8 @@ SECRET_KEY = 'django-insecure-=g52+r=jcct-x885gqi!v9j#0v#cqrhmjvgx%)m)72#+z(u%5v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-hpesciotti-speleometric-cxgwmndd605.ws.codeinstitute-ide.net','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-hpesciotti-speleometric-cxgwmndd605.ws.codeinstitute-ide.net',
+'.herokuapp.com']
 
 
 # Application definition
@@ -71,7 +72,7 @@ ROOT_URLCONF = 'speleometrics.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [TEMPLATES_DIR ,'templates/allauth'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
