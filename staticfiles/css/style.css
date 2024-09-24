@@ -10,8 +10,7 @@ body {
 .site-logo {
     font-family: Josefin Sans, sans-serif;
     font-weight: 700;
-    filter: drop-shadow(0 0 2px #201e1e);
-    line-height: 1;
+    line-height: 120%;
     font-size: 1.2em;
 }
 
@@ -20,7 +19,7 @@ body {
 }
 
 .site-logo-line-2 {
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
 }
 
 .spl-light-yellow {
