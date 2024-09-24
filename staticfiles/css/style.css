@@ -2,31 +2,57 @@ body {
     background-color: #F9FAFC;
 }
 
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
+.navbar-brand {
+    margin-left: 1em;
+    margin-top: 0.8em;
 }
 
-.red-o {
-    color: #E84610;
+.site-logo {
+    font-family: Josefin Sans, sans-serif;
+    font-weight: 700;
+    filter: drop-shadow(0 0 2px #201e1e);
+    line-height: 1;
+    font-size: 1.2em;
+}
+
+.site-logo-line-1 {
+    letter-spacing: 0.25em;
+}
+
+.site-logo-line-2 {
+    letter-spacing: 0.1em;
+}
+
+.spl-light-yellow {
+    color: #FFDC94
+}
+
+.spl-light-blue {
+    color: #BEE6FD
+}
+
+.spl-light-orange {
+    color:#FFDAB2;
+}
+
+.spl-light-green {
+    color: #BCF7DD;
 }
 
 .thin {
     font-weight: 300;
 }
 
-.light-bg {
-    background-color: #fff;
+.spl-navbar-bg {
+    background-color: #011a2e;
 }
 
-.dark-bg {
-    background-color: #445261;
+.footer-bg {
+    background-color: #FFDC94;
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #fdfdfd;
 }
 
 .card {
