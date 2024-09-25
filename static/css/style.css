@@ -2,6 +2,21 @@ body {
     background-color: #F9FAFC;
 }
 
+footer p {
+    font-size: .65em;
+    color: #011a2e;
+    padding-top: .85em;
+}
+
+footer a {
+    color: #011a2e;
+    font-size: 1.2em;
+}
+
+footer a:hover {
+    color: #055da5;
+}
+
 .navbar-brand {
     margin-left: 1em;
 }
