@@ -40,9 +40,35 @@ body {
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fcfcfc;
     background-color: #ff6600;
+}
+
+
+.btn-signup,
+.btn-edit {
+    color: #fcfcfc;
+    background-color: #ff6600;
+}
+
+.btn-signup:hover,
+.btn-signup:hover {
+    color: #ff6600;
+    background-color: #fcfcfc;
+}
+
+.link {
+    color: #ff6600 !important;
+}
+
+.link:hover {
+    color: #011a2e !important;
+}
 
 .thin {
     font-weight: 300;
+}
+
+.container {
+    padding-bottom: 12px;
 }
 
 .footer-bg {
@@ -133,29 +159,6 @@ body {
 .post-subtitle {
     margin-left: 5%;
     color: lightgray;
-}
-
-.btn-signup,
-.btn-edit {
-    background-color: #188181;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
 }
 
 .btn-like {
