@@ -4,50 +4,49 @@ body {
 
 .navbar-brand {
     margin-left: 1em;
-    margin-top: 0.8em;
 }
 
-.site-logo {
-    font-family: Josefin Sans, sans-serif;
-    font-weight: 700;
-    line-height: 1;
-    font-size: 1.2em;
+.navbar-toggler {
+    padding: .2rem .5rem;
+    font-size: 1.4rem !important;
+    line-height: 1 !important;
+    border: 2px solid #727272 !important;
 }
 
-.site-logo-line-1 {
-    letter-spacing: 0.2em;
+.navbar-nav {
+    gap: 30px;
 }
 
-.site-logo-line-2 {
-    letter-spacing: 0.15em;
+.nav-link {
+    color: #011a2e;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
 }
 
-.spl-light-yellow {
-    color: #FFDC94
+.nav-link:hover {
+    color: #055da5;
 }
 
-.spl-light-blue {
-    color: #BEE6FD
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
 }
 
-.spl-light-orange {
-    color:#FFDAB2;
+.nav-pills .nav-link {
+    border-radius: .85rem;
 }
 
-.spl-light-green {
-    color: #BCF7DD;
-}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fcfcfc;
+    background-color: #ff6600;
 
 .thin {
     font-weight: 300;
 }
 
-.spl-navbar-bg {
-    background-color: #011a2e;
-}
-
 .footer-bg {
-    background-color: #FFDC94;
+    background-color: #555453;
 }
 
 .main-bg {
