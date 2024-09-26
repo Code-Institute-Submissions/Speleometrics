@@ -15,11 +15,16 @@
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -39,8 +44,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">
                 <div class="d-flex justify-content-start">
-                    <img src="{% static 'images/logo-color.png' %}" alt="Logo Speleometrics" height="50px">
-                </div>
+                    <img src="{% static 'images/logo-color.png' %}" alt="Logo Speleometrics" height="50px"></div>
             </a>
             <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
