@@ -15,11 +15,11 @@ class Profile(models.Model):
     """
     Add profile info for the user.
     """
-    email_contact = models.EmailField(max_length=100, blank=False)
+    email_for_contact = models.EmailField(max_length=100, blank=False)
     profile_type = models.IntegerField(choices=USER_TYPE, 
         default=0, blank=False)
     bio = models.TextField(blank=False)
-    author = models.ForeignKey(
+    user = models.ForeignKey(
         User, on_delete=models.CASCADE,
         related_name="user_profile"
     )
