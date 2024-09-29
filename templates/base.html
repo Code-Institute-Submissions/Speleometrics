@@ -4,6 +4,7 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+{% url 'profile' as profile_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -17,7 +18,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
@@ -56,7 +59,8 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
                             href="{% url 'home' %}">Home</a>
-                        {% if user.is_authenticated %}
+                    </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
                             href="{% url 'account_logout' %}">Logout</a>
@@ -71,7 +75,12 @@
                             href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
-                    </li>
+                    {% if user.is_authenticated %}
+                    <a class="nav-link {% if request.path == profile_page %}active{% endif %}" aria-current="page"
+                        href="{% url 'profile' %}">User Area</a>
+                    {% else %}
+                    <a class="nav-link disabled" aria-current="page" href="">User Area</a>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -94,7 +103,8 @@
             <a href="https://github.com/hpesciotti" target="_blank" title="Visit my GitHub profile" class="mx-2">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <a href="https://ie.linkedin.com/in/henrique-pesciotti-694404134" target="_blank" title="Visit my LinkedIn profile" class="mx-2">
+            <a href="https://ie.linkedin.com/in/henrique-pesciotti-694404134" target="_blank"
+                title="Visit my LinkedIn profile" class="mx-2">
                 <i class="fa-brands fa-linkedin"></i>
             </a>
         </div>

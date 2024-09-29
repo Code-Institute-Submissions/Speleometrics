@@ -6,7 +6,7 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Cave)
 class CaveAdmin(SummernoteModelAdmin):
 
-    list_display = ('cave_name', 'author', 'geomorph_unit')
-    search_fields = ['cave_name', 'author']
+    list_display = ('cave_name', 'user', 'geomorph_unit')
+    search_fields = ['cave_name', 'user']
     # prepopulated_fields = {'slug': ('cave_name',)}
     summernote_fields = ('description',)

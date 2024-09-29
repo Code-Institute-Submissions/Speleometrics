@@ -46,9 +46,9 @@ class Cave(models.Model):
     relevance_factor = models.IntegerField(choices=RELEVANCE, default=0)
     geomorph_unit = models.IntegerField(choices=GEOMORPH_UNIT, default=0, blank=False)
     description = models.TextField(blank=True)  # Optional description field
-    author = models.ForeignKey(
+    user = models.ForeignKey(
         User, on_delete=models.CASCADE,
-        related_name="cave_reg"
+        related_name="user_cave"
     )
 
     class Meta:
@@ -58,4 +58,4 @@ class Cave(models.Model):
         ordering = ["cave_name"]
 
     def __str__(self):
-        return f"{self.cave_name} registered by {self.author}"
+        return f"{self.cave_name} registered by {self.user}"

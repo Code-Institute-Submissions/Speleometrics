@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- {% load crispy_forms_tags %} -->
+
+{% block main_content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- <div class="col-12 col-md-4 text-center">
+            {% if "placeholder" in post.featured_image.url %}
+            <img src="{% static 'images/nobody.jpg' %}" alt="profile image" style="width: 75%;">
+            {% else %}
+            <img src=" {{ about.profile_image.url }}" alt="profile image" style="width: 75%;">
+            {% endif %}
+        </div> -->
+        <div class="col-12 col-md-8">
+            <h2>{{ profile.user }}</h2>
+            <h2>{{ profile.email_for_contact }}</h2>
+            <p>{{ profile.bio | safe }}</p>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}
