@@ -5,15 +5,30 @@ from .models import Profile
 
 # Create your views here.
 
+@login_required
 def view_profile(request):
     """ 
-    Retuns user profile 
+    Returns user profile 
     """
     try:
         profile = Profile.objects.get(user=request.user)
     except Profile.DoesNotExist:
-        return redirect('profiles/profile_edit.html') 
-    return render(request, 'profiles/profile_page.html')
+        return redirect('profile-edit')
+    return render(request, 'profiles/profile_page.html', {'profile': profile})
+
+
+def edit_profile(request):
+    """ 
+    Edit Profile
+    """
+    def view_profile(request):
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('profile_page')
+    return render(request, 'profiles/profile_edit.html', {'form': form})
 
 # Create your views here.
 
