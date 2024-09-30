@@ -6,16 +6,20 @@
 {% load static %}
 
 {% block content %}
-<div class="d-flex justify-content-start">
-    <form method="POST">
+
+<div class="container justify-content-center">
+    <form method="POST" class="row justify-content-center">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-edit">Save Profile</button>
+        <div class="col-lg-4 col-12">
+            <button type="submit" class="btn btn-edit">Save Profile</button></div>
         {% if not user.profile.email_for_contact %}
-        <a href="{% url 'home' %}" class="btn btn-edit" role="button">Discard Changes</a>
-        {% else %}
-        <a href="{% url 'profile' %}" class="btn btn-edit" role="button">Discard Changes</a>
-        {% endif %}
+        <div class="col-lg-4 col-12">
+            <a href="{% url 'home' %}" class="btn btn-edit" role="button">Discard Changes</a>
+            {% else %}
+            <a href="{% url 'profile' %}" class="btn btn-edit" role="button">Discard Changes</a>
+            {% endif %}
+        </div>
     </form>
 </div>
 
