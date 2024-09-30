@@ -29,10 +29,6 @@ footer a:hover {
     border: 2px solid #727272 !important;
 }
 
-.navbar-nav {
-    gap: 30px;
-}
-
 .nav-link {
     color: #011a2e;
     font-family: 'Poppins', sans-serif;
@@ -139,6 +135,10 @@ h1, h2, h3, h4 {
         width: 70%;
     }
     
+    .navbar-nav {
+        gap: 30px;
+    }
+
 }
 
 /* Media query: tablets and larger (800px and up) */
