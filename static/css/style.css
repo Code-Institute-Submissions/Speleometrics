@@ -119,6 +119,19 @@ footer a:hover {
     background: #E84610;
 }
 
+hr {
+    height: 2px;
+    margin: 0 !important;
+    color: #555453;
+}
+
+h1, h2, h3, h4 {
+    color:#555453;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    margin: 0 !important;
+}
+
 /* Media query: tablets and larger (800px and up) */
 @media screen and (min-width: 800px) {
     

@@ -12,12 +12,13 @@
             <img src=" {{ about.profile_image.url }}" alt="profile image" style="width: 75%;">
             {% endif %}
         </div> -->
-        <div class="col-12 col-md-8">
-            <h4>{{ profile.user }} - {{ profile.get_profile_type_display }}</h2>
-            <h4>{{ profile.email_for_contact }}</h2>
+        <div class="col-12 col-md-8 mb-2">
+            <h3 class="mb-1">{{ profile.user }} - {{ profile.get_profile_type_display }}</h3>
+            <h3>{{ profile.email_for_contact }}</h3>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 pt-2">
             <h3>Profile Description</h3>
+            <hr>
         </div>
         <div class="col-12 col-md-8">
             <p>{{ profile.bio | safe }}</p>
