@@ -3,8 +3,8 @@
 {% load static %}
 
 {% block content %}
-<div class="container d-flex justify-content-start">
-    <div class="row">
+<div class="container-sm">
+    <div class="row justify-content-center">
         <!-- <div class="col-12 col-md-4 text-center">
             {% if "placeholder" in post.featured_image.url %}
             <img src="{% static 'images/nobody.jpg' %}" alt="profile image" style="width: 75%;">
@@ -13,9 +13,14 @@
             {% endif %}
         </div> -->
         <div class="col-12 col-md-8">
-            <h2>{{ profile.user }}</h2>
-            <h2>{{ profile.email_for_contact }}</h2>
-            <p>{{ profile.bio}}</p>
+            <h4>{{ profile.user }} - {{ profile.get_profile_type_display }}</h2>
+            <h4>{{ profile.email_for_contact }}</h2>
+        </div>
+        <div class="col-12 col-md-8 py-2">
+            <h3>Profile Description</h3>
+        </div>
+        <div class="col-12 col-md-8">
+            <p>{{ profile.bio | safe }}</p>
         </div>
         <div class="col-12 col-md-8">
             <a href="{% url 'profile-edit' %}" class="btn btn-edit" role="button">Edit Profile</a>
