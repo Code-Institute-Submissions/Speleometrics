@@ -59,10 +59,26 @@ footer a:hover {
 }
 
 
+.btn {
+    color: #fcfcfc;
+}
+
+.btn:hover {
+    color: #ff6600;
+}
+
 .btn-signup,
 .btn-edit {
     color: #fcfcfc;
     background-color: #ff6600;
+    border-radius: .85rem;
+}
+
+.btn-signup:hover,
+.btn-edit:hover {
+    color: #ff6600;
+    background-color: #fcfcfc;
+    outline: 1px solid #ff6600
 }
 
 .btn-signup:hover,

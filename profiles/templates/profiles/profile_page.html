@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% url 'profile-edit' as profile_edit_url %}
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container d-flex justify-content-start">
     <div class="row">
         <!-- <div class="col-12 col-md-4 text-center">
             {% if "placeholder" in post.featured_image.url %}
@@ -15,6 +16,9 @@
             <h2>{{ profile.user }}</h2>
             <h2>{{ profile.email_for_contact }}</h2>
             <p>{{ profile.bio}}</p>
+        </div>
+        <div class="col-12 col-md-8">
+            <a href="{% url 'profile-edit' %}" class="btn btn-edit" role="button">Edit Profile</a>
         </div>
     </div>
 </div>

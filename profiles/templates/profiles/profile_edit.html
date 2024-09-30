@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
+
+{% url 'home' as home_url %}
+{% url 'profile' as profile_url %}
+
 {% load static %}
 
 {% block content %}
-
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Save Profile</button>
-</form>
+<div class="d-flex justify-content-start">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-edit">Save Profile</button>
+        {% if not user.profile.email_for_contact %}
+        <a href="{% url 'home' %}" class="btn btn-edit" role="button">Discard Changes</a>
+        {% else %}
+        <a href="{% url 'profile' %}" class="btn btn-edit" role="button">Discard Changes</a>
+        {% endif %}
+    </form>
+</div>
 
 {% endblock content %}
