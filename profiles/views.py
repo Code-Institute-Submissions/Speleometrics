@@ -32,6 +32,10 @@ def edit_profile(request, username):
     profile = get_object_or_404(Profile, user=profile_user)
     form = ProfileForm(request.POST, instance=profile)
 
+    # Fix - Bug03 - permission access edit profile through typing the link
+    if request.user != profile_user:
+        return redirect('home')
+
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
