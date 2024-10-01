@@ -18,8 +18,7 @@ class Profile(models.Model):
     Add profile info for the user.
     """
     email_for_contact = models.EmailField(max_length=100, blank=False)
-    profile_type = models.IntegerField(choices=USER_TYPE, 
-        default=0, blank=False)
+    profile_type = models.IntegerField(choices=USER_TYPE,default=0, blank=False)
     bio = models.TextField(blank=False)
     user = models.OneToOneField(
         User, on_delete=models.CASCADE,
@@ -35,3 +34,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     if hasattr(instance, 'profile'):
         instance.profile.save()
+        

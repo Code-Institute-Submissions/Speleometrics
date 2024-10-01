@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% url 'profile-edit' as profile_edit_url %}
+{% url 'profile_edit' as profile_edit_url %}
 {% load static %}
 
 {% block content %}
@@ -23,9 +23,15 @@
         <div class="col-12 col-md-8">
             <p>{{ profile.bio | safe }}</p>
         </div>
+        {% if user == profile.user %}
         <div class="col-12 col-md-8">
-            <a href="{% url 'profile-edit' %}" class="btn btn-edit" role="button">Edit Profile</a>
+            <a href="{% url 'profile_edit' username=request.user.username %}" class="btn btn-edit" role="button">Edit Profile</a>
         </div>
+        {% else %}
+        <div class="col-12 col-md-8">
+            <a href="" class="d-none" role="button"></a>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

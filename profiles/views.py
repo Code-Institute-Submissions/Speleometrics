@@ -1,33 +1,42 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.contrib.auth.models import User
 from .models import Profile
 from .forms import ProfileForm
 
 # Create your views here.
 
 @login_required
-def view_profile(request):
+def view_profile(request, username):
     """ 
     Returns user profile, if contact email is empity return edit profile form.
     """
-    profile = get_object_or_404(Profile, user=request.user)
-    
-    if not profile.email_for_contact:
-        return redirect('profile-edit')
-    return render(request, 'profiles/profile_page.html', {'profile': profile})
+    profile_user = get_object_or_404(User, username=username)
 
+    profile = get_object_or_404(Profile, user=profile_user)
 
-def edit_profile(request):
+    if request.user != profile_user:
+        return render(request, 'profiles/profile_page.html', {'profile': profile})
+
+    if profile.email_for_contact:
+        return render(request, 'profiles/profile_page.html', {'profile': profile})
+    return redirect(reverse('profile_edit', args=[profile_user.username]))
+
+@login_required
+def edit_profile(request, username):
     """ 
     Edit Profile
     """
-    profile = get_object_or_404(Profile, user=request.user)
+    profile_user = get_object_or_404(User, username=username)
+    profile = get_object_or_404(Profile, user=profile_user)
+    form = ProfileForm(request.POST, instance=profile)
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('profiles/profile_page', username=profile_user.username)
     else:
-        form = ProfileForm(instance=profile)
+        form = ProfileForm(request.POST, instance=profile)
     return render(request, 'profiles/profile_edit.html', {'form': form})
