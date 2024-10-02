@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 {% url 'profile_edit' as profile_edit_url %}
 {% load static %}
+{% load cloudinary %}
 
 {% block content %}
 <div class="container-sm">
     <div class="row justify-content-center">
-        <!-- <div class="col-12 col-md-4 text-center">
-            {% if "placeholder" in post.featured_image.url %}
-            <img src="{% static 'images/nobody.jpg' %}" alt="profile image" style="width: 75%;">
+        <div class="col-12 col-md-4">
+            {% if profile.image and profile.image.url %}
+                <img src="{{ profile.image.url }}" alt="{{ profile.display_name }}'s profile image" style="width: 75%;">
             {% else %}
-            <img src=" {{ about.profile_image.url }}" alt="profile image" style="width: 75%;">
+                <img src="{% static 'images/nobody.jpg' %}" alt="{{ profile.display_name }}'s profile image" style="width: 75%;">
             {% endif %}
-        </div> -->
+        </div>
         <div class="col-12 col-md-8 mb-2">
-            <h3 class="mb-1">{{ profile.user }} - {{ profile.get_profile_type_display }}</h3>
+            <h3 class="mb-1">{{ profile.display_name }} - {{ profile.get_profile_type_display }}</h3>
             <h3>{{ profile.email_for_contact }}</h3>
         </div>
         <div class="col-12 col-md-8 pt-2">
