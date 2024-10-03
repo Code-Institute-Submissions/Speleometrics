@@ -5,8 +5,8 @@
 
 {% block content %}
 <div class="container-sm px-5">
-    <div class="row">
-        <div class="col-12 col-md-10 col-lg-8">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10">
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="col-6 col-md-4 mx-auto mb-3 py-0 align-self-center">
                     {% if profile.image and profile.image.url %}
@@ -21,27 +21,25 @@
                     <h3 class="orange">{{ profile.display_name }}
                         <h3 class="orange">{{ profile.get_profile_type_display }}</h3>
                         <h4 class="grey">{{ profile.email_for_contact }}</h4>
-                    </div>
                 </div>
             </div>
-            <div class="row d-flex align-items-center justify-content-center">
-                <div class="col">
-                    <div>
-                        <h4 class="grey">Profile Description</h4>
-                        <hr>
-                    </div>
-                    <div class="px-2">
-                        <p>{{ profile.bio | safe }}</p>
-                    </div>
-                    {% if user == profile.user %}
-                    <div class="col-4 col-md-2 mx-auto">
-                            <a href="{% url 'profile_edit' username=request.user.username %}" class="btn btn-edit"
-                                role="button">Edit
-                                Profile</a>
-                        {% else %}
-                            <a href="" class="d-none" role="button"></a>
-                    </div>
-                </div>
+        </div>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-10">
+            <div>
+                <h4 class="grey">Profile Description</h4>
+                <hr>
+            </div>
+            <div class="px-2">
+                <p>{{ profile.bio | safe }}</p>
+            </div>
+            {% if user == profile.user %}
+            <div class="col-4 col-md-2 mx-auto">
+                <a href="{% url 'profile_edit' username=request.user.username %}" class="btn btn-edit" role="button">Edit
+                    Profile</a>
+                {% else %}
+                <a href="" class="d-none" role="button"></a>
                 {% endif %}
             </div>
         </div>
