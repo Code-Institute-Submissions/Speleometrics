@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -23,7 +24,7 @@ GEOMORPH_UNIT = (
     (5, "Quadrilátero Oeste"),
     (6, "Serra Azul"),
     (7, "Morrarias de Dom Bosco"),
-    (8, "Serra de Ouro Preto - Antonio Pereira"),
+    (8, "Serra de Ouro Preto - Antônio Pereira"),
     (9, "Escarpa Oriental do Caraça"),
     (10, "Serra do Gandarela"),
 )
@@ -115,6 +116,7 @@ class Cave(models.Model):
         help_text="""Enter valid values (>0 - 3000) with significant
          decimal digits separated by a period (e.g., 123.45)."""
     )
+    
     lithology = models.CharField(max_length=40, blank=False)
 
     relevance_surveyed = models.IntegerField(choices=RELEV_SURVEYED, default=0)
@@ -125,15 +127,23 @@ class Cave(models.Model):
         choices=GEOMORPH_UNIT,
          default=0,
           blank=False
-        )
+    )
 
     description = models.TextField(blank=True)
+
+    cave_maps = CloudinaryField("cave_maps",
+        resource_type="auto",
+        folder="caves_maps",
+        blank=True,
+        help_text="JPG or PDF are supported formats."
+    )
 
     user = models.ForeignKey(
         User, on_delete=models.CASCADE,
         related_name="user_cave"
     )
 
+    
     class Meta:
         """
         Orders caves alphabetically by their name atribute
