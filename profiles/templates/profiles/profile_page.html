@@ -47,15 +47,15 @@
         </div>
         <div class="m-2 text-center">
             {% if user == profile.user %}
-            <a href="{% url 'profile_edit' username=request.user.username %}" class="btn btn-edit" role="button">My
+            <a href="{% url 'home' %}" class="btn btn-edit" role="button">My
                 Caves</a>
             {% else %}
-            <a href="{% url 'profile_edit' username=request.user.username %}" class="btn btn-edit" role="button">User's
+            <a href="{% url 'home' %}" class="btn btn-edit" role="button">User's
                 Caves</a>
             {% endif %}
         </div>
         <div class="m-2 text-center">
-            <a href="{% url 'profile_edit' username=request.user.username %}" class="btn btn-edit"
+            <a href="" class="btn btn-edit"
                 role="button">Register a Cave</a>
         </div>
     </div>
