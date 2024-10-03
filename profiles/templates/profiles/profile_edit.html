@@ -9,19 +9,72 @@
 
 <div class="container-sm">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-2">
-            <form method="POST" enctype="multipart/form-data">
+        <div class="col-md-6 mt-2">
+            <form method="POST" enctype="multipart/form-data" class="form-edit-profile">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <div class="col-lg-6 col-md-8 col-12">
-                    <button type="submit" class="btn btn-edit">Save Profile</button></div>
-                {% if not user.profile.email_for_contact %}
-                <div class="col-lg-6 col-md-8 col-12">
-                    <a href="{% url 'home' %}" class="btn btn-edit" role="button">Discard Changes</a>
-                    {% else %}
-                    <a href="{% url 'profile_page' username=request.user.username %}" class="btn btn-edit"
-                        role="button">Discard Changes</a>
+                <div class="form-group py-2 align-items-center py-2">
+                    <label for="id_display_name">Profile Name:</label>
+                    <input type="text" class="form-control" id="id_display_name" name="display_name"
+                        value="{{ form.display_name.value|default_if_none:'' }}" required>
+                    {% if form.display_name.errors %}
+                    <div class="text-danger">
+                        <span><strong>{{ error }}</strong></span>
+                    </div>
                     {% endif %}
+                </div>
+                <div class="form-group py-2 align-items-center py-2">
+                    <label for="id_email_for_contact">Email for Communication:</label>
+                    <input type="email" class="form-control" id="id_email_for_contact" name="email_for_contact"
+                        value="{{ form.email_for_contact.value|default_if_none:'' }}" required>
+                    {% if form.email_for_contact.errors %}
+                    <div class="text-danger">
+                        {{ form.email_for_contact.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="form-group py-2 align-items-center py-2">
+                    <label for="id_profile_type">Profile Type:</label>
+                    <select class="form-control" id="id_profile_type" name="profile_type" required>
+                        {% for value, label in form.profile_type.field.choices %}
+                        <option value="{{ value }}"
+                            {% if form.profile_type.value == value|stringformat:"s" %}selected{% endif %}>
+                            {{ label }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group align-items-center py-2">
+                    <label for="id_bio">User Profile Summary:</label>
+                    <textarea class="form-control" id="id_bio" name="bio" rows="10" required>
+                        {{ form.bio.value|default_if_none:'' }}
+                    </textarea>
+                    {% if form.bio.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.bio.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="form-group align-items-center py-2">
+                    <label for="id_image">Profile Image:</label>
+                    <label class="btn btn-edit" for="id_image">Choose file</label>
+                    <input type="file" class="custom-file-input invisible" id="id_image" name="image" accept="image/*">
+                    {% if form.image.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.image.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="d-md-flex justify-content-center">
+                    <div class="p-3">
+                        <button type="submit" class="btn btn-edit">Save Profile</button></div>
+                    {% if not user.profile.email_for_contact %}
+                    <div class="p-3">
+                        <a href="{% url 'home' %}" class="btn btn-edit" role="button">Discard Changes</a>
+                        {% else %}
+                        <a href="{% url 'profile_page' username=request.user.username %}" class="btn btn-edit"
+                            role="button">Discard Changes</a>
+                        {% endif %}
+                    </div>
                 </div>
             </form>
         </div>
