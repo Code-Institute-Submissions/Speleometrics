@@ -169,10 +169,10 @@ h1, h2, h3, h4 {
     width: 100%; 
 }
 
-.container, .container-sm {
+/* .container, .container-sm {
     margin-top: auto;
     overflow-y: auto !important;
-}
+} */
 
 /* Media query: tablets and larger (800px and up) */
 @media screen and (min-width: 800px) {
