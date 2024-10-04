@@ -10,21 +10,180 @@
 <div class="container-sm">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-2">
-            <form method="POST" enctype="multipart/form-data" class="form-edit-profile overflow-auto">
+            <form method="POST" enctype="multipart/form-data" class="form-edit-profile">
                 {% csrf_token %}
                 <div class="form-group py-2 align-items-center">
-                    {{ form.as_p }}
-                    {% if form.display_name.errors %}
-                    <div class="text-danger">
-                        <span><strong>{{ error }}</strong></span>
+                    <div class="form-group">
+                        <label for="{{ form.cave_name.id_for_label }}">{{ form.cave_name.label }}</label>
+                        {{ form.cave_name }}
+                        <small class="form-text text-muted">{{ form.cave_name.help_text }}</small>
+                        {% for error in form.cave_name.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endif %}
+                    
+                    <div class="form-group">
+                        <label for="{{ form.latitude.id_for_label }}">{{ form.latitude.label }}</label>
+                        {{ form.latitude }}
+                        <small class="form-text text-muted">{{ form.latitude.help_text }}</small>
+                        {% for error in form.latitude.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="{{ form.longitude.id_for_label }}">{{ form.longitude.label }}</label>
+                        {{ form.longitude }}
+                        <small class="form-text text-muted">{{ form.longitude.help_text }}</small>
+                        {% for error in form.longitude.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="{{ form.elevation.id_for_label }}">{{ form.elevation.label }}</label>
+                        {{ form.elevation }}
+                        <small class="form-text text-muted">{{ form.elevation.help_text }}</small>
+                        {% for error in form.elevation.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.length.id_for_label }}">{{ form.length.label }}</label>
+                        {{ form.length }}
+                        <small class="form-text text-muted">{{ form.length.help_text }}</small>
+                        {% for error in form.length.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.depth.id_for_label }}">{{ form.depth.label }}</label>
+                        {{ form.depth }}
+                        <small class="form-text text-muted">{{ form.depth.help_text }}</small>
+                        {% for error in form.depth.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.area.id_for_label }}">{{ form.area.label }}</label>
+                        {{ form.area }}
+                        <small class="form-text text-muted">{{ form.area.help_text }}</small>
+                        {% for error in form.area.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.volume.id_for_label }}">{{ form.volume.label }}</label>
+                        {{ form.volume }}
+                        <small class="form-text text-muted">{{ form.volume.help_text }}</small>
+                        {% for error in form.volume.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group"></div>
+                        <label for="{{ form.lithology.id_for_label }}">{{ form.lithology.label }}</label>
+                        {{ form.lithology }}
+                        <small class="form-text text-muted">{{ form.lithology.help_text }}</small>
+                        {% for error in form.lithology.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.geomorph_unit.id_for_label }}">{{ form.geomorph_unit.label }}</label>
+                        {{ form.geomorph_unit }}
+                        <small class="form-text text-muted">{{ form.geomorph_unit.help_text }}</small>
+                        {% for error in form.geomorph_unit.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.relevance_surveyed.id_for_label }}">{{ form.relevance_surveyed.label }}</label>
+                        {{ form.relevance_surveyed }}
+                        <small class="form-text text-muted">{{ form.relevance_surveyed.help_text }}</small>
+                        {% for error in form.relevance_surveyed.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="{{ form.relevance_factor.id_for_label }}">{{ form.relevance_factor.label }}</label>
+                        {{ form.relevance_factor }}
+                        <small class="form-text text-muted">{{ form.relevance_factor.help_text }}</small>
+                        {% for error in form.relevance_factor.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+                        {{ form.description }}
+                        <small class="form-text text-muted">{{ form.description.help_text }}</small>
+                        {% for error in form.description.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="{{ form.cave_maps.id_for_label }}">{{ form.cave_maps.label }}</label>
+                        {{ form.cave_maps }}
+                        <small class="form-text text-muted">{{ form.cave_maps.help_text }}</small>
+                        {% for error in form.cave_maps.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group"></div>
+                        <label for="{{ form.user.id_for_label }}">{{ form.user.label }}</label>
+                        {{ form.user }}
+                        <small class="form-text text-muted">{{ form.user.help_text }}</small>
+                        {% for error in form.user.errors %}
+                        <div class="text-danger">
+                            <span><strong>{{ error }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
                     <div class="d-md-flex justify-content-center">
                         <div class="px-3 py-2 text-center">
-                            <button type="submit" class="btn btn-edit">Save Profile</button></div>
+                            <button type="submit" class="btn btn-edit">Save Cave</button></div>
                         <div class="px-3 py-2 text-center">
                             <a href="{% url 'profile_page' username=request.user.username %}" class="btn btn-edit"
-                                role="button">Discard Changes</a>
+                                role="button">Discard Input</a>
                         </div>
                     </div>
                 </div>

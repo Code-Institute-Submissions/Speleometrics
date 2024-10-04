@@ -52,6 +52,7 @@ class CaveForm(forms.ModelForm):
             'geomorph_unit',
             'description',
             'cave_maps',
+            'user',
         )
         labels = {
             "cave_name": "Cave Name",
@@ -68,6 +69,7 @@ class CaveForm(forms.ModelForm):
             "geomorph_unit": "Geomorphological Unit",
             "description": "Brief Description",
             "cave_maps":"Cave Maps",
+            "user":"User",
         }
         help_texts = {
             "cave_name": """Enter a unique cave name (letters, numbers,
@@ -85,6 +87,47 @@ class CaveForm(forms.ModelForm):
             "geomorph_unit": "Select the geomorphological unit.",
             "description": "Provide additional information about the cave.",
             "cave_maps": "JPG or PDF are supported formats.",
+        }
+        error_messages = {
+            "cave_name": { 
+                'required': "Cave name is required.",
+                'unique': """A cave with this name already exists.
+                 Please choose another name.""",
+                'max_lenght': "Cave name must not exceed 40 characters.",
+            },
+            "latitude": {
+                'required': "Latitude is a required field.",
+                'invalid': """Please adhere exactly format as shown
+                 in the example."""
+            },
+            "longitude": {
+                'required': "Longitude is a required field.",
+                'invalid': """Please adhere exactly format as shown
+                 in the example."""
+            },
+            "length": {
+                'required': "Lenght is a required field.",
+                'invalid': """Please adhere exactly format as shown
+                 in the example."""
+            },
+            "depth": {
+                'required': "Depth is a required field.",
+                'invalid': """Please adhere exactly format as shown
+                 in the example."""
+            },
+            "area": {
+                'required': "Area is a required field.",
+                'invalid': """Please adhere exactly format as shown
+                 in the example."""
+            },
+            "volume": {
+                'required': "Volume is a required field.",
+                'invalid': """Please adhere exactly format as shown
+                 in the example."""
+            },
+            "cave_map": {
+                'invalid': "Something went wrong, please try again."
+            },
         }
         widgets = {
             'description': forms.Textarea(attrs={'rows': 10, 'cols': 15}),

@@ -58,5 +58,4 @@ def add_cave(request):
             return redirect('profile_page', username=request.user.username)
     else:
         form = CaveForm()
-
     return render(request, 'cave/add_cave.html', {'form': form})
