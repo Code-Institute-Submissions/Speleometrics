@@ -13,9 +13,9 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-3 offset-md-2">
+        <div class="col-md-8 m-3 offset-md-2">
 
-            <form method="post" action="{% url 'account_logout' %}">
+            <form class="text-center" method="post" action="{% url 'account_logout' %}">
                 {% csrf_token %}
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
