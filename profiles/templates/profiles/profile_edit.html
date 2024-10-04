@@ -12,7 +12,7 @@
         <div class="col-md-6 mt-2">
             <form method="POST" enctype="multipart/form-data" class="form-edit-profile">
                 {% csrf_token %}
-                <div class="form-group py-2 align-items-center py-2">
+                <div class="form-group align-items-center py-2">
                     <label for="id_display_name">Profile Name:</label>
                     <input type="text" class="form-control" id="id_display_name" name="display_name"
                         value="{{ form.display_name.value|default_if_none:'' }}" required>
@@ -22,7 +22,7 @@
                     </div>
                     {% endif %}
                 </div>
-                <div class="form-group py-2 align-items-center py-2">
+                <div class="form-group align-items-center py-2">
                     <label for="id_email_for_contact">Email for Communication:</label>
                     <input type="email" class="form-control" id="id_email_for_contact" name="email_for_contact"
                         value="{{ form.email_for_contact.value|default_if_none:'' }}" required>
@@ -32,7 +32,7 @@
                     </div>
                     {% endif %}
                 </div>
-                <div class="form-group py-2 align-items-center py-2">
+                <div class="form-group align-items-center py-2">
                     <label for="id_profile_type">Profile Type:</label>
                     <select class="form-control" id="id_profile_type" name="profile_type" required>
                         {% for value, label in form.profile_type.field.choices %}

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% url 'profile_edit' as profile_edit_url %}
+{% url 'add_cave' as add_cave_url %}
+
 {% load static %}
 {% load cloudinary %}
 
@@ -55,7 +57,7 @@
             {% endif %}
         </div>
         <div class="m-2 text-center">
-            <a href="" class="btn btn-edit"
+            <a href="{% url 'add_cave' %}" class="btn btn-edit"
                 role="button">Register a Cave</a>
         </div>
     </div>

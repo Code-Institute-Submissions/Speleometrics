@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% url 'home' as home_url %}
+{% url 'profiles' as profiles_url %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-sm">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-2">
+            <form method="POST" enctype="multipart/form-data" class="form-edit-profile overflow-auto">
+                {% csrf_token %}
+                <div class="form-group py-2 align-items-center">
+                    {{ form.as_p }}
+                    {% if form.display_name.errors %}
+                    <div class="text-danger">
+                        <span><strong>{{ error }}</strong></span>
+                    </div>
+                    {% endif %}
+                    <div class="d-md-flex justify-content-center">
+                        <div class="px-3 py-2 text-center">
+                            <button type="submit" class="btn btn-edit">Save Profile</button></div>
+                        <div class="px-3 py-2 text-center">
+                            <a href="{% url 'profile_page' username=request.user.username %}" class="btn btn-edit"
+                                role="button">Discard Changes</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

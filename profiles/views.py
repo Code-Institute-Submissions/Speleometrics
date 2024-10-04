@@ -28,18 +28,8 @@ def edit_profile(request, username):
     """ 
     Edit Profile
     """
-def edit_profile(request, username):
-    """ 
-    Edit Profile
-    """
     profile_user = get_object_or_404(User, username=username)
     profile = get_object_or_404(Profile, user=profile_user)
-
-    print("Profile Data:")
-    print(f"Display Name: {profile.display_name}")
-    print(f"Email for Contact: {profile.email_for_contact}")
-    print(f"Profile Type: {profile.profile_type}")
-    print(f"Bio: {profile.bio}")
 
     # Fix - Bug03 - permission access edit profile through typing the link
     if request.user != profile_user:

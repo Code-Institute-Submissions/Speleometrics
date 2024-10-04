@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django_resized import ResizedImageField
-from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -23,7 +22,8 @@ class Profile(models.Model):
     email_for_contact = models.EmailField(max_length=100, blank=False)
     profile_type = models.IntegerField(choices=USER_TYPE,default=0, blank=False)
     bio = models.TextField(blank=True)
-    image = ResizedImageField(size=[300, 300], quality=75, upload_to="profiles/",
+    image = ResizedImageField(size=[300, 300], quality=75,
+     upload_to="profiles/",
      force_format='WEBP', blank=True)
     user = models.OneToOneField(
         User, on_delete=models.CASCADE,
