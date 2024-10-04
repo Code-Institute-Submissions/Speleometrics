@@ -129,6 +129,8 @@ class CaveForm(forms.ModelForm):
                 'invalid': "Something went wrong, please try again."
             },
         }
+        
         widgets = {
+            'user': forms.HiddenInput(),
             'description': forms.Textarea(attrs={'rows': 10, 'cols': 15}),
         }

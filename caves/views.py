@@ -49,11 +49,11 @@ def add_cave(request):
         form = CaveForm(request.POST, request.FILES)
         if form.is_valid():
             cave = form.save(commit=False)
+            cave.user = request.user
             """if cave relevance was not surveyed legislation states
              that relevance factor has to be considered maximum."""
             if cave.relevance_surveyed == 1:
                 cave.relevance_factor = 0
-            cave.user = request.user
             cave.save()
             return redirect('profile_page', username=request.user.username)
     else:

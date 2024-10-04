@@ -140,7 +140,7 @@ class Cave(models.Model):
 
     user = models.ForeignKey(
         User, on_delete=models.CASCADE,
-        related_name="user_cave"
+        related_name="user_cave", null=True, blank=True
     )
 
     
