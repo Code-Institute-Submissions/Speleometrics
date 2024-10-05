@@ -116,7 +116,7 @@ class Cave(models.Model):
         help_text="""Enter valid values (>0 - 3000) with significant
          decimal digits separated by a period (e.g., 123.45)."""
     )
-    
+
     lithology = models.CharField(max_length=40, blank=False)
 
     relevance_surveyed = models.IntegerField(choices=RELEV_SURVEYED, default=0)
@@ -132,10 +132,10 @@ class Cave(models.Model):
     description = models.TextField(blank=True)
 
     cave_maps = CloudinaryField("cave_maps",
-        resource_type="auto",
+        resource_type="image",
         folder="caves_maps",
         blank=True,
-        help_text="JPG or PDF are supported formats."
+        help_text="Only JPG or PNG formats are supported."
     )
 
     user = models.ForeignKey(

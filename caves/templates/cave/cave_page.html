@@ -12,66 +12,70 @@
                 <div class="py-2">
                     <h5 class="grey mb-1">General Info</h5>
                     <hr class="mt-0 mb-1">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Author: {{ cave.user }}</p>
+                            <p>Author: {{ cave.user.user_profile.display_name }}
+                        </p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Relevance Surveyed: {{ cave.relevance_surveyed }}</p>
+                            <p>Relevance Surveyed: {{ cave.get_relevance_surveyed_display }}</p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Relevance Factor: {{ cave.relevance_factor }}</p>
+                            <p>Relevance Factor: {{ cave.get_relevance_factor_display }}</p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <p>Lithology: {{ cave.lithology }}</p>
                         </div>
                     </div>
-                    <hr class="mb-3">
                     <h5 class="grey mb-1">Spacial Info</h5>
                     <hr class="mt-0 mb-1">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Latitude: {{ cave.latitude }}</p>
+                            <p>Latitude: {{ cave.latitude }}º</p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>longitude: {{ cave.longitude }}</p>
+                            <p>longitude: {{ cave.longitude }}º</p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Elevation: {{ cave.relevance_surveyed }}</p>
+                            <p>Elevation: {{ cave.elevation }} m</p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Geomorphologic Unit: {{ cave.geomorph_unit }}</p>
+                            <p>Geomorphologic Unit: {{ cave.get_geomorph_unit_display }}</p>
                         </div>
                     </div>
-                    <hr class="mb-3">
+                    
                     <h5 class="grey mb-1">Cave Metrics Info</h5>
                     <hr class="mt-0 mb-1">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Lenght: {{ cave.length }}</p>
+                            <p>Lenght: {{ cave.length }} m</p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Depth: {{ cave.depth }}</p>
+                            <p>Depth: {{ cave.depth }} m</p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Area: {{ cave.area }}</p>
+                            <p>Area: {{ cave.area }} m²</p>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <p>Volume: {{ cave.volume }}</p>
+                            <p>Volume: {{ cave.volume }} m³</p>
                         </div>
                     </div>
-                    <hr class="mb-3">
+                    
                     <h5 class="grey mb-1">Description</h5>
                     <hr class="mt-0 mb-1">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-12 col-md-8 px-2">
+                            {% if cave.description %}
                             <p>{{ cave.description | safe }}</p>
+                            {% else %}
+                            <p>No description was provided by the author.</p>
+                            {% endif %}
                         </div>
                     </div>
-                    <hr class="mb-3">
+                    
                     <h5 class="grey mb-1">Cave Map</h5>
                     <hr class="mt-0 mb-1">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-12 px-2">
                             {% if cave.cave_name and cave.cave_maps.url %}
                             <img src="{{ cave.cave_maps.url }}" alt="{{ cave.cave_name }}'s map"
@@ -81,7 +85,7 @@
                             {% endif %}
                         </div>
                     </div>
-                    <hr class="mb-3">
+                    
                 </div>
             </div>
         </div>
