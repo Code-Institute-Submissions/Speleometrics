@@ -57,7 +57,7 @@
             {% endif %}
         </div>
         <div class="m-2 text-center">
-            <a href="{% url 'add_cave' %}" class="btn btn-edit"
+            <a href="{% url 'add_cave' username=request.user.username %}" class="btn btn-edit"
                 role="button">Register a Cave</a>
         </div>
     </div>

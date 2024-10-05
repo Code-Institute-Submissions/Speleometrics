@@ -35,7 +35,7 @@ def cave_list_table(request):
 
 
 @login_required
-def add_cave(request):
+def add_cave(request, username):
     """
     Allows the logged-in user to add a cave to Cave database
     """
@@ -59,3 +59,4 @@ def add_cave(request):
     else:
         form = CaveForm()
     return render(request, 'cave/add_cave.html', {'form': form})
+    

@@ -67,8 +67,8 @@
                 <div class="d-md-flex justify-content-center">
                     <div class="px-3 py-2 text-center">
                         <button type="submit" class="btn btn-edit">Save Profile</button></div>
-                    {% if not user.profile.email_for_contact %}
                     <div class="px-3 py-2 text-center">
+                        {% if user.profile.email_for_contact %}
                         <a href="{% url 'home' %}" class="btn btn-edit" role="button">Discard Changes</a>
                         {% else %}
                         <a href="{% url 'profile_page' username=request.user.username %}" class="btn btn-edit"
