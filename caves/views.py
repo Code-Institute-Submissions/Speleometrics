@@ -34,6 +34,14 @@ def cave_list_table(request):
     return render(request, 'cave/index.html', context)
 
 
+def cave_page(request, cave_name):
+    """
+    Retuns a cave page for the select page
+    """
+    cave = get_object_or_404(Cave, cave_name=cave_name)
+
+    return render(request, 'cave/cave_page.html', {'cave': cave})
+
 @login_required
 def add_cave(request, username):
     """

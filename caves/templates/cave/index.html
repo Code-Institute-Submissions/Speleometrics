@@ -21,7 +21,7 @@
                 {% for cave in page_obj %}
                 <tr>
                     <th scope="row">{{ cave.id }}</th>
-                    <td><a href="#" class="post-link">{{ cave.cave_name }}</a></td>
+                    <td><a href="{% url 'cave_page' cave_name=cave.cave_name %}" class="post-link">{{ cave.cave_name }}</a></td>
                     <td>{{ cave.length }}</td>
                     <td>{{ cave.depth }}</td>
                     <td>{{ cave.area }}</td>

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid m-auto">
+    <div class="row justify-content-center">
+        <div class="col-md-8 my-2">
+            <h4 class="orange"><strong>{{ cave.cave_name }}</strong></h4>
+            <div class="form-group py-2 align-items-center">
+                <div class="py-2">
+                    <h5 class="grey mb-1">General Info</h5>
+                    <hr class="mt-0 mb-1">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Author: {{ cave.user }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Relevance Surveyed: {{ cave.relevance_surveyed }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Relevance Factor: {{ cave.relevance_factor }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Lithology: {{ cave.lithology }}</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <h5 class="grey mb-1">Spacial Info</h5>
+                    <hr class="mt-0 mb-1">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Latitude: {{ cave.latitude }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>longitude: {{ cave.longitude }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Elevation: {{ cave.relevance_surveyed }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Geomorphologic Unit: {{ cave.geomorph_unit }}</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <h5 class="grey mb-1">Cave Metrics Info</h5>
+                    <hr class="mt-0 mb-1">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Lenght: {{ cave.length }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Depth: {{ cave.depth }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Area: {{ cave.area }}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <p>Volume: {{ cave.volume }}</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <h5 class="grey mb-1">Description</h5>
+                    <hr class="mt-0 mb-1">
+                    <div class="row">
+                        <div class="col-12 col-md-8 px-2">
+                            <p>{{ cave.description | safe }}</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <h5 class="grey mb-1">Cave Map</h5>
+                    <hr class="mt-0 mb-1">
+                    <div class="row">
+                        <div class="col-12 px-2">
+                            {% if cave.cave_name and cave.cave_maps.url %}
+                            <img src="{{ cave.cave_maps.url }}" alt="{{ cave.cave_name }}'s map"
+                                class="profile-pic img-fluid">
+                            {% else %}
+                            <p>No cave map was provided by the author.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
