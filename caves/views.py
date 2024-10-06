@@ -6,16 +6,6 @@ from profiles.models import Profile
 from .models import Cave
 from caves.forms import CaveForm
 
-# Create your views here.
-
-# class CaveList(generic.ListView):
-#     """
-#     Retuns all caves in a paginated view
-#     """
-#     queryset = Cave.objects.all()
-#     template_name = "cave/index.html"
-#     paginate_by = 50
-
 def cave_list_table(request):
     """
     Retuns all caves in a paginated view
@@ -42,10 +32,11 @@ def cave_page(request, cave_name):
 
     return render(request, 'cave/cave_page.html', {'cave': cave})
 
+
 @login_required
 def add_cave(request, username):
     """
-    Allows the logged-in user to add a cave to Cave database
+    Allows logged-in user to add a cave to Cave database
     """
     profile = get_object_or_404(Profile, user=request.user)
 
@@ -67,4 +58,31 @@ def add_cave(request, username):
     else:
         form = CaveForm()
     return render(request, 'cave/add_cave.html', {'form': form})
-    
+
+
+@login_required
+def edit_cave(request, username, cave_name):
+    """
+    Allows logged-in user or superusers to edit their cave registries
+    """
+
+    cave = get_object_or_404(Cave, cave_name=cave_name)
+
+    if request.user == cave.user or request.user.is_superuser:
+        if request.method == 'POST':
+            form = CaveForm(request.POST, request.FILES, instance=cave)
+            if form.is_valid():
+                cave = form.save(commit=False)
+                cave.user = request.user or superusers
+                if cave.relevance_surveyed == 1:
+                    cave.relevance_factor = 0
+                cave.save()
+                return redirect('cave_page', cave_name=cave.cave_name)
+        else:
+            form = CaveForm(instance=cave)
+    else:
+        return HttpResponseForbidden(
+            "You do not have permission to edit this cave."
+        )
+    return render(request, 'cave/add_cave.html', {'form': form,
+     'cave': cave})

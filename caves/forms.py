@@ -86,7 +86,7 @@ class CaveForm(forms.ModelForm):
             "relevance_factor": "Select the relevance factor.",
             "geomorph_unit": "Select the geomorphological unit.",
             "description": "Provide additional information about the cave.",
-            "cave_maps": "JPG or PDF are supported formats.",
+            "cave_maps": "JPG or PNG are supported formats.",
         }
         error_messages = {
             "cave_name": { 
@@ -129,7 +129,7 @@ class CaveForm(forms.ModelForm):
                 'invalid': "Something went wrong, please try again."
             },
         }
-        
+
         widgets = {
             'user': forms.HiddenInput(),
             'description': forms.Textarea(attrs={'rows': 10, 'cols': 15}),
