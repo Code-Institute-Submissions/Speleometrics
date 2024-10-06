@@ -89,7 +89,8 @@
                     {% if cave.user == request.user or request.user.is_superuser  %}
                     <div class="d-md-flex justify-content-center">
                         <div class="px-3 py-2 text-center">
-                            <button type="submit" class="btn btn-edit">Edit Cave</button>
+                            <a href="{% url 'edit_cave' cave_name=cave.cave_name username=request.user.username %}" class="btn btn-edit"
+                                role="button">Edit Cave</a>
                         </div>
                         <div class="px-3 py-2 text-center">
                             <a href="{% url 'profile_page' username=request.user.username %}" class="btn btn-edit"
