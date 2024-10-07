@@ -63,7 +63,7 @@ def add_cave(request, username):
 @login_required
 def edit_cave(request, username, cave_name):
     """
-    Allows logged-in user or superusers to edit their cave registries
+    Allows logged-in user or superusers to edit their cave registries.
     """
 
     cave = get_object_or_404(Cave, cave_name=cave_name)
@@ -86,3 +86,20 @@ def edit_cave(request, username, cave_name):
         )
     return render(request, 'cave/add_cave.html', {'form': form,
      'cave': cave})
+
+
+@login_required
+def delete_cave(request, username, cave_name):
+    """
+    Allows logged-in user or superusers to delete their cave registries.
+    """
+
+    cave = get_object_or_404(Cave, cave_name=cave_name)
+
+    if request.user == cave.user or request.user.is_superuser:
+        cave.delete()
+        return redirect('profile_page', username=request.user.username)
+    else:
+        return HttpResponseForbidden(
+            "You do not have permission to delete this cave."
+        )
