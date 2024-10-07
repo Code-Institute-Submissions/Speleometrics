@@ -111,8 +111,7 @@ def edit_cave(request, username, cave_name):
         return HttpResponseForbidden(
             "You do not have permission to edit this cave."
         )
-    return render(request, 'cave/add_cave.html', {'form': form,
-     'cave': cave})
+    return render(request, 'cave/add_cave.html', {'form': form, 'cave': cave})
 
 
 @login_required
