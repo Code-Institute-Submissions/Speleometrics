@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% url 'profile_edit' as profile_edit_url %}
 {% url 'add_cave' as add_cave_url %}
+{% url 'user_caves' as users_caves_url %}
 
 {% load static %}
 {% load cloudinary %}
@@ -20,9 +21,9 @@
                     {% endif %}
                 </div>
                 <div class="col-12 col-md-8 mb-3 mx-auto py-0 ml-auto align-self-center">
-                    <h3 class="orange">{{ profile.display_name }}
-                        <h3 class="orange">{{ profile.get_profile_type_display }}</h3>
-                        <h4 class="grey">{{ profile.email_for_contact }}</h4>
+                    <h3 class="orange">{{ profile.display_name }}</h3>
+                    <h3 class="orange">{{ profile.get_profile_type_display }}</h3>
+                    <h4 class="grey">{{ profile.email_for_contact }}</h4>
                 </div>
             </div>
         </div>
@@ -49,10 +50,10 @@
         </div>
         <div class="m-2 text-center">
             {% if user == profile.user %}
-            <a href="{% url 'home' %}" class="btn btn-edit" role="button">My
+            <a href="{% url 'user_caves' username=profile.user.username %}" class="btn btn-edit" role="button">My
                 Caves</a>
             {% else %}
-            <a href="{% url 'home' %}" class="btn btn-edit" role="button">User's
+            <a href="{% url 'user_caves' username=profile.user.username %}" class="btn btn-edit" role="button">User's
                 Caves</a>
             {% endif %}
         </div>

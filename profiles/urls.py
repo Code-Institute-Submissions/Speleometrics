@@ -6,4 +6,5 @@ urlpatterns = [
     path('<str:username>', views_profile.view_profile, name='profile_page'),
     path('<str:username>/edit/', views_profile.edit_profile, name='profile_edit'),
     path('<str:username>/add-cave/', views_cave.add_cave, name='add_cave'),
+    path('<str:username>/user-caves/', views_profile.user_search_caves, name='user_caves'),
 ]
