@@ -137,6 +137,14 @@ footer a:hover {
     background: #E84610;
 }
 
+.btn-secondary, 
+.btn-secondary:hover, 
+.btn-danger, 
+.btn-danger:hover {
+    color: #fcfcfc !important;
+    border-radius: .85rem
+}
+
 hr {
     height: 2px;
     margin: 0 !important;
