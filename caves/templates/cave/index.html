@@ -5,56 +5,84 @@
 <!-- index.html content starts here -->
 <div class="container-fluid m-auto">
     <div class="row">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Length</th>
-                    <th scope="col">Depth</th>
-                    <th scope="col">Area</th>
-                    <th scope="col">Volume</th>
-                    <th scope="col">Author</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cave in page_obj %}
-                <tr>
-                    <th scope="row">{{ cave.id }}</th>
-                    <td><a href="{% url 'cave_page' cave_name=cave.cave_name %}" class="post-link">{{ cave.cave_name }}</a></td>
-                    <td>{{ cave.length }}</td>
-                    <td>{{ cave.depth }}</td>
-                    <td>{{ cave.area }}</td>
-                    <td>{{ cave.volume }}</td>
-                    <td>{{ cave.user }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="col-12 md-8">
+            <h3 class="orange">Cave List</h3>
 
-        {% if is_paginated %}
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a href="?page={{ page_obj.previous_page_number }}" class="page-link"> &laquo; PREV</a>
-                </li>
-                {% endif %}
+            <!-- Search Bar -->
+            <form method="GET">
+                <input type="text" name="q" placeholder="Search for a Cave" value="{{ search_term }}">
+                
+                <!-- Ordenação por campo -->
+                <select name="sort">
+                    <option value="cave_name" {% if "cave_name" in current_sorting %}selected{% endif %}>Name</option>
+                    <option value="length" {% if "length" in current_sorting %}selected{% endif %}>Length</option>
+                    <option value="depth" {% if "depth" in current_sorting %}selected{% endif %}>Depth</option>
+                    <option value="area" {% if "area" in current_sorting %}selected{% endif %}>Area</option>
+                    <option value="volume" {% if "volume" in current_sorting %}selected{% endif %}>Volume</option>
+                </select>
+            
+                <!-- Direção da ordenação -->
+                <select name="direction">
+                    <option value="asc" {% if "asc" in current_sorting %}selected{% endif %}>Ascending</option>
+                    <option value="desc" {% if "desc" in current_sorting %}selected{% endif %}>Descending</option>
+                </select>
+            
+                <button type="submit">Submit</button>
+            </form>
 
-                {% for num in page_obj.paginator.page_range %}
-                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
-                    <a href="?page={{ num }}" class="page-link">{{ num }}</a>
-                </li>
-                {% endfor %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Length</th>
+                        <th scope="col">Depth</th>
+                        <th scope="col">Area</th>
+                        <th scope="col">Volume</th>
+                        <th scope="col">Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cave in caves %}
+                    <tr>
+                        <th scope="row">{{ cave.id }}</th>
+                        <td>{{ cave.cave_name }}</td>
+                        <td>{{ cave.length }}</td>
+                        <td>{{ cave.depth }}</td>
+                        <td>{{ cave.area }}</td>
+                        <td>{{ cave.volume }}</td>
+                        <td>{{ cave.user.username }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">No caves found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-                {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
-        {% endif %}
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if caves.has_previous %}
+                                <a href="?page={{ caves.previous_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">Anterior</a>
+                            {% endif %}
+                    
+                            <span class="current">
+                                Página {{ caves.number }} de {{ caves.paginator.num_pages }}.
+                            </span>
+                    
+                            {% if caves.has_next %}
+                                <a href="?page={{ caves.next_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">Próxima</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
     </div>
 </div>
 

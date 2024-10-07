@@ -1,25 +1,53 @@
 from django.core.paginator import Paginator
+from django.db.models import Q
+from django.db.models.functions import Lower
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from profiles.models import Profile
 from .models import Cave
-from caves.forms import CaveForm
+from .forms import CaveForm
 
-def cave_list_table(request):
-    """
-    Retuns all caves in a paginated view
-    """
-    cave_list = Cave.objects.all()
-    paginate_by = Paginator(cave_list, 50)
 
+def search_caves(request):
+    """
+    Returns caves according to sorting queries in a paginated view.
+    Inspired by shop k-beauty developed by Joy Zadan.
+    """
+    caves = Cave.objects.all()
+    query = request.GET.get('q', '')
+    sortkey = request.GET.get('sort', 'cave_name')
+    direction = request.GET.get('direction', 'asc')
+
+    # Filtering
+    if query:
+        caves = caves.filter(
+            Q(cave_name__icontains=query) | Q(description__icontains=query))
+
+    # Sorting
+    if sortkey in ['cave_name', 'user', 'length', 'depth', 'area', 'volume']:
+        if sortkey == 'cave_name':
+            caves = caves.annotate(
+                lower_cave_name=Lower(
+                    'cave_name')).order_by('lower_cave_name')
+        elif sortkey == 'user':
+            caves = caves.order_by('user__username')
+        else:
+            caves = caves.order_by(sortkey)
+
+    # Sort Asceding or Descending order
+    if direction == 'desc':
+        caves = caves.order_by('-' + sortkey)
+
+    # Pagination
+    paginator = Paginator(caves, 20)
     page_number = request.GET.get('page')
-    page_obj = paginate_by.get_page(page_number)
+    page_caves = paginator.get_page(page_number)
 
     context = {
-        'page_obj': page_obj,
-        'is_paginated': paginate_by.num_pages > 1,
-    }
+        'caves': page_caves,
+        'search_term': query,
+        'current_sorting': f"{sortkey}_{direction}"}
 
     return render(request, 'cave/index.html', context)
 
@@ -49,8 +77,8 @@ def add_cave(request, username):
         if form.is_valid():
             cave = form.save(commit=False)
             cave.user = request.user
-            """if cave relevance was not surveyed legislation states
-             that relevance factor has to be considered maximum."""
+            # if cave relevance was not surveyed legislation states
+            # that relevance factor has to be considered maximum.
             if cave.relevance_surveyed == 1:
                 cave.relevance_factor = 0
             cave.save()
@@ -73,7 +101,6 @@ def edit_cave(request, username, cave_name):
             form = CaveForm(request.POST, request.FILES, instance=cave)
             if form.is_valid():
                 cave = form.save(commit=False)
-                cave.user = request.user or superusers
                 if cave.relevance_surveyed == 1:
                     cave.relevance_factor = 0
                 cave.save()
