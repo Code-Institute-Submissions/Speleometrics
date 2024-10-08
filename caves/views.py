@@ -103,7 +103,7 @@ def add_cave(request, username):
             if cave.relevance_surveyed == 1:
                 cave.relevance_factor = 0
             cave.save()
-            return redirect('profile_page', username=request.user.username)
+            return redirect('profile_page', username=request.user.username) # é possivel alterar para return redirect('cave_page', cave_name=cave.cave_name) e adicionar 'success_message': "Report submitted successfully!"
     else:
         form = CaveForm()
     return render(request, 'cave/add_cave.html', {'form': form})
