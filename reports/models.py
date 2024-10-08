@@ -6,9 +6,9 @@ from caves.models import Cave
 # Create your models here.
 
 class Report(models.Model):
-    reported_by = models.ForeignKey(User, related_name='reports_made', on_delete=models.CASCADE)
-    cave = models.ForeignKey(Cave, related_name='reports_cave', on_delete=models.CASCADE)
-    cave_owner = models.ForeignKey(User, related_name='reports_made', on_delete=models.CASCADE)
+    reported_by = models.ForeignKey(User, related_name='reported_by_user', on_delete=models.CASCADE)
+    cave = models.ForeignKey(Cave, related_name='reported_cave', on_delete=models.CASCADE)
+    cave_owner = models.ForeignKey(User, related_name='cave_owner_user', on_delete=models.CASCADE)
     inconsistency_details = models.TextField()
     reported_created_date = models.DateTimeField(auto_now_add=True)
     

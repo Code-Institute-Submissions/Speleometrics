@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'caves',
     'profiles',
+    'reports',
 ]
 
 SITE_ID = 1
