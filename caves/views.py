@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import HttpResponseForbidden
 from reports.models import Report
 from profiles.models import Profile
@@ -105,7 +106,8 @@ def add_cave(request, username):
             if cave.relevance_surveyed == 1:
                 cave.relevance_factor = 0
             cave.save()
-            return redirect('profile_page', username=request.user.username) # é possivel alterar para return redirect('cave_page', cave_name=cave.cave_name) e adicionar 'success_message': "Report submitted successfully!"
+            messages.success(request, 'You have successfully added a new cave data!')
+            return redirect('cave_page', cave_name=cave.cave_name)
     else:
         form = CaveForm()
     return render(request, 'cave/add_cave.html', {'form': form})
@@ -116,25 +118,28 @@ def edit_cave(request, username, cave_name):
     """
     Allows logged-in user or superusers to edit their cave registries.
     """
-
+    
     cave = get_object_or_404(Cave, cave_name=cave_name)
+    original_user = cave.user 
 
     if request.user == cave.user or request.user.is_superuser:
         if request.method == 'POST':
             form = CaveForm(request.POST, request.FILES, instance=cave)
             if form.is_valid():
                 cave = form.save(commit=False)
+                cave.user = original_user
                 if cave.relevance_surveyed == 1:
                     cave.relevance_factor = 0
                 cave.save()
-                return redirect('cave_page', cave_name=cave.cave_name)
+                messages.success(request, 'You have successfully edited the cave data!')
+                return redirect('cave_page', cave_name=cave.cave_name) 
         else:
             form = CaveForm(instance=cave)
     else:
         return HttpResponseForbidden(
             "You do not have permission to edit this cave."
         )
-    return render(request, 'profile/user_caves.html', {'form': form, 'cave': cave})
+    return render(request, 'cave/add_cave.html', {'form': form, 'cave': cave})
 
 
 @login_required

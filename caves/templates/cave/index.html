@@ -51,7 +51,11 @@
                             <td>{{ cave.depth }}</td>
                             <td>{{ cave.area }}</td>
                             <td>{{ cave.volume }}</td>
-                            <td><a href="{% url 'profile_page' username=cave.user.username %}" target="_blank" class="post-link">{{ cave.user }}</a></td>
+                            <td>    {% if cave.user and cave.user.username %}
+                                <a href="{% url 'profile_page' username=cave.user.username %}" target="_blank" class="post-link">{{ cave.user }}</a>
+                            {% else %}
+                                N/A
+                            {% endif %}</td>
                             {%  if request.user.is_superuser %}
                             <td><a href="{% url 'edit_cave' cave_name=cave.cave_name username=request.user.username %}" class="btn btn-info"
                                 role="button">Edit Cave</a></td>
@@ -84,7 +88,7 @@
                         <tr>
                             <td colspan="7">No caves found.</td>
                         </tr>
-                        {% endfor %}
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -92,7 +96,7 @@
             <!-- Change cards to table in small screens -->
             <div class="d-block d-md-none">
                 <div class="row">
-                    {% for cave in caves %}
+                {% for cave in caves %}
                     <div class="col-12 mb-3">
                         <div class="card">
                             <div class="card-body text-center">
@@ -101,7 +105,11 @@
                                 <p class="card-text">Depth: {{ cave.depth }}</p>
                                 <p class="card-text">Area: {{ cave.area }}</p>
                                 <p class="card-text">Volume: {{ cave.volume }}</p>
-                                <p class="card-text">Author: <a href="{% url 'profile_page' username=cave.user.username %}" target="_blank" class="post-link">{{ cave.user }}</a></p>
+                                <p class="card-text">Author:     {% if cave.user and cave.user.username %}
+                                    <a href="{% url 'profile_page' username=cave.user.username %}" target="_blank" class="post-link">{{ cave.user }}</a>
+                                {% else %}
+                                    N/A
+                                {% endif %}</p>
                                 {% if request.user.is_superuser %}
                                 <a href="{% url 'edit_cave' cave_name=cave.cave_name username=request.user.username %}" class="btn btn-info">Edit Cave</a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Cave</button>
@@ -109,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
+                {% endfor %}
                 </div>    
             </div>
 

@@ -3,20 +3,24 @@
 {% load static %}
 
 {% block content %}
-<!-- <div class="row justify-content-center">
-    <div class="col-md-8 my-2">
-        <div class="container-fluid m-auto">
-        </div>
-    </div>
-</div> -->
+
 <div class="container-fluid mt-auto">
     <div class="row justify-content-center">
         <div class="col-md-8 my-2">
             {% if success_message %}
-            <div id="success-message" class="alert alert-success alert alert-success text-center">
+            <div id="message" class="alert alert-success alert alert-success text-center">
                 {{ success_message }}
             </div>
             {% endif %}
+            <div id="message" class="list-unstyled alert alert-success alert alert-success text-center">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
             <h4 class="orange"><strong>{{ cave.cave_name }}</strong></h4>
             <div class="form-group py-2 align-items-center">
                 <div class="py-2">
@@ -98,24 +102,24 @@
 
                     <div class="d-md-flex justify-content-center">
                         {% if cave.user == request.user or request.user.is_superuser  %}
-                            <div class="px-3 py-2 text-center">
-                                <a href="{% url 'edit_cave' cave_name=cave.cave_name username=request.user.username %}"
-                                    class="btn btn-edit" role="button">Edit Cave</a>
-                            </div>
-                            <div class="px-3 py-2 text-center">
-                                <button type="button" class="btn btn-edit" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    Delete Cave
-                                </button>
-                            </div>
+                        <div class="px-3 py-2 text-center">
+                            <a href="{% url 'edit_cave' cave_name=cave.cave_name username=request.user.username %}"
+                                class="btn btn-edit" role="button">Edit Cave</a>
+                        </div>
+                        <div class="px-3 py-2 text-center">
+                            <button type="button" class="btn btn-edit" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">
+                                Delete Cave
+                            </button>
+                        </div>
                         {% endif %}
                         {% if user.is_authenticated %}
-                            <div class="px-3 py-2 text-center">
-                                <button type="button" class="btn btn-edit" data-bs-toggle="modal"
-                                    data-bs-target="#reportModal">
-                                    Report Inconsistency
-                                </button>
-                            </div>
+                        <div class="px-3 py-2 text-center">
+                            <button type="button" class="btn btn-edit" data-bs-toggle="modal"
+                                data-bs-target="#reportModal">
+                                Report Inconsistency
+                            </button>
+                        </div>
                         {% endif %}
                     </div>
 
@@ -185,7 +189,7 @@
 <script>
     // Remove the message after 3 seconds
     setTimeout(function () {
-        let successMessage = document.getElementById('success-message');
+        let successMessage = document.getElementById('message');
         if (successMessage) {
             successMessage.style.display = 'none';
             successMessage.remove();
