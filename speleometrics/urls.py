@@ -16,6 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler403
+
+handler403 = 'caves.views.custom_403_view'
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),

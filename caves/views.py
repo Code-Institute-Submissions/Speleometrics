@@ -58,7 +58,7 @@ def search_caves(request):
 def cave_page(request, cave_name):
     """
     Retuns a cave page for the select page.
-    Additionally, it allows logged-in users to 
+    Additionally, it allows logged-in users to
     report an inconsistency in cave data through a modal.
     """
     cave = get_object_or_404(Cave, cave_name=cave_name)
@@ -79,8 +79,9 @@ def cave_page(request, cave_name):
                     'success_message': "Report submitted successfully!"
                 })
         else:
-            return HttpResponseForbidden(
-                "You must be logged in to submit a report.")
+            return HttpResponseForbidden(render(request, '403.html', {
+                'error_message': "You must be logged in to submit a report."
+            }))
 
     return render(request, 'cave/cave_page.html', {'cave': cave})
 
@@ -93,8 +94,12 @@ def add_cave(request, username):
     profile = get_object_or_404(Profile, user=request.user)
 
     if not profile.email_for_contact:
-        return HttpResponseForbidden("""Please add an email for
-         contact to your profile to proceed.""")
+        return HttpResponseForbidden
+        (render
+            (request, '403.html', {
+                'error_message':
+                "Please add an email for contact to your profile to proceed."
+            }))
 
     if request.method == 'POST':
         form = CaveForm(request.POST, request.FILES)
@@ -106,7 +111,9 @@ def add_cave(request, username):
             if cave.relevance_surveyed == 1:
                 cave.relevance_factor = 0
             cave.save()
-            messages.success(request, 'You have successfully added a new cave data!')
+            messages.success
+            (request,
+             'You have successfully added a new cave data!')
             return redirect('cave_page', cave_name=cave.cave_name)
     else:
         form = CaveForm()
@@ -118,9 +125,9 @@ def edit_cave(request, username, cave_name):
     """
     Allows logged-in user or superusers to edit their cave registries.
     """
-    
+
     cave = get_object_or_404(Cave, cave_name=cave_name)
-    original_user = cave.user 
+    original_user = cave.user
 
     if request.user == cave.user or request.user.is_superuser:
         if request.method == 'POST':
@@ -131,14 +138,18 @@ def edit_cave(request, username, cave_name):
                 if cave.relevance_surveyed == 1:
                     cave.relevance_factor = 0
                 cave.save()
-                messages.success(request, 'You have successfully edited the cave data!')
-                return redirect('cave_page', cave_name=cave.cave_name) 
+                messages.success
+                (request,
+                    'You have successfully edited the cave data!')
+                return redirect('cave_page', cave_name=cave.cave_name)
         else:
             form = CaveForm(instance=cave)
     else:
-        return HttpResponseForbidden(
+        return HttpResponseForbidden
+        (render(request, '403.html', {
+            'error_message':
             "You do not have permission to edit this cave."
-        )
+        }))
     return render(request, 'cave/add_cave.html', {'form': form, 'cave': cave})
 
 
@@ -154,6 +165,16 @@ def delete_cave(request, username, cave_name):
         cave.delete()
         return redirect('profile_page', username=request.user.username)
     else:
-        return HttpResponseForbidden(
-            "You do not have permission to delete this cave."
-        )
+        return HttpResponseForbidden
+        (render(request, '403.html', {
+             'error_message':
+                "You do not have permission to delete this cave."
+                }))
+
+def custom_403_view(request, exception=None):
+    return render(request, '403.html', status=403)
+
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
+
