@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf.urls import handler403
 
 handler403 = 'caves.views.custom_403_view'
+handler404 = 'caves.views.custom_404_view'
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
