@@ -4,7 +4,9 @@ from django.db.models.functions import Lower
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from reports.models import Report
 from profiles.models import Profile
+from profiles.forms import ProfileForms
 from .models import Cave
 from .forms import CaveForm
 
@@ -57,6 +59,25 @@ def cave_page(request, cave_name):
     Retuns a cave page for the select page
     """
     cave = get_object_or_404(Cave, cave_name=cave_name)
+
+
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            inconsistency_details = request.POST.get('inconsistency_details')
+            if inconsistency_details:
+                Report.objects.create(
+                    reported_by=request.user,
+                    cave=cave,
+                    cave_owner=cave.user,
+                    inconsistency_details=inconsistency_details
+                )
+
+                return render(request, 'cave/cave_page.html', {
+                    'cave': cave,
+                    'success_message': "Report submitted successfully!"
+                })
+        else:
+            return HttpResponseForbidden("You must be logged in to submit a report.")
 
     return render(request, 'cave/cave_page.html', {'cave': cave})
 
