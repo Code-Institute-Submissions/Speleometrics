@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from reports.models import Report
 from profiles.models import Profile
-from profiles.forms import ProfileForms
+from profiles.forms import ProfileForm
 from .models import Cave
 from .forms import CaveForm
 
@@ -60,7 +60,6 @@ def cave_page(request, cave_name):
     """
     cave = get_object_or_404(Cave, cave_name=cave_name)
 
-
     if request.method == 'POST':
         if request.user.is_authenticated:
             inconsistency_details = request.POST.get('inconsistency_details')
@@ -77,7 +76,8 @@ def cave_page(request, cave_name):
                     'success_message': "Report submitted successfully!"
                 })
         else:
-            return HttpResponseForbidden("You must be logged in to submit a report.")
+            return HttpResponseForbidden(
+                "You must be logged in to submit a report.")
 
     return render(request, 'cave/cave_page.html', {'cave': cave})
 
