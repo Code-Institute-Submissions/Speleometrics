@@ -42,7 +42,7 @@ def search_caves(request):
         caves = caves.order_by('-' + sortkey)
 
     # Pagination
-    paginator = Paginator(caves, 20)
+    paginator = Paginator(caves, 4)
     page_number = request.GET.get('page')
     page_caves = paginator.get_page(page_number)
 

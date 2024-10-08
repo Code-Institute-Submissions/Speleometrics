@@ -27,7 +27,7 @@
                     <button class="m-2 btn btn-edit" type="submit">Submit</button>
                 </form>
             </div>
-            <div class="text-center">
+            <div class="text-center d-none d-md-block">
                 <table class="table table-striped table-responsive-sm th-lg">
                     <thead>
                         <tr>
@@ -88,6 +88,31 @@
                     </tbody>
                 </table>
             </div>
+            
+            <!-- Change cards to table in small screens -->
+            <div class="d-block d-md-none">
+                <div class="row">
+                    {% for cave in caves %}
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><a href="{% url 'cave_page' cave_name=cave.cave_name %}" target="_blank" class="post-link">{{ cave.cave_name }}</a></h5>
+                                <p class="card-text">Length: {{ cave.length }}</p>
+                                <p class="card-text">Depth: {{ cave.depth }}</p>
+                                <p class="card-text">Area: {{ cave.area }}</p>
+                                <p class="card-text">Volume: {{ cave.volume }}</p>
+                                <p class="card-text">Author: <a href="{% url 'profile_page' username=cave.user.username %}" target="_blank" class="post-link">{{ cave.user }}</a></p>
+                                {% if request.user.is_superuser %}
+                                <a href="{% url 'edit_cave' cave_name=cave.cave_name username=request.user.username %}" class="btn btn-info">Edit Cave</a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Cave</button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>    
+            </div>
+
             <div class="text-center">
                 {% if caves.has_other_pages %}
                 <nav aria-label="Page navigation">

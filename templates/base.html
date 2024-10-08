@@ -78,6 +78,7 @@
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav nav-pills mr-2 mb-lg-0">
+                    <hr class="mt-0 mb-1 d-block d-md-none">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link orange text-center" href="{% url 'profile_page' username=request.user.username %}"><strong>{{ user.username }}</strong></strong></a>
