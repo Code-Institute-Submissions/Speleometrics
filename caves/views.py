@@ -56,7 +56,9 @@ def search_caves(request):
 
 def cave_page(request, cave_name):
     """
-    Retuns a cave page for the select page
+    Retuns a cave page for the select page.
+    Additionally, it allows logged-in users to 
+    report an inconsistency in cave data through a modal.
     """
     cave = get_object_or_404(Cave, cave_name=cave_name)
 
