@@ -4,20 +4,14 @@
 
 {% block content %}
 
-<div class="container-fluid mt-auto">
+<div class="container-fluid my-auto">
     <div class="row justify-content-center">
-        <div class="col-md-8 my-2">
-            {% if success_message %}
             <div id="message" class="alert alert-success alert alert-success text-center">
-                {{ success_message }}
-            </div>
-            {% endif %}
-            <div id="message" class="list-unstyled alert alert-success alert alert-success text-center">
                 {% if messages %}
-                <ul class="messages">
+                <ul class="list-unstyled messages">
                     {% for message in messages %}
                     <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                        {% endfor %}
+                    {% endfor %}
                 </ul>
                 {% endif %}
             </div>
@@ -184,17 +178,5 @@
         </div>
     </div>
 </div>
-
-<!-- Remove sucess message form modals -->
-<script>
-    // Remove the message after 3 seconds
-    setTimeout(function () {
-        let successMessage = document.getElementById('message');
-        if (successMessage) {
-            successMessage.style.display = 'none';
-            successMessage.remove();
-        }
-    }, 3000);
-</script>
 
 {% endblock content %}

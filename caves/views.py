@@ -111,8 +111,7 @@ def add_cave(request, username):
             if cave.relevance_surveyed == 1:
                 cave.relevance_factor = 0
             cave.save()
-            messages.success
-            (request,
+            messages.success(request,
              'You have successfully added a new cave data!')
             return redirect('cave_page', cave_name=cave.cave_name)
     else:
@@ -138,8 +137,7 @@ def edit_cave(request, username, cave_name):
                 if cave.relevance_surveyed == 1:
                     cave.relevance_factor = 0
                 cave.save()
-                messages.success
-                (request,
+                messages.success(request,
                     'You have successfully edited the cave data!')
                 return redirect('cave_page', cave_name=cave.cave_name)
         else:

@@ -7,6 +7,17 @@
 <div class="container-fluid m-auto">
     <div class="row justify-content-center">
         <div class="col-md-8 my-2">
+            <!-- Modal Messages -->
+            <div id="message" class="alert alert-success alert alert-success text-center">
+                {% if messages %}
+                <ul class="list-unstyled messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <!-- Report Content -->
             <h4 class="orange"><strong>Report #{{ report.id }}</strong></h4>
             <div>
                 <div class="py-2 mb-3">
