@@ -170,6 +170,17 @@ def delete_cave(request, username, cave_name):
                 }))
 
 
+def map_view(request):
+    """
+    Add caves to map page
+    """
+    caves = Cave.objects.all()
+    context = {
+        'caves': caves,
+    }
+    return render(request, 'cave/map.html', context)
+
+
 # Adds custom 403 page to HttpResponseForbidden response
 def custom_403_view(request, exception=None):
     return render(request, '403.html', status=403)
