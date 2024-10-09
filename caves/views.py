@@ -171,10 +171,12 @@ def delete_cave(request, username, cave_name):
                 "You do not have permission to delete this cave."
                 }))
 
+
+# Adds custom 403 page to HttpResponseForbidden response
 def custom_403_view(request, exception=None):
     return render(request, '403.html', status=403)
 
 
+# Adds custom 404 page
 def custom_404_view(request, exception):
     return render(request, '404.html', status=404)
-

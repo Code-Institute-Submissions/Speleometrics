@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid m-auto">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-10 my-2">
+            <!-- Modal Messages -->
+            <div id="message" class="alert alert-success text-center">
+                {% if messages %}
+                <ul class="messages list-unstyled">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <!-- Report Content -->
+            <h3 class="orange text-center p-2">Report List</h3>
+            <!-- Search Bar -->
+            <div>
+                <form class="d-md-flex justify-content-center align-items-center" method="GET">
+                    <input class="m-2" type="text" name="q" placeholder="Search for a Report" value="{{ search_term }}">
+                    <!-- Sort -->
+                    <select class="m-2" name="sort">
+                        <option value="cave__cave_name"
+                            {% if "cave__cave_name" in current_sorting %}selected{% endif %}>Cave Name</option>
+                        <option value="reported_by" {% if "reported_by" in current_sorting %}selected{% endif %}>
+                            Reported By</option>
+                        <option value="cave_owner" {% if "cave_owner" in current_sorting %}selected{% endif %}>Cave
+                            Owner</option>
+                        <option value="reported_created_date"
+                            {% if "reported_created_date" in current_sorting %}selected{% endif %}>Date Reported
+                        </option>
+                    </select>
+                    <!-- Direction -->
+                    <select class="m-2" name="direction">
+                        <option value="asc" {% if "asc" in current_sorting %}selected{% endif %}>Ascending</option>
+                        <option value="desc" {% if "desc" in current_sorting %}selected{% endif %}>Descending</option>
+                    </select>
+                    <button class="m-2 btn btn-edit" type="submit">Submit</button>
+                </form>
+            </div>
+
+            <div class="text-center d-none d-md-block">
+                <table class="table table-striped table-responsive-sm th-lg">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Cave Name</th>
+                            <th scope="col">Reported By</th>
+                            <th scope="col">Cave Owner</th>
+                            <th scope="col">Date Reported</th>
+                            <th scope="col">Show Details</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in reports %}
+                        <!--  Delete Modal -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete this report?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <a href="{% url 'delete_report' id=report.id %}"
+                                            class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Table -->
+                        <tr>
+                            <td>{{ report.id }}</td>
+                            <td><a href="{% url 'cave_page' cave_name=report.cave.cave_name %}" target="_blank"
+                                    class="post-link">{{ report.cave.cave_name }}</a></td>
+                            <td><a href="{% url 'profile_page' username=report.reported_by.username %}" target="_blank"
+                                    class="post-link">{{ report.reported_by.username }}</a></td>
+                            <td><a href="{% url 'profile_page' username=report.cave_owner.username %}" target="_blank"
+                                    class="post-link">{{ report.cave_owner.username }}</a></td>
+                            <td>{{ report.reported_created_date|date:"Y-m-d" }}</td>
+                            <td>
+                                <a href="{% url 'report_page' id=report.id %}" target="_blank"
+                                    class="btn btn-info">Details</a>
+                            </td>
+                            <td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
+                                    Delete
+                                </button>
+                            </td>
+
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6">No reports found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Change cards to table in small screens -->
+            <div class="d-block d-md-none">
+                <div class="row">
+                    {% for report in reports %}
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Id: {{ report.id }}</h5>
+                                <p class="card-text">Cave:<a
+                                        href="{% url 'cave_page' cave_name=report.cave.cave_name %}" target="_blank"
+                                        class="post-link">{{ report.cave.cave_name }}</a></p>
+                                <p class="card-text">Reported By: <a
+                                        href="{% url 'profile_page' username=report.reported_by.username %}"
+                                        target="_blank" class="post-link">{{ report.reported_by.username }}</a></p>
+                                <p class="card-text">Cave Owner: <a
+                                        href="{% url 'profile_page' username=report.cave_owner.username %}"
+                                        target="_blank" class="post-link">{{ report.cave_owner.username }}</a></p>
+                                <p class="card-text">Date Reported: {{ report.reported_created_date|date:"Y-m-d" }}</p>
+                                <p class="card-text">Inconsistency: {{ report.inconsistency_details }}</p>
+                                <a href="{% url 'report_page' id=report.id %}" target="_blank" class="btn btn-info">Details</a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    Delete Cave
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="text-center">
+                {% if reports.has_other_pages %}
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if reports.has_previous %}
+                                <a class="btn btn-edit"
+                                    href="?page={{ reports.previous_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">&laquo
+                                    BACK</a>
+                                {% endif %}
+
+                                {% if reports.has_next %}
+                                <a class="btn btn-edit"
+                                    href="?page={{ reports.next_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">NEXT
+                                    &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+            <div class="text-center">
+                <h5 class="grey">
+                    Page {{ reports.number }} of {{ reports.paginator.num_pages }}
+                </h5>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Remove sucess message form modals -->
+<script>
+    // Remove the message after 3 seconds
+    setTimeout(function () {
+        let successMessage = document.getElementById('message');
+        if (successMessage) {
+            successMessage.style.display = 'none';
+            successMessage.remove();
+        }
+    }, 3000);
+</script>
+
+{% endblock content %}

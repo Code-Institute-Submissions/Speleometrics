@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid m-auto">
+    <div class="row justify-content-center">
+        <div class="col-md-8 my-2">
+            <h4 class="orange"><strong>Report #{{ report.id }}</strong></h4>
+            <div>
+                <div class="py-2 mb-3">
+                    <h5 class="grey">General Details</h5>
+                    <hr class="mt-0 mb-1">
+                    <p>Cave: <a href="{% url 'cave_page' cave_name=report.cave.cave_name %}"
+                        target="_blank" class="post-link">{{ report.cave.cave_name }}</a></p>
+                    <p>Reported By: <a
+                        href="{% url 'profile_page' username=report.reported_by.username %}" target="_blank"
+                        class="post-link">{{ report.reported_by.username }}</a></p>
+                    <p>Cave Owner: <a
+                        href="{% url 'profile_page' username=report.cave_owner.username %}" target="_blank"
+                        class="post-link">{{ report.cave_owner.username }}</a></p>
+                    <p>Date Reported: {{ report.reported_created_date|date:"Y-m-d" }}</p>
+                </div>
+                <div class="py-2 mb-3">
+                    <h5 class="grey">Inconsistency</h5>
+                    <hr class="mt-0 mb-1">
+                    <p>{{ report.inconsistency_details }}</p>
+                </div>
+                <div class="px-3 py-2 text-center">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--  Delete Modal -->
+{% if request.user.is_superuser  %}
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this cave?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="{% url 'delete_report' id=report.id %}"
+                    class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock content %}

@@ -1,4 +1,4 @@
-from djsngo import forms
+from django import forms
 from .models import Report
 
 class ReportForm(forms.ModelForm):
