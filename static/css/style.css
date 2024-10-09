@@ -199,9 +199,30 @@ h1, h2, h3, h4 {
     width: 100%; 
 }
 
+.alert-success:empty {
+    display: none;
+}
+
+/* nav-item mobile */
+@media (max-width: 800px) {
+    .nav-lg {
+        display: none;
+    }
+    .nav-item-md {
+        display: block;
+    }
+}
+
 /* Media query: tablets and larger (800px and up) */
 @media screen and (min-width: 800px) {
     
+    .nav-lg {
+        display: block;
+    }
+    .nav-item-md {
+        display: none;
+    }
+
     .form-control {
         width: 70%;
     }
