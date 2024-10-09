@@ -199,12 +199,6 @@ h1, h2, h3, h4 {
     width: 100%; 
 }
 
-@media (max-width: 576px) {
-    table {
-        font-size: 12px; /* Reduzir tamanho da fonte em telas pequenas */
-    }
-}
-
 /* Media query: tablets and larger (800px and up) */
 @media screen and (min-width: 800px) {
     

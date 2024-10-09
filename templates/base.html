@@ -82,10 +82,6 @@
                         <a class="nav-link {% if 'reports/' in request.path %}active{% endif %}" aria-current="page"
                             href="{% url 'reports_index' %}">Reports</a>
                     </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-current="page" href="">User Area</a>
-                    </li>
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav nav-pills mr-2 mb-lg-0">
