@@ -174,16 +174,4 @@
 
 </div>
 
-<!-- Remove sucess message form modals -->
-<script>
-    // Remove the message after 3 seconds
-    setTimeout(function () {
-        let successMessage = document.getElementById('message');
-        if (successMessage) {
-            successMessage.style.display = 'none';
-            successMessage.remove();
-        }
-    }, 3000);
-</script>
-
 {% endblock content %}
