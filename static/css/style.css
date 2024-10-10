@@ -1,3 +1,11 @@
+:root {
+    --bs-focus-ring-color: rgba(255, 87, 51, 0.25);
+    --bs-primary: #ff6600;
+    --bs-primary-rgb: 255,87,51;
+    --bs-primary-bg-subtle: #ffaa72;
+    --bs-primary-border-subtle: #ffaa72;
+}
+
 body {
     font: 'Inter', sans-serif;
     background-color: #F9FAFC;
@@ -15,7 +23,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #055da5;
+    color: #ff6600;
 }
 
 .logo {
@@ -98,8 +106,14 @@ footer a:hover {
     outline: 1px solid #ff6600
 }
 
+.btn-signup:focus,
+.btn-edit:focus {
+    box-shadow: 1px 0 0 .25rem rgba(255, 87, 51, .25);
+}
+
 .btn-signup:hover,
-.btn-signup:hover {
+.btn-signup:hover
+{
     color: #ff6600;
     background-color: #fcfcfc;
 }
@@ -116,8 +130,12 @@ footer a:hover {
 
 input, select {
     background-color: #fcfcfc;
-   border-radius: .45rem;
+    border-radius: .45rem;
     padding: .35em;
+}
+
+.nav-link:focus {
+    color: #ff6600 !important;
 }
 
 .link {
@@ -247,7 +265,6 @@ h1, h2, h3, h4 {
     .form-control {
         width: 50%;
     }
-
 
     .navbar-nav {
         gap: 30px;
