@@ -208,14 +208,22 @@ h1, h2, h3, h4 {
     .nav-lg {
         display: none;
     }
+   
     .nav-item-md {
         display: block;
     }
+
+    .nav-pills .nav-link.active {
+        color: #ff6600;
+        font-weight: bolder;
+        background-color: transparent;
+    }
 }
+
 
 /* Media query: tablets and larger (800px and up) */
 @media screen and (min-width: 800px) {
-    
+
     .nav-lg {
         display: block;
     }
@@ -228,7 +236,7 @@ h1, h2, h3, h4 {
     }
     
     .navbar-nav {
-        gap: 30px;
+        gap: 15px;
     }
 
 }
@@ -238,6 +246,11 @@ h1, h2, h3, h4 {
     
     .form-control {
         width: 50%;
+    }
+
+
+    .navbar-nav {
+        gap: 30px;
     }
 
 }

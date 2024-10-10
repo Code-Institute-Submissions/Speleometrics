@@ -74,15 +74,15 @@
                         <a class="nav-link dropdown-toggle {% if 'cave/' in request.path %}active{% endif %}" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" href="">Caves</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'cave_map' %}">Map Search</a></li>
-                                <li><a class="dropdown-item" href="{% url 'cave_table' %}"><i class="fa-solid fa-magnifying-glass"></i> Table Search</a></li>
+                                <li><a class="dropdown-item" href="{% url 'cave_table' %}">Table Search</a></li>
                             </ul>
                     <li class="nav-item-md">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}">Map Search</a>
+                        <a class="nav-link {% if 'cave/map/' in request.path %}active{% endif %}" aria-current="page"
+                            href="{% url 'cave_map' %}">Map Search</a>
                     </li>
                     <li class="nav-item-md">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                             href="{% url 'home' %}">Table Search</a>
+                        <a class="nav-link {% if 'cave/table/' in request.path %}active{% endif %}" aria-current="page"
+                             href="{% url 'cave_table' %}">Table Search</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == about_url %}active{% endif %}" aria-current="page"
