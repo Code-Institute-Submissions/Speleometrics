@@ -50,7 +50,7 @@ class Cave(models.Model):
     )
 
     lat_long_validator = RegexValidator(
-        regex=r'^(?![+-]00\.000000$)[+-]\d{2}\.\d{6}$',
+        regex=r'^[-]\d{2}\.\d{6}$',
     )
 
     latitude = models.FloatField(
