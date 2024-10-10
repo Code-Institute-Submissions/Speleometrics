@@ -50,22 +50,28 @@ class Cave(models.Model):
     )
 
     lat_long_validator = RegexValidator(
-        regex=r'^[-]\d{2}\.\d{6}$',
+        regex=r'^[-+]?\d{1,2}\.\d{1,6}$',
+        message="Please enter valid coordinates in Decimal Degrees format."
     )
 
-    latitude = models.FloatField(
+    latitude = models.DecimalField(
+        max_digits=9,
+        decimal_places=6,
         blank=False,
         validators=[lat_long_validator],
         help_text="""Please enter the latitude coordinate
          in the Decimal Degrees format (e.g., -20.102852)"""
     )
 
-    longitude = models.FloatField(
+    longitude = models.DecimalField(
+        max_digits=9,
+        decimal_places=6,
         blank=False,
         validators=[lat_long_validator],
         help_text="""Please enter the longitude coordinate
          in the Decimal Degrees format (e.g., -43.453612)"""
     )
+
 
     elevation = models.IntegerField(
         blank=False,
