@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'caves',
     'profiles',
     'reports',
+    'speleostatistics'
 ]
 
 SITE_ID = 1

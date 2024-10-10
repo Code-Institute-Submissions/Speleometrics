@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.http import HttpResponseForbidden
 from reports.models import Report
 from profiles.models import Profile
-from profiles.forms import ProfileForm
 from .models import Cave
 from .forms import CaveForm
 
@@ -52,7 +51,7 @@ def search_caves(request):
         'search_term': query,
         'current_sorting': f"{sortkey}_{direction}"}
 
-    return render(request, 'cave/index.html', context)
+    return render(request, 'cave/table.html', context)
 
 
 def cave_page(request, cave_name):
