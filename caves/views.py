@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponseForbidden
 from reports.models import Report
 from profiles.models import Profile
+# from profiles.forms import ProfileForm
 from .models import Cave
 from .forms import CaveForm
 
@@ -158,15 +159,24 @@ def delete_cave(request, username, cave_name):
 
     cave = get_object_or_404(Cave, cave_name=cave_name)
 
-    if request.user == cave.user or request.user.is_superuser:
+    if request.user == cave.user:
         cave.delete()
-        return redirect('profile_page', username=request.user.username)
+        context = {
+            'message': "Cave deleted successfully."
+        }
+        return render(request, 'profiles/user_caves.html', context)
+
+    elif request.user.is_superuser:
+        cave.delete()
+        context = {
+            'message': "Cave deleted successfully."
+        }
+        return render(request, 'cave/table.html', context)
+
     else:
-        return HttpResponseForbidden
-        (render(request, '403.html', {
-             'error_message':
-                "You do not have permission to delete this cave."
-                }))
+        return HttpResponseForbidden(render(request, '403.html', {
+            'error_message': "You do not have permission to delete this cave."
+        }))
 
 
 def map_view(request):
