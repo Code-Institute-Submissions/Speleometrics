@@ -68,14 +68,17 @@ class CaveForm(forms.ModelForm):
             "relevance_factor": "Relevance Factor (if not surveyed = maximum)",
             "geomorph_unit": "Geomorphological Unit",
             "description": "Brief Description",
-            "cave_maps":"Cave Maps",
-            "user":"User",
+            "cave_maps": "Cave Maps",
+            "user": "User",
         }
         help_texts = {
             "cave_name": """Enter a unique cave name (letters, numbers,
              spaces, hyphens, underscores allowed).""",
-            "latitude": "Enter latitude in Decimal Degrees format (e.g., -20.102852).",
-            "longitude": "Enter longitude in Decimal Degrees format (e.g., -43.453612).",
+            "latitude":
+                "Enter latitude in Decimal Degrees format (e.g., -20.102852).",
+            "longitude":
+                """Enter longitude in Decimal Degrees
+                format (e.g., -43.453612).""",
             "elevation": "Enter elevation (0-3000 m).",
             "length": "Enter length (5-3000 m).",
             "depth": "Enter depth (0.10-500 m).",
@@ -89,7 +92,7 @@ class CaveForm(forms.ModelForm):
             "cave_maps": "JPG or PNG are supported formats.",
         }
         error_messages = {
-            "cave_name": { 
+            "cave_name": {
                 'required': "Cave name is required.",
                 'unique': """A cave with this name already exists.
                  Please choose another name.""",

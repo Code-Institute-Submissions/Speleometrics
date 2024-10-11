@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.http import HttpResponseForbidden
 from reports.models import Report
 from profiles.models import Profile
-# from profiles.forms import ProfileForm
 from .models import Cave
 from .forms import CaveForm
 
@@ -94,12 +93,16 @@ def add_cave(request, username):
     profile = get_object_or_404(Profile, user=request.user)
 
     if not profile.email_for_contact:
-        return HttpResponseForbidden
-        (render
-            (request, '403.html', {
-                'error_message':
-                "Please add an email for contact to your profile to proceed."
-            }))
+        return HttpResponseForbidden(
+            render(
+                request,
+                '403.html',
+                {
+                    'error_message':
+                        "To proceed, add an email for contact to your profile."
+                }
+            )
+        )
 
     if request.method == 'POST':
         form = CaveForm(request.POST, request.FILES)
@@ -111,8 +114,10 @@ def add_cave(request, username):
             if cave.relevance_surveyed == 1:
                 cave.relevance_factor = 0
             cave.save()
-            messages.success(request,
-             'You have successfully added a new cave data!')
+            messages.success(
+                request,
+                "You have successfully added a new cave data!"
+            )
             return redirect('cave_page', cave_name=cave.cave_name)
     else:
         form = CaveForm()
@@ -137,17 +142,20 @@ def edit_cave(request, username, cave_name):
                 if cave.relevance_surveyed == 1:
                     cave.relevance_factor = 0
                 cave.save()
-                messages.success(request,
+                messages.success(
+                    request,
                     'You have successfully edited the cave data!')
                 return redirect('cave_page', cave_name=cave.cave_name)
         else:
             form = CaveForm(instance=cave)
     else:
-        return HttpResponseForbidden
-        (render(request, '403.html', {
-            'error_message':
-            "You do not have permission to edit this cave."
-        }))
+        return HttpResponseForbidden(
+            render(request, '403.html', {
+                'error_message':
+                "You do not have permission to edit this cave."
+            })
+        )
+
     return render(request, 'cave/add_cave.html', {'form': form, 'cave': cave})
 
 
@@ -192,9 +200,15 @@ def map_view(request):
 
 # Adds custom 403 page to HttpResponseForbidden response
 def custom_403_view(request, exception=None):
+    """
+    Renders custum 403 page
+    """
     return render(request, '403.html', status=403)
 
 
 # Adds custom 404 page
 def custom_404_view(request, exception):
+    """
+    Renders custum 404 page
+    """
     return render(request, '404.html', status=404)
