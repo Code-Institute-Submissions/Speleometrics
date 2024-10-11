@@ -6,20 +6,23 @@ from caves.models import Cave
 from caves.models import GEOMORPH_UNIT
 
 # Create your views here.
+
+
 def render_about(request):
     return render(request, 'speleostatistics/about.html')
 
 
 def calculate_qf_percentiles():
     """
-    Calculate cave metrics to QF caves (all caves). 
+    Calculate cave metrics to QF caves (all caves).
     Returns results as dictionary to be show in index page.
     """
     total_caves = Cave.objects.count()
 
     percentiles = {}
     for field in ['length', 'depth', 'area', 'volume']:
-        values = list(Cave.objects.values_list(field, flat=True).exclude(**{field: None}))
+        values = list(Cave.objects.values_list(
+            field, flat=True).exclude(**{field: None}))
 
         if values:
             percentiles[field] = {
@@ -44,7 +47,8 @@ def calculate_geomorph_percentiles():
 
     for geomorph_unit, unit_label in geomorph_units.items():
         caves_in_unit = list(Cave.objects.filter(
-            geomorph_unit=geomorph_unit).values_list('length', 'depth', 'area', 'volume'))
+            geomorph_unit=geomorph_unit).values_list(
+                'length', 'depth', 'area', 'volume'))
 
         cave_count = len(caves_in_unit)
 
@@ -63,8 +67,10 @@ def calculate_geomorph_percentiles():
 
             for field in ['length', 'depth', 'area', 'volume']:
                 if unit_values[field]:
-                    percentile_20 = round(np.percentile(unit_values[field], 20), 2)
-                    percentile_50 = round(np.percentile(unit_values[field], 50), 2)
+                    percentile_20 = round(
+                        np.percentile(unit_values[field], 20), 2)
+                    percentile_50 = round(
+                        np.percentile(unit_values[field], 50), 2)
 
                     result[geomorph_unit][field] = {
                         '20th_percentile': percentile_20,
@@ -119,4 +125,3 @@ def display_statistics(request):
     }
 
     return render(request, 'speleostatistics/index.html', context)
-
