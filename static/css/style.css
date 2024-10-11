@@ -5,6 +5,7 @@
     --bs-primary-rgb: 255,87,51;
     --bs-primary-bg-subtle: #ffaa72;
     --bs-primary-border-subtle: #ffaa72;
+    --bs-dropdown-link-active-bg: #ffaa72;
 }
 
 body {
@@ -99,6 +100,12 @@ input, select {
     color: #ffaa72;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #ffaa72;
+}
+
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.8rem;
     padding-left: 0.8rem;
@@ -135,6 +142,7 @@ input, select {
     border-radius: .45rem;
 }
 
+.nav-link:focus,
 .btn-image:hover,
 .btn-signup:hover,
 .btn-edit:hover {
@@ -163,10 +171,6 @@ input, select {
 .btn-danger:hover {
     color: #fcfcfc !important;
     border-radius: .45rem;
-}
-
-.nav-link:focus {
-    color: #ff6600 !important;
 }
 
 .link {
