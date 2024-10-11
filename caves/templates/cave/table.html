@@ -138,13 +138,13 @@
                     <ul class="pagination justify-content-center">   
 
                         {% if caves.has_previous %}
-                            <li><span class="step-links"><a class="btn btn-edit" href="?page={{ caves.previous_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">&laquo BACK</a></span></li>
+                            <li class="mr=1"><span class="step-links"><a class="btn btn-edit" href="?page={{ caves.previous_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">&laquo BACK</a></span></li>
                         {% endif %}
                         
                         {% if caves.has_next %}
-                            <li><span class="step-links"><a class="btn btn-edit" href="?page={{ caves.next_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">NEXT &raquo;</a></span></li>
+                            <li class="ml=1"><span class="step-links"><a class="btn btn-edit" href="?page={{ caves.next_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">NEXT &raquo;</a></span></li>
                         {% endif %}
-                        
+
                     </ul>
                 </nav>
             </div>
