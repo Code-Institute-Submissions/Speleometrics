@@ -11,25 +11,29 @@ from .forms import ProfileForm
 
 # Create your views here.
 
+
 @login_required
 def view_profile(request, username):
-    """ 
+    """
     Returns user profile, if contact email is empity return edit profile form.
     """
     profile_user = get_object_or_404(User, username=username)
     profile = get_object_or_404(Profile, user=profile_user)
 
     if request.user != profile_user:
-        return render(request, 'profiles/profile_page.html', {'profile': profile,
-        'profile_user': profile_user})
+        return render(request, 'profiles/profile_page.html', {
+         'profile': profile,
+         'profile_user': profile_user})
 
     if profile.email_for_contact:
-        return render(request, 'profiles/profile_page.html', {'profile': profile})
+        return render(request, 'profiles/profile_page.html', {
+            'profile': profile})
     return redirect(reverse('profile_edit', args=[profile_user.username]))
+
 
 @login_required
 def edit_profile(request, username):
-    """ 
+    """
     Edit Profile
     """
     profile_user = get_object_or_404(User, username=username)
@@ -52,7 +56,8 @@ def edit_profile(request, username):
 
 def user_search_caves(request, username):
     """
-    Returns caves belonging to a specific user according to sorting queries in a paginated view.
+    Returns caves belonging to a specific user according
+    to sorting queries in a paginated view.
     """
     # Get the user object based on the username from the URL
     user = get_object_or_404(User, username=username)
