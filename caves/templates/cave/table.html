@@ -136,15 +136,15 @@
                 {% if caves.has_other_pages %}
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">   
-                        <span class="step-links">
-                            {% if caves.has_previous %}
-                                <a class="btn btn-edit" href="?page={{ caves.previous_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">&laquo BACK</a>
-                            {% endif %}
+
+                        {% if caves.has_previous %}
+                            <li><span class="step-links"><a class="btn btn-edit" href="?page={{ caves.previous_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">&laquo BACK</a></span></li>
+                        {% endif %}
                         
-                            {% if caves.has_next %}
-                                <a class="btn btn-edit" href="?page={{ caves.next_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">NEXT &raquo;</a>
-                            {% endif %}
-                        </span>
+                        {% if caves.has_next %}
+                            <li><span class="step-links"><a class="btn btn-edit" href="?page={{ caves.next_page_number }}&q={{ search_term }}&sort={{ current_sorting }}">NEXT &raquo;</a></span></li>
+                        {% endif %}
+                        
                     </ul>
                 </nav>
             </div>
