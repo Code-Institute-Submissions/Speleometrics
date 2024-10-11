@@ -15,8 +15,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Speleometrics</title>
+    
+    <!-- Meta tags for search engines -->
+    <meta name="description"
+        content="Speleometrics | a QF Cave Database">
+    <meta name="keywords"
+        content="speleology, metrics, caves, Quadrilátero Ferrífero, Belo Horizonte, Brazil">
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -43,7 +49,7 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
+    crossorigin="">
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -58,7 +64,7 @@
     <header class="sticky-top navbar navbar-expand-lg shadow">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <div class="d-flex justify-content-start logo" alt="Logo Speleometrics"></div>
+                <div class="d-flex justify-content-start logo"></div>
             </a>
             <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
@@ -72,7 +78,7 @@
                             href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item dropdown nav-lg">
-                        <a class="nav-link dropdown-toggle {% if 'cave/' in request.path %}active{% endif %}" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" href="">Caves</a>
+                        <a class="nav-link dropdown-toggle {% if 'cave/' in request.path %}active{% endif %}" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Caves</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'cave_map' %}">Map Search</a></li>
                                 <li><a class="dropdown-item" href="{% url 'cave_table' %}">Table Search</a></li>
@@ -107,7 +113,7 @@
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav nav-pills mr-2 mb-lg-0">
-                    <hr class="mt-0 mb-1 d-block d-md-none">
+                    <li><hr class="mt-0 mb-1 d-block d-md-none"></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link orange text-center"
