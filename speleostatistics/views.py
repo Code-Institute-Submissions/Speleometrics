@@ -6,6 +6,9 @@ from caves.models import Cave
 from caves.models import GEOMORPH_UNIT
 
 # Create your views here.
+def render_about(request):
+    return render(request, 'speleostatistics/about.html')
+
 
 def calculate_qf_percentiles():
     """

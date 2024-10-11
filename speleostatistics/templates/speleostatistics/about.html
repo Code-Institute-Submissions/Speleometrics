@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="d-flex flex-column container-fluid m-auto">
+    <div class="row justify-content-center align-content-center">
+        <div class="col-12 col-md-8 mt-4">
+            <h5 class="orange mb-1 mt-3">What is Speleometrics?</h5>
+            <hr class="orange mt-0 mb-1">
+            <p class="grey justify">Speleometrics aims to create a centralized, transparent platform for gathering and
+                sharing
+                cave
+                metrics specific to the Quadrilátero Ferrífero region. This platform will serve various
+                stakeholders—speleologists, conservationists, environmental consultancy companies, public agencies,
+                academics, and cave enthusiasts—by providing accessible and accurate data on caves. The user-friendly
+                dashboard will offer insights into key cave attributes (such as length, depth, area, volume and others),
+                helping in decision-making for environmental licensing, conservation, and research.
+            </p>
+            <p class="grey justify mb-2">By allowing input, updates, and the display of cave data, Speleometrics aims to
+                support
+                informed
+                decisions on the preservation of speleological heritage in a region where mining and environmental
+                conservation are often in conflict. The platform will ensure that cave metrics are continually updated,
+                making them easily accessible and reliable for all stakeholders.
+            </p>
+        </div>
+        <div class="col-12 col-md-8 mb-2">
+            <h5 class="orange mb-1 mt-3">What is the importance of cave metrics in environmental licensing and conservation?
+            </h5>
+            <hr class="orange mt-0 mb-1">
+            <p class="grey justify">To answer this question, we first need to review the legislation related to this
+                topic. Cave
+                legislation in Brazil has evolved over the last thirty years, primarily driven by the conflict between
+                increasing economic pressure on natural resources and the growing concern for environmental preservation
+                and
+                conservation. In this context, there is a need to preserve and conserve speleological heritage in the
+                face
+                of impactful activities, such as those related to the mining sector.
+            </p>
+            <p class="grey justify">The 1988 Brazilian Constitution establishes that natural underground cavities in
+                Brazil are
+                assets of the Union. Depending on their characteristics, they can also be considered sites of
+                historical,
+                scenic, artistic, archaeological, paleontological, ecological, and scientific value. Another aspect of
+                the
+                legislation concerns the requirement for licensing projects and activities that may potentially or
+                effectively pollute or degrade caves and their area of influence.
+            </p>
+            <p class="grey justify">Thus, it was necessary to establish degrees of relevance for caves to reconcile
+                projects and
+                speleological heritage. Within the scope of environmental licensing, caves must be classified according
+                to
+                their degree of relevance as maximum, high, medium, or low. This classification is based on an analysis
+                of
+                ecological, biological, geological, hydrological, paleontological, scenic, historical-cultural, and
+                socioeconomic attributes, evaluated from both a regional and local perspective, according to criteria
+                and
+                methodologies established by specific legislation. It is noteworthy that metric factors are predominant
+                and
+                are evaluated on both local (Geomorphological Unit) and regional (Speleological Unit, in this case, the
+                Quadrilátero Ferrífero) scales.
+            </p>
+            <p class="grey justify">The final classification of a cave's relevance determines whether irreversible
+                negative
+                impacts
+                (suppression) on natural cavities are permissible. Caves classified as having maximum relevance cannot
+                be
+                subjected to irreversible negative impacts. For other relevance levels—high, medium, and
+                low—irreversible
+                negative impacts are allowed, provided specific compensation measures are adopted for high and medium
+                levels. For caves with low relevance, no compensation is required.
+            </p>
+            <p class="grey justify">
+                In light of this context, a comprehensive and unbiased data platform, like Speleometrics, is an
+                essential
+                tool for decision-making in the early stages of a project and for comparing the data adopted by
+                stakeholders
+                in studies.
+            </p>
+            <p class="grey justify">
+                The classification of caves, assigning relevance grades of maximum, high, medium, or low, is based on an
+                analysis of ecological, biological, geological, hydrological, paleontological, scenic,
+                historical-cultural,
+                and socioeconomic attributes, evaluated from a regional and local perspective, following criteria and
+                methodologies established by specific legislation. Metric factors are a significant aspect of this
+                evaluation, applied locally (Geomorphological Unit) and regionally (Speleological Unit, in this case,
+                the
+                Quadrilátero Ferrífero).
+            </p>
+        </div>
+        <div class="col-12 col-md-8 mb-2">
+            <h5 class="orange mb-1 mt-3">What is considered a cave?</h5>
+            <hr class="orange mt-0 mb-1">
+            <p class="grey justify">
+                According to Brazilian legislation, a natural underground cavity is defined as <em><i>"any underground
+                        spaces
+                        penetrable by humans, with or without an identifiable opening, [...] including its environment,
+                        its
+                        mineral and water content, the biotic communities found there, and the rock body in which it is
+                        embedded, provided that its formation was due to natural processes, regardless of its dimensions
+                        or the
+                        type of host rock."</i></em> It is important to note that caves are part of a karstic
+                system/landscape,
+                representing what is conventionally referred to as the endokarst.
+            </p>
+        </div>
+        <div class="col-12 col-md-8 mb-2">
+            <h5 class="orange mb-1 mt-3">What is the Quadrilátero Ferrífero?</h5>
+            <hr class="orange mt-0 mb-1">
+            <p class="grey justify">
+                The term Quadrilátero Ferrífero was introduced by Dorr (1969) and collaborators during mapping of the
+                region conducted by the U.S. Geological Survey (USGS) to describe the landscape of lush hills and
+                valleys south of the city of Belo Horizonte, in the state of Minas Gerais, covering about 15,000 km².
+                The term is credited to the abundance of high-grade iron ore bodies in the region and its roughly
+                quadrangular shape, with a loose translation being "Iron Quadrangle."
+            </p>
+        </div>
+        <div class="col-12 col-md-8 mb-2">
+            <div class="cont-img m-1">
+                <img src="{% static 'images/geomorphological-units.webp' %}" alt="Canga" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        <div class="col-12 col-md-8 mb-2">
+            <p class="grey justify">
+                The Quadrilátero Ferrífero is Brazil's main iron ore-producing province, and the iron formations exposed
+                there belong to a Paleoproterozoic platform sequence (~2.4 billion years old). In this region, the iron
+                formations are called itabirito, a banded iron formation named by the Indigenous people (Tupi-Guarani).
+                Additionally, ferruginous crusts known as canga, also named by the Indigenous people, occur in the area. It
+                is important to highlight that the same iron enrichment process—due to leaching over geological eras—results
+                in the relative concentration of iron, and also creates voids through a process known as piping, which
+                develop into caves. Consequently, there is a conflict between the region's main economic activity, iron
+                mining, and the conservation of speleological heritage.
+            </p>
+        </div>
+        <div class="col-12 col-md-8 mb-2">
+            <div class="row d-flex flex-row justify-content-center align-content-center">
+                <div class="col-12 col-md-6 mb-2">
+                    <img src="{% static 'images/canga.webp' %}" alt="Canga" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="col-12 col-md-6 mb-2">
+                    <img src="{% static 'images/itabirito.webp' %}" alt="Canga" style="width: 100%; height: 100%; object-fit: cover;"> 
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-8">
+            <h5 class="orange mb-1 mt-3 mt-3">Why should I contribute?</h5>
+            <hr class="orange mt-0 mb-3">
+            <p class="grey justify">
+                The continuous provision of data to the site ensures that speleological metrics are constantly updated,
+                reflecting a more accurate overall picture of the Quadrilátero Ferrífero, which in turn contributes to
+                clearer criteria for cave relevance and the proper management of speleological heritage.
+            </p>
+        </div>
+        <div class="col-12 col-md-8">
+            <h5 class="orange mb-1 mt-3 mt-3">Further reading material</h5>
+            <hr class="orange mt-0 mb-3">
+            <div class="grey justify">
+                <ol>
+                    <li>
+                        <a href="https://www.gov.br/icmbio/pt-br/assuntos/centros-de-pesquisa/cavernas" target="_blank" rel="noopener noreferrer">CECAV's website (Brazilian Institute of Conservancy of Speleological Heritage)</a>
+                    </li>
+                    <li>
+                        <a href="http://www.meioambiente.mg.gov.br/images/stories/2018/PADRONIZA%C3%87%C3%83O_PROCEDIMENTOS/IS_08-2017_-_Cavidades_-_Revis%C3%A3o_1_-_05-10-2018.pdf" target="_blank" rel="noopener noreferrer">IN nº 8 – Procedures Regarding Environmental Licensing and Speleological Heritage</a>
+                    </li>
+                    <li>
+                        <a href="https://www.cavernas.org.br/" target="_blank" rel="noopener noreferrer">Sociedade Brasileira de Espeleologia - SBE (Brazilian Speleological Society)</a>
+                    </li>
+                    <li>
+                        <a href="https://www.cavernas.org.br/wp-content/uploads/2020/09/perferruginosas.pdf" target="_blank" rel="noopener noreferrer">Ferriferous Caves and Speleological Heritage – SBE</a>
+                    </li>
+                    <li>
+                        <a href="https://www.cavernas.org.br/wp-content/uploads/2021/02/memorial_completo_2024_Trajano_Berbertborn_Lobo.pdf" target="_blank" rel="noopener noreferrer">The Importance of Brazilian Speleological Heritage - SBE</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
