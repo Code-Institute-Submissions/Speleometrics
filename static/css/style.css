@@ -8,7 +8,7 @@
 }
 
 body {
-    font: 'Inter', sans-serif !important;
+    font-family: Inter, sans-serif !important;
     font-size: 1em;
     background-color: #F9FAFC;
 }
@@ -276,10 +276,6 @@ input, select {
     display: flex; 
     align-items: center;
     justify-content: center;
-}
-
-.cont-img img {
-    object-fit: contain;
 }
 
 .justify {
