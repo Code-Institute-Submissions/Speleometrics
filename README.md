@@ -1,4 +1,4 @@
-# Speleometrics | a Cave Collaborative Database
+# Speleometrics | a Collaborative Cave Database
 
 ![Speleometrics](documentation/speleometrics.png)
 
