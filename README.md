@@ -4,6 +4,7 @@
 
 [Visit my website here](https://speleometrics-586df55c9a57.herokuapp.com/)
 
+<<<<<<< HEAD
 Return back to the [README.md](README.md) file.
 
 ## Readme - Table of Contents
@@ -95,6 +96,101 @@ To begin this project from scratch, you must first create a new GitHub repositor
 
 ### **6.3. Django Project Setup**
 
+=======
+## Readme - Table of Contents
+
+
+## **1. Introduction**
+
+## **2. UX Design**
+
+## **3. Features**
+
+## **4. Technologies Used**
+
+### **4.1. Languages Used**
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+
+- [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+
+- [Python](https://www.python.org/about/)
+
+- [JavaScript](https://www.javascript.com/)
+
+[Back to top](https://github.com/hpesciotti/HydroMorpho/blob/main/README.md)
+
+### **4.2 - Frameworks, Libraries, Technologies & Programs Used**  
+
+- [Gitpod](https://www.gitpod.io): used form coding
+
+- [GitHub](https://github.com/): to save and store all files for this web application 
+
+- [Git](https://git-scm.com/): used for version control
+
+- [Django](https://www.djangoproject.com/): for building the web application
+
+- [Regex](https://www.w3schools.com/python/python_regex.asp): for checking for pattern in strings.
+
+- [Google Fonts](https://fonts.google.com/): font was imported from here 
+
+- [Font Awesome](https://fontawesome.com/): icons and their associated kit were downloaded from here  
+
+- [Leaflet](https://leafletjs.com/examples.html): an open-source JavaScript library for mobile-friendly interactive maps, especially the tutorials section on how to how to add a marker and set custom style for the marker.
+
+- [Numpy](https://numpy.org/): for running the statistics
+
+- [Cloudinary](https://cloudinary.com/): for storing images (cave-maps and profile pictures)
+
+- [Microsoft Power Point](https://www.lucidchart.com/pages/?): used to create data chart and logo
+
+- [ChatGPT](https://chat.openai.com/): for improving and making text content more engaging.
+
+- [ArcGIS](https://www.arcgis.com/index.html): to build the QF geomorphological units map.
+
+- [Grammarly](https://app.grammarly.com): for spelling or grammatical inaccuracies in the text
+
+- [Google Chrome Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk): for auditing the performance of the web application
+
+- [Code Institute Linter](https://pep8ci.herokuapp.com/#): for validating Python code according PEP 8
+
+- [MS Paint](https://www.microsoft.com/en-us/windows/paint): for editing the captured screenshots
+
+- [Heroku](https://dashboard.heroku.com/): for deploying the terminal application.
+
+[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+## **5. Testing**
+
+- An additional file for Testing can be found here: [Testing](https://github.com/hpesciotti/Speleometrics/blob/main/TESTING.md)
+
+## **6. Deployment**
+
+The website was developed using Gitpod code editor, committed to Git as a local repository, and then pushed to GitHub for storage.
+
+## **6.1 Code Institute PostgreSQL Database *
+
+- Navigate to [Code Institute PostgreSQL Database](https://dbs.ci-dbs.net/)
+- Enter your student email address in the input field provided.
+- Wait for database to be created and review the email sent to your student email inbox.
+
+[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+### **6.2. Connecting to GitHub**
+
+To begin this project from scratch, you must first create a new GitHub repository using the [Code Institute's Template](https://github.com/Code-Institute-Org/ci-full-template). This template provides the relevant tools to get you started. To use this template:
+
+1. Log in to [GitHub](https://github.com/) or create a new account.
+2. Navigate to the above CI Full Template.
+3. Click '**Use this template**' -> '**Create a new repository**'.
+4. Choose a new repository name and click '**Create repository from template**'.
+5. In Gitpod locate your repository and create a new workspace.
+
+[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+### **6.3. Django Project Setup**
+
+>>>>>>> 1b2e073aa0aacac7c691577ce9392fa45b96adfc
 - Install Django and all supporting libraries for Speleometrics: 
 
 ```
@@ -297,7 +393,11 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 [Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
+<<<<<<< HEAD
 ### **7.4. Acknowlegements**
+=======
+### **7.3. Acknowlegements**
+>>>>>>> 1b2e073aa0aacac7c691577ce9392fa45b96adfc
 
 - My informal mentor and great friend, [Bruno Dias](https://github.com/brunoald/), for helping me to structure the project.
 
@@ -305,4 +405,8 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 - My partner, Joana, for all the emotional support.
 
+<<<<<<< HEAD
 [Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+=======
+[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+>>>>>>> 1b2e073aa0aacac7c691577ce9392fa45b96adfc
