@@ -200,15 +200,10 @@ def save_user_profile(sender, instance, **kwargs):
 
 ##### **Bug 03**
 
-Bug: The structure of get_data(variable_input) was set to append values to the basin dictionary after the input.
-Because of the append action would add a value to the existent value of the parameter key, creating a list.
-Thus, the validation check functions wouldn't evaluate a True after a False due to the incorrect values in the list.
-In addition, adding values and creating a list would render the basin dictionary useless as a primary agroupment of temporary data.
+Description: A layout related bug. For unknown reasons, at that time, I could not apply paddings to profile form labels. 
 
 <details>
 <summary>Bug 03</summary>
-
-Description: A layout related bug. For unknown reasons, at that time, I could not apply paddings to profile form labels. 
 
 ![Bug 03](docs/documentation/bug_03.png)
 
