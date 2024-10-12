@@ -4,12 +4,14 @@
 
 [Visit my website here](https://speleometrics-586df55c9a57.herokuapp.com/)
 
-Return back to the [README.md](README.md) file.
-
 ## Readme - Table of Contents
 
 
-[Back to top](https://github.com/hpesciotti/HydroMorpho/blob/main/README.md)
+## **1. Introduction**
+
+## **2. UX Design**
+
+## **3. Features**
 
 ## **4. Technologies Used**
 
