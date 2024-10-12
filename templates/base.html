@@ -97,7 +97,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if 'profile' in request.path %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if 'profile' in request.path and 'add-cave' not in request path %}active{% endif %}" aria-current="page"
                             href="{% url 'profile_page' username=request.user.username %}">User Area</a>
                     </li>
                     {% else %}
