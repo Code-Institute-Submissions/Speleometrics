@@ -27,7 +27,6 @@ Return back to the [README.md](README.md) file.
       6.3.6. [Bug 07](#bug-07)
    6.4. [Unsolved Bugs](#64-unsolved-bugs)
 
-
 ### **6.1. Validation**
 
 #### **Html Validation**
