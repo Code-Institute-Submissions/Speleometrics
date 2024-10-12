@@ -1,30 +1,31 @@
 # Speleometrics | a Cave Collaborative Database
 
-![Speleometrics](docs/documentation/speleometrics.png)
+![Speleometrics](documentation/speleometrics.png)
 
-[Visit my Python command line interface (CLI) application here](https://speleometrics-586df55c9a57.herokuapp.com/)
+[Visit my website here](https://speleometrics-586df55c9a57.herokuapp.com/)
 
 Return back to the [README.md](README.md) file.
 
 ## Testing - Table of Contents  
   
-- [Testing](#TESTING.md)
-  - [Testing Contents](#testing---table-of-contents)
-  - [Validation](#61-validation)
-    - [HTML Validation](#html-validation)
-    - [JavaScript Validation](#javascript-validation)
-    - [Python Validation](#python-validation)
-    - [CSS Validation](#css-validation)
-    - [Lighthouse Scores](#lighthouse-scores)
-    - [Wave Accessibility Evaluation](#wave-accessibility-evaluation)
-  - [Manual Testing](#manual-testing)
-    - [User Input/Form Validation](#user-inputform-validation)
-    - [Browser Compatibility](#browser-compatibility)
-    - [Testing User Stories](#testing-user-stories)
-    - [Dev Tools/Real World Device Testing](#dev-toolsreal-world-device-testing)
-  - [Bugs](#bugs)
-    - [Known Bugs](#known-bugs)
-
+6. [Testing](#testing)
+   6.1. [Validation](#61-validation)
+      6.1.1. [Html Validation](#html-validation)
+      6.1.2. [Performance Lighthouse](#performance-lighthouse)
+         6.1.2.1. [Lighthouse Validator Desktop Pages](#lighthouse-validator-desktop-pages)
+         6.1.2.2. [Lighthouse Validator Mobile Pages](#lighthouse-validator-mobile-pages)
+      6.1.3. [Python PEP 8 Validation](#python-pep-8-validation)
+         6.1.3.1. [Python PEP 8 Validator](#python-pep-8-validator)
+      6.1.4. [CSS Validation](#css-validation)
+   6.2. [Manual Testing](#62-manual-testing)
+   6.3. [Bugs & Fixes](#63-bugs--fixes)
+      6.3.1. [Bug 01](#bug-01)
+      6.3.2. [Bug 02](#bug-02)
+      6.3.3. [Bug 03](#bug-03)
+      6.3.4. [Bug 04](#bug-04)
+      6.3.5. [Bug 06](#bug-06)
+      6.3.6. [Bug 07](#bug-07)
+   6.4. [Unsolved Bugs](#64-unsolved-bugs)
 
 
 ### **6.1. Validation**
@@ -93,6 +94,7 @@ In general, Lighthouse evaluated a good performance on all the website pages. Th
 | Report Dashboard   | 100    | <details><summary>Show Screenshot</summary> ![Report Dashboard](documentation/testing/lighthouse/lighthouse_report_desktop.png) </details> |
 | Report Description | 95    | <details><summary>Show Screenshot</summary> ![Report Description](documentation/testing/lighthouse/lighthouse_report_page_desktop.png) </details> |
 
+
 ##### Lighthouse Validator Mobile Pages
 | Page               | Score | Screenshot                                                                                                                |
 |--------------------|-------|----------------------------------------------------------------------------------------------------------------------------|
@@ -110,7 +112,7 @@ In general, Lighthouse evaluated a good performance on all the website pages. Th
 
 
 #### **Python PEP 8 Validation**
-[Code Institute Python PEP 8 Linter](https://pep8ci.herokuapp.com/#) was used, no major error was detected, aside from indentation and whitespaces. After some refactoring the Python Linter didn't encoutered any erros. 
+[Code Institute Python PEP 8 Linter](https://pep8ci.herokuapp.com/#) was used, no major error was detected, aside from indentation and whitespaces. After some refactoring the Python Linter didn't encoutered any errors. 
 
 ##### Python PEP 8 Validator
 
@@ -131,7 +133,7 @@ In general, Lighthouse evaluated a good performance on all the website pages. Th
 ![CSS Validation](documentation/testing/w3c_css_validation_speleometrics.png)
 </details>
 
-### **6.4. Manual Testing**
+### **6.2. Manual Testing**
 
 
 | Feature                                          | Tested? | User Input Required                               | User Feedback Provided                                                                                                                                               | Pass/Fail | Fix |
@@ -251,28 +253,64 @@ Solution: Through some code investigation, I concluded that the bug happened in 
 
 ##### **Bug 06**
 
-Bug: When deploying the app to heroku it returned with the critical error: 
-Traceback (most recent call last):   File "/app/run.py", line 10, in <module> from terminaltables import AsciiTable, DoubleTable, SingleTable ModuleNotFoundError: No module named 'terminaltables'.
+Description: When editing a registered cave it would ask for the user to provide a user, which is an occult field, because this field should not be altered or even filled during cave add; the filling of the field is automatic. I tried to set the user field to not required, and the cave record would return without a user/author. This was unexpected because the edit_caver function would save the user during the editing process (cave.user = user.username), but this did not prevent the empty user outcome. The following screenshot was taken during the debugging section, and the user field was made visible. 
 
 <details>
-<summary>Bug 05</summary>
+<summary>Bug 06</summary>
 
 ![Bug 06](documentation/testing/bugs/bug_6.png)
 
 </details>
 
-
-Solution: I indetify the issues was connected to terminaltables and searched online using the terminal message.
-I got a answer in https://github.com/LionSec/xerosploit/issues/102, and re-instal terminaltables and a couple other extensions, changing the python version to current.
-I pushed my code and re-deployed the app in heroku and those measures solved my bug. 
+Solution: I refactored the edit_cave function to maintain the user as not required, capture the cave user from the cave model, and pass it through a variable user, which was attributed to the cave.user after the validation of the form. This adjustment corrected the issue.
 
 ##### **Bug 07**
 
-Bug: To validate the basin index (Google Sheets index column of the data entered by the user) that connects steps 1 - Data Entry and 2 - Calculate Morphometric Indices, I chose to validate that input is an integer. However, high numbers (> 983) return the error "gspread.exceptions.APIError: APIError: [400]: Range (v_data!A999) exceeds grid limits. Max rows: 983, max columns: 26" and the regex check on column 1 basin_name returned the error TypeError: expected string or bytes-like object, got 'NoneType'
+Description: The notification modal was displaying empty when refresh or redirect requests were made.
 
-Solution: Thus, I created an if instance that only made valid values less than the Google Sheets limit of 983 rows. In addition, the entry 'NoneType' in the empty cell in column 1 was passed by the string method, which made it possible to check the data via regex.
+<details>
+<summary>Bug 07</summary>
+
+![Bug 07](documentation/testing/bugs/bug_7.png)
+
+</details>
+
+Solution: I detected this bug during testing, and corrected it by inserting a none to the style attribute of the modal. I implemented this by an If statement, if there was no messages mode display is none.
+
 
 
 ### **6.4. Unsolved Bugs** 
 
-Maybe it's not a bug, but depending on the size of the strings fetched in the print_morpho_text() function, they can break the justified look of the text. I've tried adjusting the spacing a few times, but the limitations of indentation and 79 characters have made this a difficult task. Apart from that, no other bug was detected during my testing. 
+Through my testing, I have not detected critical bugs, but there are three minor issues left unsolved.
+They are not bugs per se because they would not hinder the usage of the website.
+Two of them are more layout inconsistencies, and the last one is an error message trailing div from the w3c validator.
+
+Unresolved Bug 01 - layout inconsistency on the button to upload button of the cav_map. My system is in pot-br, so the default is displayed in Portuguese, but this will change according to the system's main language. The problem is that the box doesn't follow the theme design of the website. To fix this inconsistency, I would have to customise all the add_cave forms, but all my validation done in the model would have to be inserted again, demanding more time, which I was short. So, I opted not to solve this issue.
+
+<details>
+<summary>Bug 01</summary>
+
+![Bug 01](documentation/testing/bugs/unresolved_bug_1.png)
+
+</details>
+
+The second layout inconsistency has to do with the whitespaces displayed in front of the bio text during the editing of a profile.
+I looked at it, but I could not find a quick fix. To reach MVP and implement other features, I judged this would not be fixed at this time.
+
+
+<details>
+<summary>Bug 02</summary>
+
+![Bug 02](documentation/testing/bugs/unresolved_bug_1.png)
+
+</details>
+
+
+The validator w3c html validator pointed out that there was a stray div tag on the page.
+I double-checked my code, and there was no indentation problem; there was no layout change as I intended and no loss to the navigability. I suppose this issue concerns the Django's rendering of the page.
+
+<details>
+<summary>Bug 03</summary>
+
+![Cave Page](documentation/testing/w3_html/cave_page.png)
+</details>
