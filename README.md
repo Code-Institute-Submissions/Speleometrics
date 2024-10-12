@@ -297,7 +297,7 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 [Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
-### **7.4. Acknowlegements**
+### **7.3. Acknowlegements**
 
 - My informal mentor and great friend, [Bruno Dias](https://github.com/brunoald/), for helping me to structure the project.
 
