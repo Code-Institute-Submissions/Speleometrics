@@ -53,13 +53,15 @@ This platform has statistical, database search, and webGIS features that are eng
 
 The first issue in designing the website, after deciding on the problem statement, in my creative process is the name of the web application. The site’s name comes from a linguistic accident in my poor or literal translation of what I know in Portuguese as 'espeleometria,' a widely used term, into English, resulting in 'speleometric,' which is actually more commonly known in English as 'cave metrics.' I added an 's' at the end because I thought the name sounded better. During the deployment process on Heroku, I was happy to discover that my fortunate accident is an unregistered name on the platform.
 
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 ## **2. UX Design**
 
 ### **2.1. Strategy/Scope and Structural Plane**
 
 My choice for this project is guided, above all, by access to information. In recent years, I have worked on speleological studies in which the metrics of caves can, by a small statistical margin, preserve them or allow them to be suppressed. In a scenario in which economic interest conflicts with the preservation of speleological heritage, given that the genetic process of caves is the same as the concentration of high iron content, forming iron ore deposits, every decision must be grounded (pun intended) by the most complete and high-quality cave data.
 
-In recent years, environmental agencies have tried to generate and maintain a reliable database of cavities in the state of Minas Gerais. However, this database only contains spatial data on the caves and does not provide metric data. 
+In recent years, environmental agencies have tried to generate and maintain a reliable database of caves in the state of Minas Gerais. However, this database only contains spatial data on the caves and does not provide metric data. 
 
 In addition, different environmental studies list different and non-centralized data. This may be due to developers' (mining companies) unwillingness to share information, given the possibility of changes in cutting metrics and losing more deposits. Finally, one could point to a market reserve of specialized consulting companies, which creates a market reserve in possession of a comprehensive database. 
 
@@ -71,6 +73,8 @@ In sum the website aims for:
 - Allowing input, update, display, and storage of cave metrics data.
 - The data should be accessible by all listed stakeholders.
 - To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 ### **2.2. User Stories**
 
@@ -163,6 +167,7 @@ Acceptance Criteria:
 - Admins can disable, delete, or temporarily suspend user accounts based on misuse.
 - The admin can restore disabled accounts and track account management history.
 
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 ### **2.3. Skeleton & Surface Planes**
 
@@ -259,6 +264,8 @@ Although the design is simple, comparing the final result with the wireframes sh
 
 </details>
 
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 #### Datbase Schema
 
 The cave registration system was structured using a relational database schema which the models are: User, Profile, Cave, and Report. The models are connected by relationships defined through foreign key associations. User is structured by Django AllAuth, a set of applications that automate tasks related to addressing authentication, registration, and account management.
@@ -270,6 +277,8 @@ The Profile model, in turn, is associated with the User model through a one-to-o
 Finally, The Report model captures the relationship between users and cave entries in terms of data inconsistencies. A report gathers info about the reporting user, the cave being reported, the cave owner, and the inconsistency. This is managed through foreign keys that ensure each report correctly maps out the cave and the users involved. 
 
 ![Speleometrics - Data Schema](documentation/speleometrics_data_model.png)
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 ### **2.4. Design** 
 
@@ -291,8 +300,9 @@ As for the logo, it went through several versions and colours. After testing a f
 
 </details>
 
-#### Colour Scheme
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
+#### Colour Scheme
 
 I chose a palette that would ornate with orange, white, and grey for the colour scheme that inspired the site's design. Since much of the content will be presented through text and tables, to maintain a clean appearance, I decided to choose a dark tone for the text. To that end, I checked the accessibility of a dark blue shade and a white tone. I opted out of shades of grey or black for this purpose, as I found the dark blue tone more elegant.
 
@@ -305,6 +315,8 @@ I chose a palette that would ornate with orange, white, and grey for the colour 
 ![Colour Text](documentation/color_text_contrast.png)
 
 </details>
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 #### Font
 
@@ -324,6 +336,8 @@ Here is a draft of my initial planning divided um four sprints, tackling the var
 | 2      | 22/09/2024  | 28/09/2024  | Defining the models, Profiles and Caves    |
 | 3      | 29/09/2024  | 05/10/2024  | Statistics, Reports, Maps and Frontend Development |
 | 4      | 06/10/2024  | 13/10/2024  | Styling/Testing/Documentation               |
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 ### **3. Features**
 
@@ -351,6 +365,8 @@ The following charts show the accessibility of the features per user type.
 | - Report List             | Not Visible    | Not Visible  | Visible   |
 | - Report Page             | Not Visible    | Not Visible  | Visible   |
 
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 #### **3.2. CRUD Functionality**
 
 The Create, Read, Update, Delete (CRUD) functionalities are planned for Speleometrics. Through the Database Model, it is clear that full CRUD functionality is available for the Cave database, meaning that any user who has registered a cave and a superuser has access to Create, Read, Update, and Delete operations. Regarding user profiles, the only operation currently unavailable is the ability to delete them. Since cave records are crucial to the web application's purpose, deleting profiles could result in data loss (cascade effect). Therefore, the option to delete a profile was not initially planned. Additionally, as transparency is a guiding principle of the project, most functionalities are available in Read mode, even for users who are not logged in. The following chart displays the CRUD functions per page per user.
@@ -372,6 +388,7 @@ The Create, Read, Update, Delete (CRUD) functionalities are planned for Speleome
 | - Report List             | -             | -                     | R, D               |
 | - Report Page             | -             | -                     | R, D               |
 
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 ### **4.1. Features Showcase**
 
@@ -409,6 +426,8 @@ The mobile version includes the logo and stack bars for the drop-down menu. This
 
 </details>
 
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 #### Footer
 
 I decided not to insert relevant website information in the footer.
@@ -417,11 +436,196 @@ The footer is very minimalistic, almost imperceptible, as intended.
 
 ![Footer](documentation/showcase/footer.png)
 
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 #### Home / Index page
 
+The home/index page is comprised of three distinct elements: the hero image, the call-to-action banner linked to a sign-in button (which switches to user area if the user is logged in), and the Cave Metrics section.
 
-![Colour Text](documentation/nav_bar_privliges.png)
+The hero image is represented by a panoramic photograph of the Serra do Curral, one of the geomorphological units included in the registry. This range features the Quadrilátero Ferrífero's quartzite and ironstone-supported ridges, with most of the region's cavities attributed to the latter. The hero image serves to create visual appeal. In the mobile version, this image is responsive and centers on one of the mountain peaks.
+
+The call-to-action banner aims to inform users about the purpose of the site and intuitively encourage them to register via the button. The text succinctly explains the website's main goals.
+
+![Hero Image and Banner](documentation/showcase/hero_image.png)
+
+![Hero Image and Banner](documentation/showcase/hero_image_mobile.png)
+
+Finally, the Cave Metrics section provides statistical data on cavity records, both for the entire Quadrilátero Ferrífero region and the geomorphological units it comprises. This section serves as a valuable reference point for a preliminary assessment of significance. Magnitude ratios are essential for project planning that may affect the speleological heritage. Additionally, these metrics can be integrated into environmental studies without the time-consuming process of consolidating and calculating data, as they are easily accessible through the web application. In the backend, those statistics are run every time there's a request to update the page. I opted not to create a database for this function because this information is dynamic, and there was no need for early optimization as the page's loading time was fast.
+
+![Cave Metrics](documentation/showcase/qf_statistics.png)
+
+The section also includes the total number of caves and those recorded in each geomorphological unit. To ensure greater readability and minimize confusion among the tables, the units are embedded within an accordion. In the mobile version, tables have the overflow-x: scroll attribute for screens smaller than 300px, facilitating the reading of presented values.
+
+![Cave Metrics](documentation/showcase/accordion_geomorphological_units.png)
+
+![Cave Metrics](documentation/showcase/qf_accordion_geomorphological_units_mobile.png)
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+#### Cave Map Search
+
+The page offers a GIS interface through the Leaflet tool, where users can view the location of caves marked with a custom icon. Clicking on the icon triggers a pop-up displaying general information about the cave, with the cave and user names hyperlinked to their respective individual pages. The page also features a composite altimetry basemap with varying scales, using data from SRTM and even IBGE.
+
+Cave locations are displayed by a function that iterates through all records and returns the geographical coordinates of each cave for the map. In the credits section, links are provided to resources that guided the integration of Django elements into JavaScript functions.
+
+Additional filters can be implemented on this page to optimize the loading speed, but to reach the MVP, such functionalities have been postponed as future features. Nevertheless, the main acceptance criteria for this feature were achieved. To fulfil the requirements of User Story [#6](https://github.com/hpesciotti/Speleometrics/issues/6), a new tool needed to be used, probably ArcGIS web, which would take a long time to implement. I guess the original scope was too convoluted. 
+
+![Map Search Mobile](documentation/showcase/map_search_desktop.png)
+
+![Map Search Mobile](documentation/showcase/map_search_mobile.png)
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+#### Table Search
+
+The Cave Search allows users to search by exact term, name, or author, or to list caves in ascending and descending order based on metric parameters. This functionality was challenging to implement, and I based it on the work of Joy Zadan (PP5). 
+
+This page offers two distinct versions for cave listing. The search results are displayed in a table on larger screens, while on smaller resolutions, the caves are presented as cards. This approach ensures that search results are easily interpretable on mobile devices. 
+
+As shown on the map page, users can access the specific cave and user pages via hyperlinks. Clicking the links opens the desired page in a new browser tab, allowing users to continue their search seamlessly. Lastly, this page offers options to edit and delete data if accessed by a superuser.
+
+![Cave Search Desktop](documentation/showcase/table_search_user_desktop.png)
+
+<details>
+<summary>Cave Search Desktop Privileges - Mobile</summary>
+
+![Cave Search Desktop Privileges - Mobile](documentation/showcase/table_search_admin.png)
+
+</details>
+
+![Cave Search Mobile](documentation/showcase/table_search_mobile.png)
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+#### About
+
+The About page is the most straightforward page on the site, consisting solely of text and static images. 
+Its purpose is to provide general information about the studied area, caves, and environmental licensing, especially regarding the relevance and speleological metrics. At the bottom of the page are external links with the `noopener` attribute to official sources on the topic.
+
+![About Desktop](documentation/showcase/about_desktop.png)
+
+![About Mobile](documentation/showcase/about_mobile.png)
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+#### Profile
+
+The Profile page includes several checks to ensure the user has filled in their contact email. The contact email is essential for user interaction when requesting information, as described in user stories #10 and #11. On first access, the user is redirected to the profile edit page. After filling it in, users can access the pages to add caves, check their registered caves, or edit their user profile.
+
+![Profile Page - Image](documentation/showcase/profile_page_custom_image.png)
+
+<details>
+<summary>Profile Page - No Image</summary>
+
+![Profile Page - No Image](documentation/showcase/profile_page_no_picture.png)
+
+</details>
+
+<details>
+<summary>Profile Page - Not logged in</summary>
+
+![Profile Page - Not logged in](documentation/showcase/cave_page_not_logged_in.png)
+
+</details>
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+#### My Caves
+
+Through the profile, users can access "My Caves," which returns their registered caves. The interface is similar to the table search, offering users the option to open individual cave pages, edit the caves, and delete the records. In mobile mode, the table view switches to cards for better presentation.
+
+
+![Profile Page - Not populated](documentation/showcase/profile_page_my_caves_populated.png)
+
+<details>
+<summary>Profile Page - Not populated</summary>
+
+![Profile Page - Not populated](documentation/showcase/profile_page_my_caves.png)
+
+</details>
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+#### Add Cave / Cave Edit
+
+The "Add Cave" feature is authorized for users whose profiles have a contact email. The function that renders this page checks if the user is logged in (`@login_required`) and if they are the owner of the cave (`profile_user = get_object_or_404(User, username=username)` and `profile = get_object_or_404(Profile, user=profile_user)`). 
+
+The form responsible for adding a cave includes required fields such as `cave_name`, `latitude`, `longitude`, `elevation`, `length`, `depth`, `area`, and `volume`, all of which undergo validation, including Regex checks, to ensure consistent data. If the user fills out a field incorrectly, the form returns a custom alert message indicating where the error occurred. It's worth mentioning that despite the option to upload a cave map, no maps have been added to the current cave records (although one appears in the screenshots). This is because materials such as cave sketches and photos are often provided to mining companies under non-disclosure agreements, which unfortunately prevents me from attaching such data at this time. Lastly, the same form used in `cave_add` is also utilized for editing cave data (`cave_edit`), but the function that renders it retrieves the cave data and populates each field accordingly.
+
+Through the profile, users can access "My Caves," which returns their registered caves. The interface is similar to the table search, offering users the option to open individual cave pages, edit the caves, and delete the records. In mobile mode, the table view switches to cards for better presentation.
+
+
+![Register Cave](documentation/showcase/register_cave.png)
+
+<details>
+<summary>Register Cave - No Filled</summary>
+
+![Register Cave - No Filled](documentation/showcase/register_cave_wont_proceed.png)
+
+</details>
+
+<details>
+<summary>Register Cave - Error</summary>
+
+![Register Cave - Error](documentation/showcase/register_cave_error_notifications.png)
+
+</details>
+
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+
+#### Cave Page
+
+The cave page consists of a simple layout where the data is presented individually in a textual format. On this page, the owner of the cave has the option to delete it. Conversely, any user can submit a report for inconsistencies. This report is submitted through a modal equipped with a text box where the reporting user only needs to fill in the specific inconsistency found in the data. The other data points, such as `cave`, `reported_by`, `cave_owner`, and `reported_created_date`, are automatically collected.
+
+![Cave Page](documentation/showcase/cave_page_not_logged_in.png)
+
+<details>
+<summary>Cave Page - Notification</summary>
+
+![Cave Page - Notification](documentation/showcase/cave_page_notitification.png)
+
+</details>
+
+<details>
+<summary>Cave Page - Delete Modal</summary>
+
+![Cave Page - Delete Modal](documentation/showcase/delete_cave_modal.png)
+
+</details>
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+#### Report
+
+The report page is restricted to superusers. Its purpose is to list records with inconsistent data. This page includes filtering options to allow site administrators to organize review requests and provide the necessary follow-up. Each item can be viewed separately using the "Detail" button. 
+
+At the end of the review process, the admin can delete the review request. At this stage of the website, there is no automated way for the user to track if their report request has been addressed, except through email communication from the administrator.
+
+
+![Report](documentation/showcase/report.png)
+
+
+![Report Page](documentation/showcase/report_page.png)
+
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
+
+#### Sign In Page
+
+The sign In page is supported by Django AllAuth model. 
+I added some personalisation to return erro messages.
+
+![SignIn Validation 1](documentation/showcase/sign_in_validation.png)
+
+
+![SignIn Validation 2](documentation/showcase/sign_in_validation_2.png)
+
+
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 
 ## **4. Technologies Used**
 
@@ -435,7 +639,7 @@ The footer is very minimalistic, almost imperceptible, as intended.
 
 - [JavaScript](https://www.javascript.com/)
 
-[Back to top](https://github.com/hpesciotti/HydroMorpho/blob/main/README.md)
+[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 ### **4.2 - Frameworks, Libraries, Technologies & Programs Used**  
 
@@ -475,7 +679,7 @@ The footer is very minimalistic, almost imperceptible, as intended.
 
 - [Heroku](https://dashboard.heroku.com/): for deploying the terminal application.
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 ## **5. Testing**
 
@@ -491,7 +695,7 @@ The website was developed using Gitpod code editor, committed to Git as a local 
 - Enter your student email address in the input field provided.
 - Wait for database to be created and review the email sent to your student email inbox.
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
 
 ### **6.2. Connecting to GitHub**
 
@@ -579,7 +783,8 @@ web: gunicorn speleometrics.wsgi
 
 -  Run migrations again to ensure all database changes are applied.
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 
 ### **6.4. Cloudinary API**
 
@@ -603,7 +808,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')‌
 MEDIA_URL = '/media/'  
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 ```
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 
 ### **6.5.  Heroku Deployment**
 
@@ -625,7 +831,8 @@ To start the deployment process , please follow the below steps:
 -  Choose from '**Automatic**' or '**Manual**' deployment options, I chose the 'Manual' deployment method. Click '**Deploy Branch**'.
 - Once the waiting period for the app to build has finished, click the '**View**' link to bring you to your newly deployed site. If you receive any errors, Heroku will display a reason in the app build log for you to investigate. *
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 
 ### **6.5.  Clone Project**
 
@@ -643,7 +850,8 @@ A local clone of this repository can be made on GitHub. Please follow the below 
 - Set up your **env.py** file and from the above steps for Cloudinary and ElephantSQL, gather the Cloudinary API key and the Elephant SQL url for additon to your code.
 - Ensure that your **env.py** file is placed in your **.gitignore** file and follow the remaining steps in the above Django Project Setup section before pushing your code to GitHub.
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 
 ### **6.6.  Clone Project**
 
@@ -655,7 +863,8 @@ A copy of the original repository can be made through GitHub. Please follow the 
 - You should now have access to a forked copy of this repository in your Github account.
 - Follow the above Django Project Steps if you wish to work on the project.
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 
 ## **7. Credits**
 
@@ -697,7 +906,8 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 - [StaticsGlobe](https://www.youtube.com/watch?v=VZAmgg_khO0): How to calculate percentiles with num.py
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 
 ### **7.2. Media**
 
@@ -707,7 +917,8 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 - All remaining photographs are my own.
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
 
 ### **7.3. Acknowlegements**
 
@@ -717,4 +928,5 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 - My partner, Joana, for all the emotional support.
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+
