@@ -175,14 +175,14 @@ Although the design is simple, comparing the final result with the wireframes sh
 <details>
 <summary>Home Desktop</summary>
 
-![Home Desktop](documentation/index.png)
+![Home Desktop](ddocumentation/wireframes/index.png)
 
 </details>
 
 <details>
 <summary>Home Mobile</summary>
 
-![Home Mobile](documentation/index_mobile.png)
+![Home Mobile](documentation/wireframes/index_mobile.png)
 
 </details>
 
@@ -190,14 +190,14 @@ Although the design is simple, comparing the final result with the wireframes sh
 <details>
 <summary>Profile Desktop</summary>
 
-![Profile Desktop](documentation/user_profile.png)
+![Profile Desktop](ddocumentation/wireframes/user_profile.png)
 
 </details>
 
 <details>
 <summary>Profile Mobile</summary>
 
-![Profile Mobile](documentation/profile_mobile.png)
+![Profile Mobile](ddocumentation/wireframes/profile_mobile.png)
 
 </details>
 
@@ -205,42 +205,42 @@ Although the design is simple, comparing the final result with the wireframes sh
 <details>
 <summary>About Desktop</summary>
 
-![About Desktop](documentation/about.png)
+![About Desktop](documentation/wireframes/about.png)
 
 </details>
 
 <details>
 <summary>About Mobile</summary>
 
-![About Mobile](documentation/about_mobile.png)
+![About Mobile](documentation/wireframes/about_mobile.png)
 
 </details>
 
 <details>
 <summary>Map Search Desktop</summary>
 
-![Map Search  Desktop](documentation/map_search.png)
+![Map Search  Desktop](documentation/wireframes/map_search.png)
 
 </details>
 
 <details>
 <summary>Map Search Mobile</summary>
 
-![Map Search Mobile](documentation/cave_map_mobile.png)
+![Map Search Mobile](documentation/wireframes/cave_map_mobile.png)
 
 </details>
 
 <details>
 <summary>Table Search Desktop</summary>
 
-![Table Search  Desktop](documentation/cave_search.png)
+![Table Search  Desktop](documentation/wireframes/cave_search.png)
 
 </details>
 
 <details>
 <summary>Table Search Mobile</summary>
 
-![Table Search Mobile](documentation/cave_search_mobile.png)
+![Table Search Mobile](documentation/wireframes/cave_search_mobile.png)
 
 </details>
 
@@ -248,14 +248,14 @@ Although the design is simple, comparing the final result with the wireframes sh
 <details>
 <summary>Add cave Desktop</summary>
 
-![Add cave  Desktop](documentation/add_cave.png)
+![Add cave  Desktop](documentation/wireframes/add_cave.png)
 
 </details>
 
 <details>
 <summary>Add cave Mobile</summary>
 
-![Add cave Mobile](documentation/add_cave_mobile.png)
+![Add cave Mobile](ddocumentation/wireframes/add_cave_mobile.png)
 
 </details>
 
