@@ -297,7 +297,7 @@ As for the logo, it went through several versions and colours. After testing a f
 I chose a palette that would ornate with orange, white, and grey for the colour scheme that inspired the site's design. Since much of the content will be presented through text and tables, to maintain a clean appearance, I decided to choose a dark tone for the text. To that end, I checked the accessibility of a dark blue shade and a white tone. I opted out of shades of grey or black for this purpose, as I found the dark blue tone more elegant.
 
 
-![Colour Palette](documentation/color_text_contrast.png)
+![Colour Palette](documentation/color_palette.png)
 
 <details>
 <summary>Colour Text</summary>
@@ -385,6 +385,9 @@ The navbar is also responsive to user type. When the user is not logged in, the 
 
 The mobile version includes the logo and stack bars for the drop-down menu. This version lists the sublinks under the Caves section directly without requiring additional clicks. Similar to the desktop version, the responsiveness to the user's status is also applied.
 
+
+![Nav Bar](documentation/showcase/nav_bar.png)
+
 <details>
 <summary>Nav Bar Effects</summary>
 
@@ -412,12 +415,8 @@ I decided not to insert relevant website information in the footer.
 Instead, I inserted Font Awesome links to GitHub and LinkedIn.
 The footer is very minimalistic, almost imperceptible, as intended.
 
-<details>
-<summary>Footer</summary>
-
 ![Footer](documentation/showcase/footer.png)
 
-</details>
 
 #### Home / Index page
 
