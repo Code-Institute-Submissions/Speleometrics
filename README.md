@@ -6,10 +6,103 @@
 
 ## Readme - Table of Contents
 
+1. [Introduction](#1-introduction)
+
+2. [UX Design](#2-ux-design)
+
+    2.1. [Strategy](#21-strategy)
+
+    2.2. [User Stories](#22-user-stories)
+    
+    2.3. [Flow Chart](#23-flow-chart)
+
+    2.4. [Data Model](#24-data-model)
+
+    2.5. [Design](#25-design)
+
+3. [Features](#3-features)
+
+    3.1. [Existing Features](#31-existing-features)
+
+    3.2. [Future Features](#32-future-features)
+
+4. [Technologies Used](#4-technologies-used)
+
+    4.1. [Languages Used](#41-languages-used)
+
+    4.2. [Frameworks, Libraries & Programs Used](#42---frameworks-libraries-technologies--programs-used)
+
+5. [Testing](#5-testing)
+
+6. [Deployment](#6-deployment)
+
+    6.2. [Forking the Github Repository](#61-deploying-via-heroku)
+
+    6.1. [Github Pages](#62-github-pages)
+
+    6.3. [Making a Local Clone](#63-making-a-local-clone)
+
+7. [Credits](#7-credits)
+
 
 ## **1. Introduction**
 
+Aiming to reconcile my academic background in Geography (bachelor's degree) and newly acquired coding skills, I propose a collaborative platform to house speleological data from the Quadrilátero Ferrífero region, where I worked as an environmental consultant for 12 years.
+
+This platform has statistical, database search, and webGIS features that are engaging and collaborative. The site aims for precision and reliability in recording speleological information, confers transparency and promotes the free flow of information. 
+
+My choice for this project is guided, above all, by access to information. In recent years, I have worked on speleological studies in which the metrics of caves can, by a small statistical margin, preserve them or allow them to be suppressed. In a scenario in which economic interest conflicts with the preservation of speleological heritage, given that the genetic process of caves is the same as the concentration of high iron content, forming iron ore deposits, every decision must be grounded (pun intended) by the most complete and high-quality cave data.
+
+In recent years, environmental agencies have tried to generate and maintain a reliable database of cavities in the state of Minas Gerais. However, this database only contains spatial data on the caves and does not provide metric data. 
+
+In addition, different environmental studies list different and non-centralized data. This may be due to developers' (mining companies) unwillingness to share information, given the possibility of changes in cutting metrics and losing more deposits. Finally, one could point to a market reserve of specialized consulting companies, which creates a market reserve in possession of a comprehensive database. 
+
+In order to break away from the practices listed in the previous paragraphs and ensure the constitutional right to request and obtain information from government bodies as granted by the Freedom of Information Act, I conceived of this web application. Integrating a database will make the process more transparent and accessible to all stakeholders, contributing to the proper management of speleological heritage.
+
 ## **2. UX Design**
+
+### **2.1. Design and Inspiration** 
+
+The first issue in designing the website, after deciding on the problem statement, in my creative process is the name of the web application. The site’s name comes from a linguistic accident in my poor or literal translation of what I know in Portuguese as 'espeleometria,' a widely used term, into English, resulting in 'speleometric,' which is actually more commonly known in English as 'cave metrics.' I added an 's' at the end because I thought the name sounded better. During the deployment process on Heroku, I was happy to discover that my fortunate accident is an unregistered name on the platform.
+
+For the page design, I drew inspiration from the interface I used most often while preparing environmental impact reports, which in this case was Microsoft Word. The blank page in the centre with grey borders would bring comfort to the centred content and familiarity to users, most of whom share a similar professional background to mine.
+
+As for the logo, it went through several versions and colours. After testing a few possibilities, one of which was my user profile photo, I decided on something more elemental and simple. The capital greek letter omega is commonly used as a cartographic symbol to designate a cave, and this was present in several versions of the logo. Regarding the colour, I chose orange, as it resembles the soil developed from the rocks of the Quadrilátero Ferrífero.
+
+<details>
+<summary>Orange Soil</summary>
+
+![Orange Soil](documentation/orange.png)
+
+</details>
+
+<details>
+<summary>Word Blank Page</summary>
+
+![Word Blank Page](documentation/word_blank_page.png)
+
+</details>
+
+#### Colour Scheme
+
+
+I chose a palette that would ornate with orange, white, and grey for the colour scheme that inspired the site's design. Since much of the content will be presented through text and tables, to maintain a clean appearance, I decided to choose a dark tone for the text. To that end, I checked the accessibility of a dark blue shade and a white tone. I opted out of shades of grey or black for this purpose, as I found the dark blue tone more elegant.
+
+<details>
+<summary>Colour Palette</summary>
+
+![Colour Palette](documentation/color_palette.png)
+
+</details>
+
+<details>
+<summary>Main Text Accessibility</summary>
+
+![Colour Palette](documentation/color_text_contrast.png)
+
+</details>
+
+#### Font
 
 ## **3. Features**
 
