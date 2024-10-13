@@ -10,23 +10,27 @@
 
 2. [UX Design](#2-ux-design)
 
-    2.1. [Strategy](#21-strategy)
+    2.1. [Strategy/Scope and Structural Plane](#21-strategyscope-and-structural-plane)
 
     2.2. [User Stories](#22-user-stories)
     
-    2.3. [Flow Chart](#23-flow-chart)
+    2.3. [Skeleton & Surface Planes](#23-skeleton--surface-planes)
 
-    2.4. [Data Model](#24-data-model)
+    2.4. [Design](#24-design)
 
-    2.5. [Design](#25-design)
+    2.5. [Agile and Project Managing](#25-agile-and-project-managing)
 
 3. [Features](#3-features)
 
-    3.1. [Existing Features](#31-existing-features)
+    3.1. [User View](#31-user-view)
 
-    3.2. [Future Features](#32-future-features)
+    3.2. [CRUD Functionality](#32-crud-functionality)
 
-4. [Technologies Used](#4-technologies-used)
+    3.3. [Future Features](#33-features-showcase)
+
+    3.4. [Future Features](#34-future-features)
+
+4. [Technologies Used](#4-technologies-used)  
 
     4.1. [Languages Used](#41-languages-used)
 
@@ -36,13 +40,27 @@
 
 6. [Deployment](#6-deployment)
 
-    6.2. [Forking the Github Repository](#61-deploying-via-heroku)
+    6.1. [Code Institute PostgreSQL Database](#61-code-institute-postgresql-database)
 
-    6.1. [Github Pages](#62-github-pages)
+    6.2. [Connecting to GitHub](#62-connecting-to-github)
 
-    6.3. [Making a Local Clone](#63-making-a-local-clone)
+    6.3. [Django Project Setup](#63-django-project-setup) 
+
+    6.4. [Cloudinary API](#64-cloudinary-api)
+
+    6.5. [Heroku Deployment](#65-heroku-deployment)
+
+    6.6. [Clone Project](#66-make-a-local-clone-project)
+
+    6.7. [Clone Project](#67-clone-project)
 
 7. [Credits](#7-credits)
+
+   7.1. [Content](#71-content)
+
+   7.2. [Media](#72-media)
+
+   7.3. [Acknowlegements](#73-acknowlegements)
 
 
 ## **1. Introduction**
@@ -53,7 +71,7 @@ This platform has statistical, database search, and webGIS features that are eng
 
 The first issue in designing the website, after deciding on the problem statement, in my creative process is the name of the web application. The site’s name comes from a linguistic accident in my poor or literal translation of what I know in Portuguese as 'espeleometria,' a widely used term, into English, resulting in 'speleometric,' which is actually more commonly known in English as 'cave metrics.' I added an 's' at the end because I thought the name sounded better. During the deployment process on Heroku, I was happy to discover that my fortunate accident is an unregistered name on the platform.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ## **2. UX Design**
 
@@ -74,100 +92,100 @@ In sum the website aims for:
 - The data should be accessible by all listed stakeholders.
 - To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ### **2.2. User Stories**
 
 1. User Story (main ideia of the app):
 As an admin, I want to create a platform that would provide basic cave metrics to speleologists, conservationists, environmental consultancy companies, public agencies, academics, and cave enthusiasts so that I can centralize and make public and transparent the acquisition of cave metrics data in the Quadrilátero Ferrífero region.
 Acceptance Criteria:
-- The platform allows input, update, display, and storage of cave metrics data.
-- Cave metrics should be accessible by all listed stakeholders.
-- To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
+ - The platform allows input, update, display, and storage of cave metrics data.
+ - Cave metrics should be accessible by all listed stakeholders.
+ - To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
 
 2. User Story:
 As a user, I want to consult the database, so that I can check on the mean relevance metrics of the Quadrilátero Ferrífero Speleological unit and its Geomorphological Units.
 Acceptance Criteria:
-- Provide a user-friendly dashboard on the index page to the users.
-- Display in feature manner cave metrics specific to the Quadrilátero Ferrífero region (All Data) and the Geomorphological Unit that make up the aforementioned speleological unit (filter by a field)
-- Clear representation of metrics through charts, tables, etc.
+ - Provide a user-friendly dashboard on the index page to the users.
+ - Display in feature manner cave metrics specific to the Quadrilátero Ferrífero region (All Data) and the Geomorphological Unit that make up the aforementioned speleological unit (filter by a field)
+ - Clear representation of metrics through charts, tables, etc.
 Specific parameters can filter data (e.g., cave name, size).
 
 3. User Story:
 As a user, I want to consult data and general info of a cave, so that I can quickly collect relevant cave information for conservation/environmental licensing purposes.
 Acceptance Criteria:
-- Users can search for caves by name, location, or other identifiers.
-- Users can access a specific info page, “/cavename,” displaying all the collected data available about said cave.
-- The cave info page provides relevant data: location/coordinates, physical dimensions, and other textual data.
-- Downloadable cave maps (PDF) and images (jpg, png, etc) are available.
+ - Users can search for caves by name, location, or other identifiers.
+ - Users can access a specific info page, “/cavename,” displaying all the collected data available about said cave.
+ - The cave info page provides relevant data: location/coordinates, physical dimensions, and other textual data.
+ - Downloadable cave maps (PDF) and images (jpg, png, etc) are available.
 
 4. User Story:
 As a user, I want to consult the listing of all caves in the database using filters, so that I can access data according to my own needs, given that it has several different criteria.
-- A summary page listing the database caves for quick consultation.
-- Allow user to request data through filters such as dimension criteria, author, Geomorphological Unit
+ - A summary page listing the database caves for quick consultation.
+ - Allow user to request data through filters such as dimension criteria, author, Geomorphological Unit
 
 5. User Story:
 As a user, I want to know in which class of percentile my (or a particular) cave is classified according to percentiles of cave metrics, so that I can have some pointers on the cave’s relevance according to its metrics.
 Acceptance Criteria:
-- The info page will display a score for cave metrics regarding the speleological and geomorphological units.
-- The percentiles must be up to date with the last insertion/deletion of registered caves.
+ - The info page will display a score for cave metrics regarding the speleological and geomorphological units.
+ - The percentiles must be up to date with the last insertion/deletion of registered caves.
 
 6. User Story:
 As a user, I want to verify caves near a target area through a map interface, so that I can spatially assess existing caves quickly and easily.
 Acceptance Criteria:
-- A map interface must be implemented where users can search for caves by navigating the map frame.
-- The map should provide clickable cave icons that would display summarised cave data.
-- Display the Geomorphological and Speleological Units.
+ - A map interface must be implemented where users can search for caves by navigating the map frame.
+ - The map should provide clickable cave icons that would display summarised cave data.
+ - Display the Geomorphological and Speleological Units.
 
 7. User Story:
 As a user, I want to, through the map, open the cave info page, so that I can quickly gather info from the clicked feature.
 Acceptance Criteria:
-- Clicking on a cave marker in the map interface opens the specific cave info page.
-- The info page should not stop the navigation in the map interface.
+ - Clicking on a cave marker in the map interface opens the specific cave info page.
+ - The info page should not stop the navigation in the map interface.
 
 8. User Story:
 As a user, I want to register caves that I have surveyed, so that I can add to the overall metrics and contribute to the speleological knowledge of the region.
 Acceptance Criteria:
 Users can submit new cave entries through a form that includes required fields, as stablished by the database model.
-- Admin reviews and approves user-submitted cave data before it is added to the public database.
-- The users are notified upon successful submission and approval.
-- Users can upload cave maps (PDF) and images during registration.
+ - Admin reviews and approves user-submitted cave data before it is added to the public database.
+ - The users are notified upon successful submission and approval.
+ - Users can upload cave maps (PDF) and images during registration.
 
 9. User Story:
 As a user, I want to check the data input on my registered caves, so that I can ensure the entered data is correct and up to date.
 Acceptance Criteria:
-- Users have access to a personal dashboard listing the caves they have registered.
-- Users can review and edit data on their registered caves.
-- Any edits or updates to registered caves must be approved by an admin before incorporation of data to the database.
+ - Users have access to a personal dashboard listing the caves they have registered.
+ - Users can review and edit data on their registered caves.
+ - Any edits or updates to registered caves must be approved by an admin before incorporation of data to the database.
 
 10. User Story:
 As a user, I want to report inconsistent data (typos) or suggest updates on the data of caves not registered by me, so that I can contribute to the overall quality of the database.
 Acceptance Criteria:
-- Users can flag inconsistent data or suggest updates on any cave information.
-- A notification is sent to admins for review and approval of suggestions.
-- Users receive confirmation regarding the status of their reports.
-- A comment area and submit button should be available on each cave info page for submitting such reports.
+ - Users can flag inconsistent data or suggest updates on any cave information.
+ - A notification is sent to admins for review and approval of suggestions.
+ - Users receive confirmation regarding the status of their reports.
+ - A comment area and submit button should be available on each cave info page for submitting such reports.
 
 11. User Story:
 As a user, I want to get in touch with other users, so that I can message them directly and ask for further material or information about a cave.
 Acceptance Criteria:
-- The platform provides user profile pages.
-- The platform offers private messaging or contact functionality between users.
-- Users must share contact details for further communication.
+ - The platform provides user profile pages.
+ - The platform offers private messaging or contact functionality between users.
+ - Users must share contact details for further communication.
 
 12. User Story:
 As an admin, I want to follow up via external notification (email) with report inconsistency requests by users, so that I can guarantee the current update and maintain a consistent database.
 Acceptance Criteria:
-- Admins receive notifications of flagged or reported data inconsistencies via email.
+ - Admins receive notifications of flagged or reported data inconsistencies via email.
 
 13. User Story:
 As an admin, I want to manage user accounts, especially disabling user profiles due to misuse of the website functionalities, so that I can maintain control over the information provided by the website.
 Acceptance Criteria:
-- Admin can view and manage user profiles from the admin panel.
-- Admins can disable, delete, or temporarily suspend user accounts based on misuse.
-- The admin can restore disabled accounts and track account management history.
+ - Admin can view and manage user profiles from the admin panel.
+ - Admins can disable, delete, or temporarily suspend user accounts based on misuse.
+ - The admin can restore disabled accounts and track account management history.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ### **2.3. Skeleton & Surface Planes**
 
@@ -264,7 +282,7 @@ Although the design is simple, comparing the final result with the wireframes sh
 
 </details>
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Datbase Schema
 
@@ -278,7 +296,7 @@ Finally, The Report model captures the relationship between users and cave entri
 
 ![Speleometrics - Data Schema](documentation/speleometrics_data_model.png)
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ### **2.4. Design** 
 
@@ -300,7 +318,7 @@ As for the logo, it went through several versions and colours. After testing a f
 
 </details>
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Colour Scheme
 
@@ -316,13 +334,13 @@ I chose a palette that would ornate with orange, white, and grey for the colour 
 
 </details>
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Font
 
 I chose Josefin Sans for the items in the nav-bar and Inter Sans for the rest of the text.
 
-### **2.4. Agile and Project Managing** 
+### **2.5. Agile and Project Managing** 
 
 I tried to implement Agile Methodology during the planning of my full stack framework project. The planning was conducted with [GitHub Project](https://github.com/users/hpesciotti/projects/3). I chose to limit my entries to Tasks, User Stories, linking them through GitHub interface. 
 
@@ -337,7 +355,7 @@ Here is a draft of my initial planning divided um four sprints, tackling the var
 | 3      | 29/09/2024  | 05/10/2024  | Statistics, Reports, Maps and Frontend Development |
 | 4      | 06/10/2024  | 13/10/2024  | Styling/Testing/Documentation               |
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ### **3. Features**
 
@@ -365,7 +383,7 @@ The following charts show the accessibility of the features per user type.
 | - Report List             | Not Visible    | Not Visible  | Visible   |
 | - Report Page             | Not Visible    | Not Visible  | Visible   |
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### **3.2. CRUD Functionality**
 
@@ -388,9 +406,9 @@ The Create, Read, Update, Delete (CRUD) functionalities are planned for Speleome
 | - Report List             | -             | -                     | R, D               |
 | - Report Page             | -             | -                     | R, D               |
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
-### **4.1. Features Showcase**
+### **3.3. Features Showcase**
 
 #### Header
 
@@ -426,7 +444,7 @@ The mobile version includes the logo and stack bars for the drop-down menu. This
 
 </details>
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Footer
 
@@ -436,13 +454,13 @@ The footer is very minimalistic, almost imperceptible, as intended.
 
 ![Footer](documentation/showcase/footer.png)
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Home / Index page
 
 The home/index page is comprised of three distinct elements: the hero image, the call-to-action banner linked to a sign-in button (which switches to user area if the user is logged in), and the Cave Metrics section.
 
-The hero image is represented by a panoramic photograph of the Serra do Curral, one of the geomorphological units included in the registry. This range features the Quadrilátero Ferrífero's quartzite and ironstone-supported ridges, with most of the region's cavities attributed to the latter. The hero image serves to create visual appeal. In the mobile version, this image is responsive and centers on one of the mountain peaks.
+The hero image is represented by a panoramic photograph of the Serra do Curral, one of the geomorphological units included in the registry. This range features the Quadrilátero Ferrífero's quartzite and ironstone-supported ridges, with most of the region's caves attributed to the latter. The hero image serves to create visual appeal. In the mobile version, this image is responsive and centers on one of the mountain peaks.
 
 The call-to-action banner aims to inform users about the purpose of the site and intuitively encourage them to register via the button. The text succinctly explains the website's main goals.
 
@@ -450,7 +468,7 @@ The call-to-action banner aims to inform users about the purpose of the site and
 
 ![Hero Image and Banner](documentation/showcase/hero_image_mobile.png)
 
-Finally, the Cave Metrics section provides statistical data on cavity records, both for the entire Quadrilátero Ferrífero region and the geomorphological units it comprises. This section serves as a valuable reference point for a preliminary assessment of significance. Magnitude ratios are essential for project planning that may affect the speleological heritage. Additionally, these metrics can be integrated into environmental studies without the time-consuming process of consolidating and calculating data, as they are easily accessible through the web application. In the backend, those statistics are run every time there's a request to update the page. I opted not to create a database for this function because this information is dynamic, and there was no need for early optimization as the page's loading time was fast.
+Finally, the Cave Metrics section provides statistical data on caves records, both for the entire Quadrilátero Ferrífero region and the geomorphological units it comprises. This section serves as a valuable reference point for a preliminary assessment of significance. Magnitude ratios are essential for project planning that may affect the speleological heritage. Additionally, these metrics can be integrated into environmental studies without the time-consuming process of consolidating and calculating data, as they are easily accessible through the web application. In the backend, those statistics are run every time there's a request to update the page. I opted not to create a database for this function because this information is dynamic, and there was no need for early optimization as the page's loading time was fast.
 
 ![Cave Metrics](documentation/showcase/qf_statistics.png)
 
@@ -460,7 +478,7 @@ The section also includes the total number of caves and those recorded in each g
 
 ![Cave Metrics](documentation/showcase/qf_accordion_geomorphological_units_mobile.png)
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Cave Map Search
 
@@ -474,7 +492,7 @@ Additional filters can be implemented on this page to optimize the loading speed
 
 ![Map Search Mobile](documentation/showcase/map_search_mobile.png)
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Table Search
 
@@ -495,7 +513,7 @@ As shown on the map page, users can access the specific cave and user pages via 
 
 ![Cave Search Mobile](documentation/showcase/table_search_mobile.png)
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### About
 
@@ -506,7 +524,7 @@ Its purpose is to provide general information about the studied area, caves, and
 
 ![About Mobile](documentation/showcase/about_mobile.png)
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Profile
 
@@ -528,7 +546,7 @@ The Profile page includes several checks to ensure the user has filled in their 
 
 </details>
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)d)
 
 #### My Caves
 
@@ -544,7 +562,7 @@ Through the profile, users can access "My Caves," which returns their registered
 
 </details>
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Add Cave / Cave Edit
 
@@ -571,9 +589,7 @@ Through the profile, users can access "My Caves," which returns their registered
 
 </details>
 
-
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
-
+[Back to top](#readme---table-of-contents)
 
 #### Cave Page
 
@@ -595,7 +611,7 @@ The cave page consists of a simple layout where the data is presented individual
 
 </details>
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 #### Report
 
@@ -603,15 +619,11 @@ The report page is restricted to superusers. Its purpose is to list records with
 
 At the end of the review process, the admin can delete the review request. At this stage of the website, there is no automated way for the user to track if their report request has been addressed, except through email communication from the administrator.
 
-
 ![Report](documentation/showcase/report.png)
-
 
 ![Report Page](documentation/showcase/report_page.png)
 
-
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
-
+[Back to top](#readme---table-of-contents)
 
 #### Sign In Page
 
@@ -620,12 +632,24 @@ I added some personalisation to return erro messages.
 
 ![SignIn Validation 1](documentation/showcase/sign_in_validation.png)
 
-
 ![SignIn Validation 2](documentation/showcase/sign_in_validation_2.png)
 
+[Back to top](#readme---table-of-contents)
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+#### Error pages
+The website has custom pages for the following errors:
+- 403 - Forbidden
+- 404 - Not Found
+- 500 - Internal Server Error
 
+### **3.4. Future Features**
+
+- Extended user management panel with profile viewing and editing capabilities.
+- Disable, delete, or temporarily suspend user accounts due to misuse.
+- Restore disabled or suspended accounts and track account management history.
+- Add more filering options to Cave model fields.
+
+[Back to top](#readme---table-of-contents)
 
 ## **4. Technologies Used**
 
@@ -639,7 +663,7 @@ I added some personalisation to return erro messages.
 
 - [JavaScript](https://www.javascript.com/)
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ### **4.2 - Frameworks, Libraries, Technologies & Programs Used**  
 
@@ -679,7 +703,7 @@ I added some personalisation to return erro messages.
 
 - [Heroku](https://dashboard.heroku.com/): for deploying the terminal application.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ## **5. Testing**
 
@@ -689,13 +713,13 @@ I added some personalisation to return erro messages.
 
 The website was developed using Gitpod code editor, committed to Git as a local repository, and then pushed to GitHub for storage.
 
-## **6.1 Code Institute PostgreSQL Database *
+## **6.1 Code Institute PostgreSQL Database**
 
 - Navigate to [Code Institute PostgreSQL Database](https://dbs.ci-dbs.net/)
 - Enter your student email address in the input field provided.
 - Wait for database to be created and review the email sent to your student email inbox.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ### **6.2. Connecting to GitHub**
 
@@ -707,7 +731,7 @@ To begin this project from scratch, you must first create a new GitHub repositor
 4. Choose a new repository name and click '**Create repository from template**'.
 5. In Gitpod locate your repository and create a new workspace.
 
-[Back to top](//github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 ### **6.3. Django Project Setup**
 
@@ -783,7 +807,7 @@ web: gunicorn speleometrics.wsgi
 
 -  Run migrations again to ensure all database changes are applied.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 
 ### **6.4. Cloudinary API**
@@ -808,10 +832,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')‌
 MEDIA_URL = '/media/'  
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 ```
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
-
-### **6.5.  Heroku Deployment**
+### **6.5. Heroku Deployment**
 
 To start the deployment process , please follow the below steps:
 
@@ -831,10 +854,9 @@ To start the deployment process , please follow the below steps:
 -  Choose from '**Automatic**' or '**Manual**' deployment options, I chose the 'Manual' deployment method. Click '**Deploy Branch**'.
 - Once the waiting period for the app to build has finished, click the '**View**' link to bring you to your newly deployed site. If you receive any errors, Heroku will display a reason in the app build log for you to investigate. *
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
-
-### **6.5.  Clone Project**
+### **6.6. Make a Local Clone Project**
 
 A local clone of this repository can be made on GitHub. Please follow the below steps:
 
@@ -850,10 +872,10 @@ A local clone of this repository can be made on GitHub. Please follow the below 
 - Set up your **env.py** file and from the above steps for Cloudinary and ElephantSQL, gather the Cloudinary API key and the Elephant SQL url for additon to your code.
 - Ensure that your **env.py** file is placed in your **.gitignore** file and follow the remaining steps in the above Django Project Setup section before pushing your code to GitHub.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 
-### **6.6.  Clone Project**
+### **6.7. Clone Project**
 
 A copy of the original repository can be made through GitHub. Please follow the below steps to fork this repository:  
 
@@ -863,8 +885,7 @@ A copy of the original repository can be made through GitHub. Please follow the 
 - You should now have access to a forked copy of this repository in your Github account.
 - Follow the above Django Project Steps if you wish to work on the project.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
-
+[Back to top](#readme---table-of-contents)
 
 ## **7. Credits**
 
@@ -906,7 +927,7 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 - [StaticsGlobe](https://www.youtube.com/watch?v=VZAmgg_khO0): How to calculate percentiles with num.py
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
 
 ### **7.2. Media**
@@ -917,8 +938,7 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 - All remaining photographs are my own.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
-
+[Back to top](#readme---table-of-contents)
 
 ### **7.3. Acknowlegements**
 
@@ -928,5 +948,5 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 - My partner, Joana, for all the emotional support.
 
-[Back to top](https://github.com/hpesciotti/Speleometrics/blob/main/README.md)
+[Back to top](#readme---table-of-contents)
 
