@@ -55,7 +55,7 @@ The first issue in designing the website, after deciding on the problem statemen
 
 ## **2. UX Design**
 
-### **2.1. Strategy/Scope and Structural Plane
+### **2.1. Strategy/Scope and Structural Plane**
 
 My choice for this project is guided, above all, by access to information. In recent years, I have worked on speleological studies in which the metrics of caves can, by a small statistical margin, preserve them or allow them to be suppressed. In a scenario in which economic interest conflicts with the preservation of speleological heritage, given that the genetic process of caves is the same as the concentration of high iron content, forming iron ore deposits, every decision must be grounded (pun intended) by the most complete and high-quality cave data.
 
@@ -72,7 +72,7 @@ In sum the website aims for:
 - The data should be accessible by all listed stakeholders.
 - To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
 
-### **2.2. User Stories
+### **2.2. User Stories**
 
 1. User Story (main ideia of the app):
 As an admin, I want to create a platform that would provide basic cave metrics to speleologists, conservationists, environmental consultancy companies, public agencies, academics, and cave enthusiasts so that I can centralize and make public and transparent the acquisition of cave metrics data in the Quadrilátero Ferrífero region.
@@ -164,7 +164,7 @@ Acceptance Criteria:
 - The admin can restore disabled accounts and track account management history.
 
 
-### **2.3. Skeleton & Surface Planes
+### **2.3. Skeleton & Surface Planes**
 
 #### Wireframes
 
@@ -175,7 +175,7 @@ Although the design is simple, comparing the final result with the wireframes sh
 <details>
 <summary>Home Desktop</summary>
 
-![Home Desktop](ddocumentation/wireframes/index.png)
+![Home Desktop](documentation/wireframes/index.png)
 
 </details>
 
@@ -190,14 +190,14 @@ Although the design is simple, comparing the final result with the wireframes sh
 <details>
 <summary>Profile Desktop</summary>
 
-![Profile Desktop](ddocumentation/wireframes/user_profile.png)
+![Profile Desktop](documentation/wireframes/user_profile.png)
 
 </details>
 
 <details>
 <summary>Profile Mobile</summary>
 
-![Profile Mobile](ddocumentation/wireframes/profile_mobile.png)
+![Profile Mobile](documentation/wireframes/profile_mobile.png)
 
 </details>
 
@@ -255,7 +255,7 @@ Although the design is simple, comparing the final result with the wireframes sh
 <details>
 <summary>Add cave Mobile</summary>
 
-![Add cave Mobile](ddocumentation/wireframes/add_cave_mobile.png)
+![Add cave Mobile](documentation/wireframes/add_cave_mobile.png)
 
 </details>
 
@@ -269,12 +269,7 @@ The Profile model, in turn, is associated with the User model through a one-to-o
 
 Finally, The Report model captures the relationship between users and cave entries in terms of data inconsistencies. A report gathers info about the reporting user, the cave being reported, the cave owner, and the inconsistency. This is managed through foreign keys that ensure each report correctly maps out the cave and the users involved. 
 
-<details>
-<summary>Speleometrics - Data Schema</summary>
-
 ![Speleometrics - Data Schema](documentation/speleometrics_data_model.png)
-
-</details>
 
 ### **2.4. Design** 
 
@@ -301,17 +296,13 @@ As for the logo, it went through several versions and colours. After testing a f
 
 I chose a palette that would ornate with orange, white, and grey for the colour scheme that inspired the site's design. Since much of the content will be presented through text and tables, to maintain a clean appearance, I decided to choose a dark tone for the text. To that end, I checked the accessibility of a dark blue shade and a white tone. I opted out of shades of grey or black for this purpose, as I found the dark blue tone more elegant.
 
-<details>
-<summary>Colour Palette</summary>
-
-![Colour Palette](documentation/color_palette.png)
-
-</details>
-
-<details>
-<summary>Main Text Accessibility</summary>
 
 ![Colour Palette](documentation/color_text_contrast.png)
+
+<details>
+<summary>Colour Text</summary>
+
+![Colour Text](documentation/color_text_contrast.png)
 
 </details>
 
@@ -319,7 +310,119 @@ I chose a palette that would ornate with orange, white, and grey for the colour 
 
 I chose Josefin Sans for the items in the nav-bar and Inter Sans for the rest of the text.
 
-## **3. Features**
+### **2.4. Agile and Project Managing** 
+
+I tried to implement Agile Methodology during the planning of my full stack framework project. The planning was conducted with [GitHub Project](https://github.com/users/hpesciotti/projects/3). I chose to limit my entries to Tasks, User Stories, linking them through GitHub interface. 
+
+I had initially around 30 days to execute the project, as suggest by the CI Scheduler. I would like to point out that was a very short time frame to develop a full-stack application and taking into account my learning curve with Django and Boostrap, I think the endproduct can achive the MVP status. 
+
+Here is a draft of my initial planning divided um four sprints, tackling the various content involved on Speleometrics.
+
+| Sprint | Start       | Finish      | Content                                    |
+|--------|-------------|-------------|--------------------------------------------|
+| 1      | 15/09/2024  | 21/09/2024  | Design, Wireframes, Sign-In (Django AllAuth) |
+| 2      | 22/09/2024  | 28/09/2024  | Defining the models, Profiles and Caves    |
+| 3      | 29/09/2024  | 05/10/2024  | Statistics, Reports, Maps and Frontend Development |
+| 4      | 06/10/2024  | 13/10/2024  | Styling/Testing/Documentation               |
+
+### **3. Features**
+
+#### **3.1. User view**
+
+To ensure an engaging interface and data protection, it was necessary to establish some permissions for the website users.
+Moreover, the classification of users reflects upon the user's access to some pages. 
+The following charts show the accessibility of the features per user type.
+
+| Feature / User Type       | Unlogged User | Logged User | Superuser |
+|---------------------------|---------------|-------------|-----------|
+| **Home**                  | Visible       | Visible     | Visible   |
+| **About**                 | Visible       | Visible     | Visible   |
+| **Caves**                 |               |             |           |
+| - Map Search              | Visible       | Visible     | Visible   |
+| - Table Search            | Visible       | Visible     | Visible   |
+| - Cave Page               | Visible       | Visible     | Visible   |
+| - Report Cave             | Not Visible    | Visible     | Visible   |
+| **User Area**             |               |             |           |
+| - Register a Cave         | Not Visible    | Visible     | Visible   |
+| - My Caves                | Not Visible    | Visible     | Visible   |
+| - Edit Cave               | Not Visible    | Visible     | Visible   |
+| - Edit Profile            | Not Visible    | Visible     | Visible   |
+| **Reports**               |               |             |           |
+| - Report List             | Not Visible    | Not Visible  | Visible   |
+| - Report Page             | Not Visible    | Not Visible  | Visible   |
+
+#### **3.2. CRUD Functionality**
+
+The Create, Read, Update, Delete (CRUD) functionalities are planned for Speleometrics. Through the Database Model, it is clear that full CRUD functionality is available for the Cave database, meaning that any user who has registered a cave and a superuser has access to Create, Read, Update, and Delete operations. Regarding user profiles, the only operation currently unavailable is the ability to delete them. Since cave records are crucial to the web application's purpose, deleting profiles could result in data loss (cascade effect). Therefore, the option to delete a profile was not initially planned. Additionally, as transparency is a guiding principle of the project, most functionalities are available in Read mode, even for users who are not logged in. The following chart displays the CRUD functions per page per user.
+
+| Feature / User Type       | Unlogged User | Logged User           | Superuser         |
+|---------------------------|---------------|-----------------------|--------------------|
+| **Home**                  | R             | R                     | R                  |
+| **About**                 | R             | R                     | R                  |
+| **Cave**                  |               |                       |                    |
+| - Table Search            | R             | R                     | R                  |
+| - Cave Page               | R             | All = R - If owner = U, D | R, U, D          |
+| - Report Cave             | R             | C                     | C                  |
+| **User Area**             |               |                       |                    |
+| - Register a Cave         | R             | C                     | C                  |
+| - My Caves                | R             | U, D                  | R, U, D            |
+| - Edit Cave               | R             | If owner = U else -  | U                  |
+| - Edit Profile            | R             | All = R / If owner = U | All = R / If owner = U |
+| **Reports**               |               |                       |                    |
+| - Report List             | -             | -                     | R, D               |
+| - Report Page             | -             | -                     | R, D               |
+
+
+### **4.1. Features Showcase**
+
+#### Header
+
+The header features two versions tailored for both mobile and desktop views. Both versions include the site's logo, which has hover and focus functions aligned with the adopted colour scheme. The logo follows current trends by maintaining a minimalist design.
+
+In the desktop version, links are presented as nav-pills, responsive to hover, focus, and active states. The purpose of the nav-pills is to effectively indicate the section or area of the site being accessed. It is important to note that the "add cave" section, which depends on user validation and is accessed through the user area, sits between the cave and user area tabs.
+
+The navbar is also responsive to user type. When the user is not logged in, the user area is visible but appears as disabled, prompting the user to log in or sign up. Additionally, only superusers can access the reports tab, which remains invisible to other users.
+
+The mobile version includes the logo and stack bars for the drop-down menu. This version lists the sublinks under the Caves section directly without requiring additional clicks. Similar to the desktop version, the responsiveness to the user's status is also applied.
+
+<details>
+<summary>Nav Bar Effects</summary>
+
+![Nav Bar Effects](documentation/showcase/nav_bar_effects.png)
+
+</details>
+
+<details>
+<summary>Nav Bar Privileges - Desktop</summary>
+
+![Nav Bar Privileges - Desktop](documentation/showcase/nav_bar_privliges.png)
+
+</details>
+
+<details>
+<summary>Nav Bar Privileges - Mobile</summary>
+
+![Nav Bar Privileges - Mobile](documentation/showcase/nav_bar_privliges_mobile.png)
+
+</details>
+
+#### Footer
+
+I decided not to insert relevant website information in the footer.
+Instead, I inserted Font Awesome links to GitHub and LinkedIn.
+The footer is very minimalistic, almost imperceptible, as intended.
+
+<details>
+<summary>Footer</summary>
+
+![Footer](documentation/showcase/footer.png)
+
+</details>
+
+#### Home / Index page
+
+
+![Colour Text](documentation/nav_bar_privliges.png)
 
 ## **4. Technologies Used**
 
