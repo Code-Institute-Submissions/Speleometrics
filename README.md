@@ -51,6 +51,12 @@ Aiming to reconcile my academic background in Geography (bachelor's degree) and 
 
 This platform has statistical, database search, and webGIS features that are engaging and collaborative. The site aims for precision and reliability in recording speleological information, confers transparency and promotes the free flow of information. 
 
+The first issue in designing the website, after deciding on the problem statement, in my creative process is the name of the web application. The site’s name comes from a linguistic accident in my poor or literal translation of what I know in Portuguese as 'espeleometria,' a widely used term, into English, resulting in 'speleometric,' which is actually more commonly known in English as 'cave metrics.' I added an 's' at the end because I thought the name sounded better. During the deployment process on Heroku, I was happy to discover that my fortunate accident is an unregistered name on the platform.
+
+## **2. UX Design**
+
+### **2.1. Strategy/Scope and Structural Plane
+
 My choice for this project is guided, above all, by access to information. In recent years, I have worked on speleological studies in which the metrics of caves can, by a small statistical margin, preserve them or allow them to be suppressed. In a scenario in which economic interest conflicts with the preservation of speleological heritage, given that the genetic process of caves is the same as the concentration of high iron content, forming iron ore deposits, every decision must be grounded (pun intended) by the most complete and high-quality cave data.
 
 In recent years, environmental agencies have tried to generate and maintain a reliable database of cavities in the state of Minas Gerais. However, this database only contains spatial data on the caves and does not provide metric data. 
@@ -59,11 +65,218 @@ In addition, different environmental studies list different and non-centralized 
 
 In order to break away from the practices listed in the previous paragraphs and ensure the constitutional right to request and obtain information from government bodies as granted by the Freedom of Information Act, I conceived of this web application. Integrating a database will make the process more transparent and accessible to all stakeholders, contributing to the proper management of speleological heritage.
 
-## **2. UX Design**
+Speleometrics aims to create a centralized, transparent platform for gathering and sharing cave metrics specific to the Quadrilátero Ferrífero region. This platform will serve various stakeholders—speleologists, conservationists, environmental consultancy companies, public agencies, academics, and cave enthusiasts—by providing accessible and accurate data on caves. The user-friendly dashboard will offer insights into key cave attributes (such as length, depth, area, volume and others), helping in decision-making for environmental licensing, conservation, and research.
 
-### **2.1. Design and Inspiration** 
+In sum the website aims for:
+- Allowing input, update, display, and storage of cave metrics data.
+- The data should be accessible by all listed stakeholders.
+- To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
 
-The first issue in designing the website, after deciding on the problem statement, in my creative process is the name of the web application. The site’s name comes from a linguistic accident in my poor or literal translation of what I know in Portuguese as 'espeleometria,' a widely used term, into English, resulting in 'speleometric,' which is actually more commonly known in English as 'cave metrics.' I added an 's' at the end because I thought the name sounded better. During the deployment process on Heroku, I was happy to discover that my fortunate accident is an unregistered name on the platform.
+### **2.2. User Stories
+
+1. User Story (main ideia of the app):
+As an admin, I want to create a platform that would provide basic cave metrics to speleologists, conservationists, environmental consultancy companies, public agencies, academics, and cave enthusiasts so that I can centralize and make public and transparent the acquisition of cave metrics data in the Quadrilátero Ferrífero region.
+Acceptance Criteria:
+- The platform allows input, update, display, and storage of cave metrics data.
+- Cave metrics should be accessible by all listed stakeholders.
+- To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
+
+2. User Story:
+As a user, I want to consult the database, so that I can check on the mean relevance metrics of the Quadrilátero Ferrífero Speleological unit and its Geomorphological Units.
+Acceptance Criteria:
+- Provide a user-friendly dashboard on the index page to the users.
+- Display in feature manner cave metrics specific to the Quadrilátero Ferrífero region (All Data) and the Geomorphological Unit that make up the aforementioned speleological unit (filter by a field)
+- Clear representation of metrics through charts, tables, etc.
+Specific parameters can filter data (e.g., cave name, size).
+
+3. User Story:
+As a user, I want to consult data and general info of a cave, so that I can quickly collect relevant cave information for conservation/environmental licensing purposes.
+Acceptance Criteria:
+- Users can search for caves by name, location, or other identifiers.
+- Users can access a specific info page, “/cavename,” displaying all the collected data available about said cave.
+- The cave info page provides relevant data: location/coordinates, physical dimensions, and other textual data.
+- Downloadable cave maps (PDF) and images (jpg, png, etc) are available.
+
+4. User Story:
+As a user, I want to consult the listing of all caves in the database using filters, so that I can access data according to my own needs, given that it has several different criteria.
+- A summary page listing the database caves for quick consultation.
+- Allow user to request data through filters such as dimension criteria, author, Geomorphological Unit
+
+5. User Story:
+As a user, I want to know in which class of percentile my (or a particular) cave is classified according to percentiles of cave metrics, so that I can have some pointers on the cave’s relevance according to its metrics.
+Acceptance Criteria:
+- The info page will display a score for cave metrics regarding the speleological and geomorphological units.
+- The percentiles must be up to date with the last insertion/deletion of registered caves.
+
+6. User Story:
+As a user, I want to verify caves near a target area through a map interface, so that I can spatially assess existing caves quickly and easily.
+Acceptance Criteria:
+- A map interface must be implemented where users can search for caves by navigating the map frame.
+- The map should provide clickable cave icons that would display summarised cave data.
+- Display the Geomorphological and Speleological Units.
+
+7. User Story:
+As a user, I want to, through the map, open the cave info page, so that I can quickly gather info from the clicked feature.
+Acceptance Criteria:
+- Clicking on a cave marker in the map interface opens the specific cave info page.
+- The info page should not stop the navigation in the map interface.
+
+8. User Story:
+As a user, I want to register caves that I have surveyed, so that I can add to the overall metrics and contribute to the speleological knowledge of the region.
+Acceptance Criteria:
+Users can submit new cave entries through a form that includes required fields, as stablished by the database model.
+- Admin reviews and approves user-submitted cave data before it is added to the public database.
+- The users are notified upon successful submission and approval.
+- Users can upload cave maps (PDF) and images during registration.
+
+9. User Story:
+As a user, I want to check the data input on my registered caves, so that I can ensure the entered data is correct and up to date.
+Acceptance Criteria:
+- Users have access to a personal dashboard listing the caves they have registered.
+- Users can review and edit data on their registered caves.
+- Any edits or updates to registered caves must be approved by an admin before incorporation of data to the database.
+
+10. User Story:
+As a user, I want to report inconsistent data (typos) or suggest updates on the data of caves not registered by me, so that I can contribute to the overall quality of the database.
+Acceptance Criteria:
+- Users can flag inconsistent data or suggest updates on any cave information.
+- A notification is sent to admins for review and approval of suggestions.
+- Users receive confirmation regarding the status of their reports.
+- A comment area and submit button should be available on each cave info page for submitting such reports.
+
+11. User Story:
+As a user, I want to get in touch with other users, so that I can message them directly and ask for further material or information about a cave.
+Acceptance Criteria:
+- The platform provides user profile pages.
+- The platform offers private messaging or contact functionality between users.
+- Users must share contact details for further communication.
+
+12. User Story:
+As an admin, I want to follow up via external notification (email) with report inconsistency requests by users, so that I can guarantee the current update and maintain a consistent database.
+Acceptance Criteria:
+- Admins receive notifications of flagged or reported data inconsistencies via email.
+
+13. User Story:
+As an admin, I want to manage user accounts, especially disabling user profiles due to misuse of the website functionalities, so that I can maintain control over the information provided by the website.
+Acceptance Criteria:
+- Admin can view and manage user profiles from the admin panel.
+- Admins can disable, delete, or temporarily suspend user accounts based on misuse.
+- The admin can restore disabled accounts and track account management history.
+
+
+### **2.3. Skeleton & Surface Planes
+
+#### Wireframes
+
+The wireframes were created using Balsamiq. At this stage, along with the user stories, it was possible to identify the functionalities, pages, and data to be presented in later phases. 
+
+Although the design is simple, comparing the final result with the wireframes shows that the production phase successfully implemented what was proposed at the outset.
+
+<details>
+<summary>Home Desktop</summary>
+
+![Home Desktop](documentation/index.png)
+
+</details>
+
+<details>
+<summary>Home Mobile</summary>
+
+![Home Mobile](documentation/index_mobile.png)
+
+</details>
+
+
+<details>
+<summary>Profile Desktop</summary>
+
+![Profile Desktop](documentation/user_profile.png)
+
+</details>
+
+<details>
+<summary>Profile Mobile</summary>
+
+![Profile Mobile](documentation/profile_mobile.png)
+
+</details>
+
+
+<details>
+<summary>About Desktop</summary>
+
+![About Desktop](documentation/about.png)
+
+</details>
+
+<details>
+<summary>About Mobile</summary>
+
+![About Mobile](documentation/about_mobile.png)
+
+</details>
+
+<details>
+<summary>Map Search Desktop</summary>
+
+![Map Search  Desktop](documentation/map_search.png)
+
+</details>
+
+<details>
+<summary>Map Search Mobile</summary>
+
+![Map Search Mobile](documentation/cave_map_mobile.png)
+
+</details>
+
+<details>
+<summary>Table Search Desktop</summary>
+
+![Table Search  Desktop](documentation/cave_search.png)
+
+</details>
+
+<details>
+<summary>Table Search Mobile</summary>
+
+![Table Search Mobile](documentation/cave_search_mobile.png)
+
+</details>
+
+
+<details>
+<summary>Add cave Desktop</summary>
+
+![Add cave  Desktop](documentation/add_cave.png)
+
+</details>
+
+<details>
+<summary>Add cave Mobile</summary>
+
+![Add cave Mobile](documentation/add_cave_mobile.png)
+
+</details>
+
+#### Datbase Schema
+
+The cave registration system was structured using a relational database schema which the models are: User, Profile, Cave, and Report. The models are connected by relationships defined through foreign key associations. User is structured by Django AllAuth, a set of applications that automate tasks related to addressing authentication, registration, and account management.
+
+The Cave, which stores the main data collected by the website, is linked to the User model via a foreign key, establishing that each cave entry is created and managed by a specific user, ensuring ownership of cave records. The Cave model includes fields like cave_name, latitude, longitude, elevation, length, depth, area, and volume, each with specific validation constraints to ensure consistency in data entry.
+
+The Profile model, in turn, is associated with the User model through a one-to-one relationship established by the user. This allows each user to have a detailed profile while maintaining the core authentication provided by Django All Auth. Additionally, the Profile model handles user information, allowing them to edit their profile and access the website's main functions, like adding a cave, provided the user provides an email_for_contact, bio, and display name, which are not mandatory fields. This relationship ensures the integrity of user data, connecting it back to cave entries and reports through consistent foreign key relationships across the models.
+
+Finally, The Report model captures the relationship between users and cave entries in terms of data inconsistencies. A report gathers info about the reporting user, the cave being reported, the cave owner, and the inconsistency. This is managed through foreign keys that ensure each report correctly maps out the cave and the users involved. 
+
+<details>
+<summary>Speleometrics - Data Schema</summary>
+
+![Speleometrics - Data Schema](documentation/speleometrics_data_model.png)
+
+</details>
+
+### **2.4. Design** 
 
 For the page design, I drew inspiration from the interface I used most often while preparing environmental impact reports, which in this case was Microsoft Word. The blank page in the centre with grey borders would bring comfort to the centred content and familiarity to users, most of whom share a similar professional background to mine.
 
@@ -103,6 +316,8 @@ I chose a palette that would ornate with orange, white, and grey for the colour 
 </details>
 
 #### Font
+
+I chose Josefin Sans for the items in the nav-bar and Inter Sans for the rest of the text.
 
 ## **3. Features**
 
